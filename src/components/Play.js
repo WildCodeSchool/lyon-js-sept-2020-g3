@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Play = () => {
-  return <div>Home</div>;
+  return <div>Play</div>;
 };
 
 export default Play;

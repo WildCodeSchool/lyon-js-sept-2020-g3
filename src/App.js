@@ -1,5 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import Connexion from './components/Connexion';
+import Contact from './components/Contact';
+import Home from './components/Home';
+import Play from './components/Play';
+import Question from './components/Question';
+import Store from './components/Store';
+import Settings from './Settings';
 
 function App() {
   return (
@@ -95,3 +102,5 @@ function Store(props) {
 
 /* export default Store;
  */
+
+export default App;
