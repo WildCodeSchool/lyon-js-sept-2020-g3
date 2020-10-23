@@ -47,7 +47,7 @@ function App() {
 
 // Dans le composant Question
 
-import React from 'react';
+/* import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 function Question() {
@@ -64,11 +64,11 @@ function Question() {
   );
 }
 
-export default Question;
+export default Question; */
 
 // Dans le composant store
 
-import React from 'react';
+/* import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 const allModes = [
@@ -89,8 +89,9 @@ function Store(props) {
       </Switch>
     </Router>
   );
-}
+} */
 
 /* demander à Pierre comment faire passer les props d'un composant à l'autre */
 
-export default Store;
+/* export default Store;
+ */
