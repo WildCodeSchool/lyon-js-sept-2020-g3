@@ -15,38 +15,38 @@ function App() {
         <nav>
           <ul>
             <li>
-              <Link to='/'>Home</Link>
+              <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to='/store'>store</Link>
+              <Link to="/store">store</Link>
             </li>
             <li>
-              <Link to='/settings'>settings</Link>
+              <Link to="/settings">settings</Link>
             </li>
             <li>
-              <Link to='/contact'>contact</Link>
+              <Link to="/contact">contact</Link>
             </li>
             <li>
-              <Link to='/connexion'>connexion</Link>
+              <Link to="/connexion">connexion</Link>
             </li>
           </ul>
         </nav>
-        <button className='question'>
-          <Link to='/question'>Ask me a question</Link>
+        <button className="question" type="button">
+          <Link to="/question">Ask me a question</Link>
         </button>
-        <button className='play'>
-          <Link to='/play'>Challenge me</Link>
+        <button className="play" type="button">
+          <Link to="/play">Challenge me</Link>
         </button>
       </div>
 
       <Switch>
-        <Route exact path='/' component={Home} />
-        <Route path='/store' component={Store} />
-        <Route path='/settings' component={Settings} />
-        <Route path='/contact' component={Contact} />
-        <Route path='/connexion' component={Connexion} />
-        <Route path='/question' component={Question} />
-        <Route path='/play' component={Play} />
+        <Route exact path="/" component={Home} />
+        <Route path="/store" component={Store} />
+        <Route path="/settings" component={Settings} />
+        <Route path="/contact" component={Contact} />
+        <Route path="/connexion" component={Connexion} />
+        <Route path="/question" component={Question} />
+        <Route path="/play" component={Play} />
       </Switch>
     </Router>
   );
