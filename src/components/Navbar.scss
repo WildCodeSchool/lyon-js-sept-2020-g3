@@ -1,0 +1,32 @@
+@import 'variablesCSS';
+
+.navbar {
+  display: flex;
+  .navbarLogo {
+    img {
+      width: 50%;
+      padding-left: 10px;
+    }
+    width: 30%;
+    background-color: $primary-color;
+  }
+  .navbarLink {
+    background-color: $primary-color;
+    width: 70%;
+
+    ul {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 100%;
+    }
+    li {
+      list-style: none;
+      font-size: 10px;
+    }
+    a {
+      text-decoration: none;
+      color: white;
+    }
+  }
+}

@@ -1,5 +1,5 @@
 import React from 'react';
-const axios = require('axios').default;
+import './Question.scss';
 
 /* Paramétrage de l'API [key, settings, etc...]
 L'API est paramétrée sur le site : https://brainshop.ai/brain/153798/settings
@@ -42,7 +42,6 @@ class Question extends React.Component {
     // if (event.key === 'Enter') {
     const encodedURIMessage = encodeURIComponent(this.state.question);
     const url = `https://acobot-brainshop-ai-v1.p.rapidapi.com/get?bid=153798&key=SXUv8ChYDG1AboDK&uid=User&msg=${encodedURIMessage}`;
-    console.log(url);
 
     fetch(url, {
       method: 'GET',
@@ -56,7 +55,6 @@ class Question extends React.Component {
       })
       .then((res) => {
         this.setState({ response: res.cnt });
-        console.log(res.cnt);
       })
       .catch((err) => {
         console.log(err);
@@ -67,22 +65,35 @@ class Question extends React.Component {
   render() {
     return (
       <div>
-        <div className='bulle'>{this.state.response}</div>
-        <div>
-          <img src='robot' alt='Archibot' />
-        </div>
-        <div>
-          <input
-            placeholder='Ecrivez ici'
-            value={this.state.question}
-            onClick={this.handleReset}
-            onChange={this.handleInput}
-            // onKeyPress={this.questionToAPI} // A compléter avec ce qui est en commentaire au début de la fonction --> problème ça ne détecte plus le clic
-          />
-          <button type='button' onClick={this.questionToAPI}>
-            {' '}
-            Ask !
-          </button>
+        <div className='questionBody'>
+          <div className='questionBubble'>
+            <span className='tip'>{this.state.response}</span>
+          </div>
+          <div>
+            <img
+              class='questionImage'
+              src={require('../Images/archibot.png')}
+              alt='Archibot'
+            />
+          </div>
+          <div className='questionArea'>
+            <input
+              className='questionInput'
+              placeholder='Tell me something'
+              value={this.state.question}
+              onClick={this.handleReset}
+              onChange={this.handleInput}
+              // onKeyPress={this.questionToAPI} // A compléter avec ce qui est en commentaire au début de la fonction --> problème ça ne détecte plus le clic
+            />
+            <button
+              className='questionButton'
+              type='button'
+              onClick={this.questionToAPI}
+            >
+              {' '}
+              Ask !
+            </button>
+          </div>
         </div>
       </div>
     );
