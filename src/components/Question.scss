@@ -31,24 +31,38 @@
   flex-direction: column;
 }
 .questionInput {
-  margin-bottom: 20px;
-  height: 30px;
-  border-radius: 20px;
-  padding: 30px;
+  background-color: white;
+  margin-bottom: 10px;
+  height: 10px;
+  border: none;
+  border-radius: 10px;
+  padding: 20px;
   text-align: center;
   font-weight: bolder;
 }
+.questionInput:hover {
+  box-shadow: 2px 4px 2px grey;
+}
+// .questionInput:focus {
+//   background-color: #243358;
+//   color: white;
+
 .questionButton {
-  margin-bottom: 50px;
-  font-size: 15px;
-  text-shadow: 0px 1px 1px $primary-color;
-  font-weight: bold;
-  border: none;
-  text-decoration: none;
-  border-radius: 50px;
-  width: 20%;
-  position: relative;
-  // right: 20px;
-  left: 70%;
-  box-shadow: 3px 3px 3px 3px $primary-color;
+  border: 0;
+  line-height: 2.5;
+  padding: 0 30px;
+  font-size: 1rem;
+  text-align: center;
+  color: #fff;
+  text-shadow: 1px 1px 1px #000;
+  border-radius: 10px;
+  background-color: #6ad7cb;
+  background-image: linear-gradient(
+    to top left,
+    rgba(0, 0, 0, 0.2),
+    rgba(0, 0, 0, 0.2) 30%,
+    rgba(0, 0, 0, 0)
+  );
+  box-shadow: inset 5px 5px 7px rgba(255, 255, 255, 0.6),
+    inset -5px -5px 7px #243358;
 }
