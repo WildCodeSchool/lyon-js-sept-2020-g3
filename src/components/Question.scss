@@ -1,4 +1,5 @@
 @import 'variablesCSS';
+@import url('https://fonts.googleapis.com/css2?family=Turret+Road:wght@500;800&display=swap');
 
 * {
   margin: 0;
@@ -15,37 +16,74 @@
   padding: 10px;
   background: linear-gradient($primary-color, $third-color);
   text-align: center;
+
+  position: fixed;
+  min-width: 100%;
+  min-height: 100%;
+  background-size: cover;
+  background-position: center;
 }
 .questionBubble {
-  margin-top: 20px;
-  border-radius: 50px;
-  min-height: 150px;
-  background: white;
-  padding: 30px 10px;
-  color: black;
+  display: flex;
+  background-color: white;
+  padding: 50px;
+  border-radius: 30px;
   width: 100%;
+  min-height: 40px;
+  margin-top: 30px;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: 'Turret Road', cursive;
+  font-size: 20px;
+
+  &:before,
+  &:after {
+    content: '';
+    background-color: #fff;
+    border-radius: 50%;
+    display: block;
+    position: absolute;
+    z-index: -1;
+  }
+  &:before {
+    width: 44px;
+    height: 44px;
+    top: -20px;
+    left: 28px;
+    box-shadow: -50px 30px 0 -12px #fff;
+  }
+  &:after {
+    bottom: -20px;
+    right: 30px;
+    width: 30px;
+    height: 30px;
+    box-shadow: 40px -34px 0 0 #fff, -33px -13px 0 -2px #fff,
+      -25px 11px 0 -6px #fff, -5px 25px 0 -10px #fff;
+  }
 }
 
 .questionArea {
   display: flex;
   flex-direction: column;
+  position: static;
+  top: 2%;
 }
 .questionInput {
   background-color: white;
   margin-bottom: 10px;
   height: 10px;
   border: none;
-  border-radius: 10px;
+  border-radius: 20px;
   padding: 20px;
   text-align: center;
   font-weight: bolder;
 }
-.questionInput:hover {
-  box-shadow: 2px 4px 2px grey;
+
+.questionInput:focus {
+  outline: 0;
 }
-// .questionInput:focus {
-//   background-color: #243358;
-//   color: white;
 
 .questionButton {
   border: 0;
@@ -54,15 +92,28 @@
   font-size: 1rem;
   text-align: center;
   color: #fff;
+  margin-bottom: 50px;
+  margin-left: 10px;
+  margin-right: 10px;
   text-shadow: 1px 1px 1px #000;
   border-radius: 10px;
-  background-color: #6ad7cb;
-  background-image: linear-gradient(
-    to top left,
-    rgba(0, 0, 0, 0.2),
-    rgba(0, 0, 0, 0.2) 30%,
-    rgba(0, 0, 0, 0)
+  background: linear-gradient(
+    to right,
+    $third-color,
+    $secondary-color,
+    $primary-color
   );
-  box-shadow: inset 5px 5px 7px rgba(255, 255, 255, 0.6),
-    inset -5px -5px 7px #243358;
+  cursor: pointer;
+  // background-image: linear-gradient(
+  //   to top left,
+  //   rgba(0, 0, 0, 0.2),
+  //   rgba(0, 0, 0, 0.2) 30%,
+  //   rgba(0, 0, 0, 0)
+  // );
+  // box-shadow: inset 5px 5px 7px rgba(255, 255, 255, 0.6),
+  //   inset -5px -5px 7px $primary-color;
+}
+
+.questionButton:focus {
+  outline: 0;
 }
