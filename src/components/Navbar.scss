@@ -2,8 +2,9 @@
 
 .navbar {
   display: flex;
+  justify-content: space-between;
   background-color: $primary-color;
-
+  height: 6vh;
   .navbarLogo {
     img {
       width: 100px;
@@ -13,15 +14,18 @@
   }
 }
 
-/* Paramétrage du menu burger____________________________________________________________________________________________________*/
+.menu {
+  display: none;
+}
+/* Paramétrage du menu burger_______________https://github.com/negomi/react-burger-menu_____________________________________________________________________________________*/
 
 /* Position and sizing of burger button */
 .bm-burger-button {
-  position: fixed;
+  position: absolute;
   width: 36px;
   height: 30px;
-  left: 85%;
-  top: 7px;
+  left: 88%;
+  top: 10px;
 }
 
 /* Color/shape of burger icon bars */
@@ -36,13 +40,15 @@
 
 /* Position and sizing of clickable cross button */
 .bm-cross-button {
-  height: 24px;
-  width: 24px;
+  height: 50px;
+  width: 50px;
 }
 
 /* Color/shape of close button cross */
 .bm-cross {
   background: white;
+  height: 50px;
+  width: 50px;
 }
 
 /*
@@ -56,7 +62,7 @@
 
 /* General sidebar styles */
 .bm-menu {
-  background: linear-gradient($primary-color, $third-color);
+  background: white;
   padding: 2.5em 1.5em 0;
   font-size: 1.15em;
 }
@@ -75,11 +81,33 @@
 /* Individual item */
 .bm-item {
   display: inline-block;
-  color: white;
+  color: $secondary-color;
+  text-decoration: none;
+  padding: 1em;
+  text-align: center;
 }
 
 /* Styling of overlay */
 .bm-overlay {
   width: 0%;
   background: rgba(0, 0, 0, 0.3);
+}
+
+@media screen and (min-width: 1080px) {
+  .bm-burger-button {
+    display: none;
+  }
+  .menu {
+    width: 80%;
+    display: block;
+    ul {
+      display: flex;
+      justify-content: space-around;
+      padding-top: 10px;
+    }
+    a {
+      text-decoration: none;
+      color: white;
+    }
+  }
 }
