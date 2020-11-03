@@ -61,7 +61,11 @@ class Question extends React.Component {
           <div className="questionArea">
             <input
               className="questionInput"
-              placeholder="Tell me something"
+              placeholder="Question..."
+              onFocus={(e) => {
+                e.target.placeholder = '';
+              }}
+              onBlur={(e) => e.target.placeholder('Question...')}
               value={question}
               onClick={this.handleReset}
               onChange={this.handleInput}
