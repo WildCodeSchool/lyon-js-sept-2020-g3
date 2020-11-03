@@ -1,4 +1,6 @@
 @import 'variablesCSS';
+@import url('https://fonts.googleapis.com/css2?family=Turret+Road:wght@500;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
 
 * {
   margin: 0;
@@ -15,40 +17,154 @@
   padding: 10px;
   background: linear-gradient($primary-color, $third-color);
   text-align: center;
+
+  position: fixed;
+  min-width: 100%;
+  min-height: 100%;
+  background-size: cover;
+  background-position: center;
 }
 .questionBubble {
-  margin-top: 20px;
-  border-radius: 50px;
-  min-height: 150px;
-  background: white;
-  padding: 30px 10px;
-  color: black;
+  display: flex;
+  background-color: white;
+  padding: 50px;
+  border-radius: 30px;
   width: 100%;
+  min-height: 40px;
+  margin-top: 30px;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: 'Turret Road', cursive;
+  font-size: 20px;
+
+  &:before,
+  &:after {
+    content: '';
+    background-color: #fff;
+    border-radius: 50%;
+    display: block;
+    position: absolute;
+    z-index: -1;
+  }
+  &:before {
+    width: 44px;
+    height: 44px;
+    top: -20px;
+    left: 28px;
+    box-shadow: -50px 30px 0 -12px #fff;
+  }
+  &:after {
+    bottom: -20px;
+    right: 30px;
+    width: 30px;
+    height: 30px;
+    box-shadow: 40px -34px 0 0 #fff, -33px -13px 0 -2px #fff,
+      -25px 11px 0 -6px #fff, -5px 25px 0 -10px #fff;
+  }
 }
 
 .questionArea {
   display: flex;
   flex-direction: column;
+  position: static;
+  top: 2%;
 }
 .questionInput {
-  margin-bottom: 20px;
-  height: 30px;
+  background-color: white;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  margin-left: 10px;
+  height: 10px;
+  border: none;
   border-radius: 20px;
-  padding: 30px;
+  padding: 20px;
   text-align: center;
   font-weight: bolder;
+  font-family: 'Poppins', sans-serif;
 }
+
+.questionInput:focus {
+  outline: 0;
+}
+
 .questionButton {
+  border: 0;
+  line-height: 2.5;
+  padding: 0 30px;
+  font-size: 1rem;
+  text-align: center;
+  color: #fff;
   margin-bottom: 50px;
-  font-size: 15px;
-  text-shadow: 0px 1px 1px $primary-color;
-  font-weight: bold;
-  border: none;
-  text-decoration: none;
-  border-radius: 50px;
-  width: 20%;
-  position: relative;
-  // right: 20px;
-  left: 70%;
-  box-shadow: 3px 3px 3px 3px $primary-color;
+  margin-left: 10px;
+  margin-right: 10px;
+  text-shadow: 1px 1px 1px #000;
+  border-radius: 10px;
+  background: linear-gradient(
+    to right,
+    $third-color,
+    $secondary-color,
+    $primary-color
+  );
+  cursor: pointer;
+  -moz-box-shadow: inset 0 0 10px white;
+  -webkit-box-shadow: inset 0 0 10px white;
+  box-shadow: inset 0 0 10px white;
+  font-family: 'Poppins', sans-serif;
+}
+
+.questionButton:focus {
+  outline: 0;
+}
+
+@media screen and (min-width: 600px) and (max-width: 1024px) {
+  /*Tablette*/
+  .questionBody {
+    display: flex;
+    align-items: center;
+  }
+  .questionBubble {
+    width: 80%;
+    min-height: 150px;
+  }
+  .questionArea {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 30px;
+  }
+  .questionInput {
+    width: 350px;
+    height: 20px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  /*Desktop*/
+
+  .questionBody {
+    display: flex;
+    align-items: center;
+  }
+
+  .questionBubble {
+    width: 50%;
+    min-height: 150px;
+  }
+
+  .questionImage {
+    height: 210px;
+  }
+
+  .questionArea {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 30px;
+  }
+  .questionInput {
+    width: 400px;
+    height: 20px;
+  }
 }
