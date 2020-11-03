@@ -1,14 +1,21 @@
 @import 'variablesCSS';
+@import url('https://fonts.googleapis.com/css2?family=Turret+Road:wght@500;800&display=swap');
+
+* {
+  font-family: $primary-font-family;
+  font-weight: bold;
+}
 
 .navbar {
   display: flex;
   justify-content: space-between;
   background-color: $primary-color;
-  height: 6vh;
+  height: 5%;
   .navbarLogo {
     img {
-      width: 100px;
+      width: 115px;
       padding-left: 10px;
+      padding-top: 5px;
     }
     width: 30%;
   }
@@ -21,16 +28,17 @@
 
 /* Position and sizing of burger button */
 .bm-burger-button {
-  position: absolute;
+  position: relative;
   width: 36px;
   height: 30px;
-  left: 88%;
+  margin-right: 10px;
   top: 10px;
 }
 
 /* Color/shape of burger icon bars */
 .bm-burger-bars {
   background: white;
+  border-radius: 10px;
 }
 
 /* Color/shape of burger icon bars on hover*/
@@ -40,17 +48,27 @@
 
 /* Position and sizing of clickable cross button */
 .bm-cross-button {
+  position: absolute;
+  top: -25px;
   height: 50px;
   width: 50px;
+  &:focus {
+    outline: 0;
+  }
 }
 
 /* Color/shape of close button cross */
 .bm-cross {
+  position: absolute;
   background: white;
   height: 50px;
   width: 50px;
+  top: -25px;
 }
-
+#react-burger-cross-btn {
+  position: absolute !important;
+  top: -25px !important;
+}
 /*
   Sidebar wrapper styles
   Note: Beware of modifying this element as it can break the animations - you should not need to touch it in most cases
@@ -62,6 +80,8 @@
 
 /* General sidebar styles */
 .bm-menu {
+  position: relative;
+  top: -30px;
   background: white;
   padding: 2.5em 1.5em 0;
   font-size: 1.15em;
@@ -74,8 +94,11 @@
 
 /* Wrapper for item list */
 .bm-item-list {
+  display: flex;
+  flex-direction: column;
   color: #b8adad;
-  padding: 0.8em;
+  padding: 6em;
+  align-items: center;
 }
 
 /* Individual item */
@@ -91,6 +114,17 @@
 .bm-overlay {
   width: 0%;
   background: rgba(0, 0, 0, 0.3);
+}
+
+.purpleLogo {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 150px;
+  height: auto;
+  padding-bottom: 50px;
+  padding-top: 5px;
+  padding-left: 10px;
 }
 
 @media screen and (min-width: 1080px) {

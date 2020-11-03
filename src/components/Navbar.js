@@ -10,6 +10,7 @@ import Store from './Store';
 import Settings from './Settings';
 import './Navbar.scss';
 import logo from '../Images/Logo.png';
+import purpleLogo from '../Images/purpleLogo.png';
 import cross from '../Images/cross.png';
 
 class Navbar extends React.Component {
@@ -52,6 +53,7 @@ class Navbar extends React.Component {
             customCrossIcon={<img src={cross} alt="cross icon" />}
             disableAutoFocus
           >
+            <img className="purpleLogo" src={purpleLogo} alt="logo burger" />
             <Link to="/" onClick={this.closeMenu}>
               Home
             </Link>
