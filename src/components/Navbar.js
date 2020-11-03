@@ -10,6 +10,8 @@ import Store from './Store';
 import Settings from './Settings';
 import './Navbar.scss';
 import logo from '../Images/Logo.png';
+import purpleLogo from '../Images/purpleLogo.png';
+import cross from '../Images/cross.png';
 
 class Navbar extends React.Component {
   constructor(props) {
@@ -33,13 +35,25 @@ class Navbar extends React.Component {
           <h1 className="navbarLogo">
             <img src={logo} alt="logo" />
           </h1>
+          <div className="menu">
+            <ul>
+              <Link to="/">Home</Link>
+              <Link to="/store">Store</Link>
+              <Link to="/settings">Settings</Link>
+              <Link to="/contact">Contact</Link>
+              <Link to="/connexion">Connexion</Link>
+            </ul>
+          </div>
           <Menu
             isOpen={menuOpen}
             onStateChange={(state) => this.handleStateChange(state)}
             noOverlay
             right
             width="100%"
+            customCrossIcon={<img src={cross} alt="cross icon" />}
+            disableAutoFocus
           >
+            <img className="purpleLogo" src={purpleLogo} alt="logo burger" />
             <Link to="/" onClick={this.closeMenu}>
               Home
             </Link>
