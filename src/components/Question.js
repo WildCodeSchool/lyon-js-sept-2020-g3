@@ -1,7 +1,6 @@
 import React from 'react';
 import './Question.scss';
 import questionImg from '../Images/archibot.png';
-import bgImage from '../Images/etoile.jpg';
 
 class Question extends React.Component {
   constructor(props) {
@@ -48,10 +47,7 @@ class Question extends React.Component {
     const { response, question } = this.state;
     return (
       <div>
-        <div
-          className="questionBody"
-          style={{ backgroundImage: `url(${bgImage})` }}
-        >
+        <div className="questionBody">
           <div className="questionBubble">
             <span className="tip">{response}</span>
           </div>
@@ -61,12 +57,12 @@ class Question extends React.Component {
           <div className="questionArea">
             <input
               className="questionInput"
-              placeholder="Question..."
+              placeholder="WRITE HERE.."
               onFocus={(e) => {
                 e.target.placeholder = '';
               }}
               onBlur={(e) => {
-                e.target.placeholder = 'Question...';
+                e.target.placeholder = 'WRITE HERE..';
               }}
               value={question}
               onClick={this.handleReset}
