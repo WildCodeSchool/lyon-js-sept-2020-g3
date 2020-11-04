@@ -1,44 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Question.scss';
 import Chat from '@material-ui/icons/Chat';
 import questionImg from '../Images/archibot.png';
 import bgImage from '../Images/etoile.jpg';
 
-class Question extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      question: '',
-      response: '',
-      // messagesArray: [],
-    };
-  }
-
-  handleReset = () => {
-    this.setState({ question: '' });
+function Question() {
+  const [question, setQuestion] = useState('');
+  const [response, setResponse] = useState('');
+  // const [messageArray, setMessageArray] = useState([]);
+  const updateQuestion = (e) => {
+    setQuestion(e.target.value);
+  };
+  const resetQuestion = () => {
+    setQuestion('');
+  };
+  const updateResponse = (apiResult) => {
+    setResponse(apiResult.cnt);
   };
 
-  handleInput = (event) => {
-    this.setState({ question: event.target.value });
-  };
-
-  // addToMessagesArray = () => {
-  //   const { question, response } = this.state;
-  //   this.setState((prevState) => {
-  //     return {
-  //       messagesArray: [...prevState.messagesArray, question, response],
-  //     };
-  //   });
-  // };
-
-  preventDefault = (event) => {
-    event.preventDefault();
-    this.questionToAPI();
-    this.handleReset();
-  };
-
-  questionToAPI = () => {
-    const { question } = this.state;
+  const submitToAPI = () => {
     const encodedURIMessage = encodeURIComponent(question);
     const url = `https://acobot-brainshop-ai-v1.p.rapidapi.com/get?bid=153798&key=SXUv8ChYDG1AboDK&uid=User&msg=${encodedURIMessage}`;
 
@@ -53,62 +33,63 @@ class Question extends React.Component {
         return res.json();
       })
       .then((res) => {
-        this.setState({ response: res.cnt });
+        updateResponse(res);
       })
       .catch((err) => {
         console.log(err);
       });
-    // this.addToMessagesArray();
-    // console.log(this.state.messagesArray);
   };
 
-  render() {
-    const { response, question } = this.state;
-    return (
-      <div>
-        <div
-          className="questionBody"
-          style={{ backgroundImage: `url(${bgImage})` }}
-        >
-          <div className="questionBubble">
-            <span className="tip">{response}</span>
-          </div>
-          <div>
-            <img className="questionImage" src={questionImg} alt="Archibot" />
-          </div>
+  const submitQuestionWithEnter = (e) => {
+    e.preventDefault();
+    submitToAPI();
+    resetQuestion();
+  };
 
-          <form onSubmit={this.preventDefault}>
-            <button type="button" className="chatIcon">
-              <Chat />
-            </button>
-            <div className="questionArea">
-              <input
-                className="questionInput"
-                placeholder="Question..."
-                onFocus={(e) => {
-                  e.target.placeholder = '';
-                }}
-                onBlur={(e) => {
-                  e.target.placeholder = 'Question...';
-                }}
-                value={question}
-                onClick={this.handleReset}
-                onChange={this.handleInput}
-              />
-              <button
-                className="questionButton"
-                type="button"
-                onClick={this.questionToAPI}
-              >
-                {' '}
-                ASK ME!
-              </button>
-            </div>
-          </form>
+  return (
+    <div>
+      <div
+        className="questionBody"
+        style={{ backgroundImage: `url(${bgImage})` }}
+      >
+        <div className="questionBubble">
+          <span className="tip">{response}</span>
         </div>
+        <div>
+          <img className="questionImage" src={questionImg} alt="Archibot" />
+        </div>
+
+        <form onSubmit={submitQuestionWithEnter}>
+          <button type="button" className="chatIcon">
+            <Chat />
+          </button>
+          <div className="questionArea">
+            <input
+              className="questionInput"
+              placeholder="Question..."
+              onFocus={(e) => {
+                e.target.placeholder = '';
+              }}
+              onBlur={(e) => {
+                e.target.placeholder = 'Question...';
+              }}
+              value={question}
+              onClick={resetQuestion}
+              onChange={updateQuestion}
+            />
+            <button
+              className="questionButton"
+              type="button"
+              onClick={submitToAPI}
+            >
+              {' '}
+              ASK ME!
+            </button>
+          </div>
+        </form>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default Question;
