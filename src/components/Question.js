@@ -1,5 +1,6 @@
 import React from 'react';
 import './Question.scss';
+import Chat from '@material-ui/icons/Chat';
 import questionImg from '../Images/archibot.png';
 import bgImage from '../Images/etoile.jpg';
 
@@ -9,6 +10,7 @@ class Question extends React.Component {
     this.state = {
       question: '',
       response: '',
+      // messagesArray: [],
     };
   }
 
@@ -18,6 +20,20 @@ class Question extends React.Component {
 
   handleInput = (event) => {
     this.setState({ question: event.target.value });
+  };
+
+  // addToMessagesArray = () => {
+  //   const { question, response } = this.state;
+  //   this.setState((prevState) => {
+  //     return {
+  //       messagesArray: [...prevState.messagesArray, question, response],
+  //     };
+  //   });
+  // };
+
+  preventDefault = (event) => {
+    event.preventDefault();
+    this.questionToAPI();
   };
 
   questionToAPI = () => {
@@ -41,7 +57,8 @@ class Question extends React.Component {
       .catch((err) => {
         console.log(err);
       });
-    // }
+    // this.addToMessagesArray();
+    // console.log(this.state.messagesArray);
   };
 
   render() {
@@ -58,30 +75,35 @@ class Question extends React.Component {
           <div>
             <img className="questionImage" src={questionImg} alt="Archibot" />
           </div>
-          <div className="questionArea">
-            <input
-              className="questionInput"
-              placeholder="Question..."
-              onFocus={(e) => {
-                e.target.placeholder = '';
-              }}
-              onBlur={(e) => {
-                e.target.placeholder = 'Question...';
-              }}
-              value={question}
-              onClick={this.handleReset}
-              onChange={this.handleInput}
-              // onKeyPress={this.questionToAPI} // A compléter avec ce qui est en commentaire au début de la fonction --> problème ça ne détecte plus le clic
-            />
-            <button
-              className="questionButton"
-              type="button"
-              onClick={this.questionToAPI}
-            >
-              {' '}
-              ASK ME!
+
+          <form onSubmit={this.preventDefault}>
+            <button type="button" className="chatIcon">
+              <Chat />
             </button>
-          </div>
+            <div className="questionArea">
+              <input
+                className="questionInput"
+                placeholder="Question..."
+                onFocus={(e) => {
+                  e.target.placeholder = '';
+                }}
+                onBlur={(e) => {
+                  e.target.placeholder = 'Question...';
+                }}
+                value={question}
+                onClick={this.handleReset}
+                onChange={this.handleInput}
+              />
+              <button
+                className="questionButton"
+                type="button"
+                onClick={this.questionToAPI}
+              >
+                {' '}
+                ASK ME!
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     );
