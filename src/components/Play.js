@@ -1,7 +1,7 @@
 /* eslint-disable */
 
-import React from 'react';
-// import Akinator, { Response } from './components/Akinator';
+// import React from 'react';
+// import Akinator, { Response } from './Akinator';
 
 // class Play extends Component {
 //   constructor(props) {
@@ -15,7 +15,7 @@ import React from 'react';
 //         <Akinator />
 //         <Response />
 //         <img alt="archibot's avatar" />
-//         <input type="button">
+//         <input type="button" onClick={<Akinator />}>
 //           Think about real or fictive character, I will read your mind ! Click
 //           when you're ready ...
 //         </input>
@@ -24,4 +24,4 @@ import React from 'react';
 //   }
 // }
 
-export default Play;
+// export default Play;

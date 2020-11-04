@@ -3,10 +3,11 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Connexion from './components/Connexion';
 import Contact from './components/Contact';
 import Home from './components/Home';
-import Play from './components/Play';
+/* import Play from './components/Play'; */
 import Question from './components/Question';
 import Store from './components/Store';
 import Settings from './Settings';
+import Akinator from './components/Akinator';
 
 function App() {
   return (
@@ -46,7 +47,7 @@ function App() {
         <Route path="/contact" component={Contact} />
         <Route path="/connexion" component={Connexion} />
         <Route path="/question" component={Question} />
-        <Route path="/play" component={Play} />
+        <Route path="/play" component={Akinator} />
       </Switch>
     </Router>
   );

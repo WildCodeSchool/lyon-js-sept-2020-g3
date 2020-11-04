@@ -1,45 +1,62 @@
-/* eslint-disable */
-import React from 'react';
-// import axios from 'axios';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
-// export class Akinator extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       akinator: null,
-//     };
-//   }
-//   componentDidMount(
-//     getAkinator
-//   )
+function Akinator() {
+  const [question, setQuestion] = useState('');
+  const [answers, setAnswers] = useState([]);
+  const [session, setSession] = useState('');
+  // const [url, setUrl] = useState('');
 
-//   getAkinator = () => {
-//     /* On envoit la requete*/
-//     axios
-//       .get(/*url API*/)
-//       /* On extrait les données de l'API*/
-//       .then((response) => response.data)
-//       /* Utilisation de la data pour modifier le state*/
-//       .then((data) => {
-//         this.setState(/* dépend du format de l'API*/)
-//       })
-//       .catch((err) => {
-//         console.log(err)
-//       })
-//   };
+  const nextQuestion = (answerIndex) => {
+    axios
+      .get(
+        `https://akinator-api.wild-projects.duckdns.org/nextquestion?sessionId=${session}&answer=${answerIndex}`
+      )
+      .then((response) => response.data)
+      .then((response) => {
+        setQuestion(response.question);
+      });
+  };
 
-//   render() {
-//     return (
-//       <div className="akinator">
-//         <input type="text"></input>
-//         <button type="button" onClick={this.getAkinator}>Probably</button>
-//         <button type="button" onClick={this.getAkinator}>Probably not</button>
-//         <button type="button" onClick={this.getAkinator}>Yes</button>
-//         <button type="button" onClick={this.getAkinator}>don't know</button>
-//         <button type="button" onClick={this.getAkinator}>No</button>
-//       </div>
-//     );
-//   }
-// }
+  const getAkinator = () => {
+    axios
+      .get('https://akinator-api.wild-projects.duckdns.org/newsession')
+      .then((response) => {
+        setSession(response.data.sessionId);
+        return axios.get(
+          `https://akinator-api.wild-projects.duckdns.org/nextquestion?sessionId=${response.data.sessionId}`
+        );
+      })
+      .then((response) => {
+        setAnswers(response.data.answers);
+        setQuestion(response.data.question);
+      });
+  };
+
+  useEffect(() => {
+    getAkinator();
+  }, []);
+
+  return (
+    <div className="answers">
+      <input value={question} />
+      {answers.map((answer, index) => {
+        return (
+          <button
+            type="button"
+            /* eslint-disable */
+            key={index}
+            /* eslint-enable */
+            onClick={() => {
+              nextQuestion(index);
+            }}
+          >
+            {answer}
+          </button>
+        );
+      })}
+    </div>
+  );
+}
 
 export default Akinator;
