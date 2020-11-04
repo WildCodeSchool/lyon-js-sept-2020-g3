@@ -34,6 +34,7 @@ class Question extends React.Component {
   preventDefault = (event) => {
     event.preventDefault();
     this.questionToAPI();
+    this.handleReset();
   };
 
   questionToAPI = () => {
