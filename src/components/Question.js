@@ -2,12 +2,10 @@ import React, { useState } from 'react';
 import './Question.scss';
 import Chat from '@material-ui/icons/Chat';
 import questionImg from '../Images/archibot.png';
-import bgImage from '../Images/etoile.jpg';
 
 function Question() {
   const [question, setQuestion] = useState('');
   const [response, setResponse] = useState('');
-  // const [messageArray, setMessageArray] = useState([]);
   const updateQuestion = (e) => {
     setQuestion(e.target.value);
   };
@@ -48,10 +46,7 @@ function Question() {
 
   return (
     <div>
-      <div
-        className="questionBody"
-        style={{ backgroundImage: `url(${bgImage})` }}
-      >
+      <div className="questionBody">
         <div className="questionBubble">
           <span className="tip">{response}</span>
         </div>
@@ -63,15 +58,16 @@ function Question() {
           <button type="button" className="chatIcon">
             <Chat />
           </button>
+
           <div className="questionArea">
             <input
               className="questionInput"
-              placeholder="Question..."
+              placeholder="WRITE HERE.."
               onFocus={(e) => {
                 e.target.placeholder = '';
               }}
               onBlur={(e) => {
-                e.target.placeholder = 'Question...';
+                e.target.placeholder = 'WRITE HERE..';
               }}
               value={question}
               onClick={resetQuestion}
