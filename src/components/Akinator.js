@@ -6,6 +6,7 @@ function Akinator() {
   const [answers, setAnswers] = useState([]);
   const [session, setSession] = useState('');
   const [guessCount, setGuessCount] = useState('');
+  const [guessImage, setGuessImage] = useState('');
 
   const nextQuestion = (answerIndex) => {
     axios
@@ -16,7 +17,8 @@ function Akinator() {
       .then((response) => {
         if (response.guessCount !== undefined) {
           setGuessCount(response.answers[0].name);
-          console.log(response.answers[0]);
+          setGuessImage(response.answers[0].absolute_picture_path);
+          console.log(response);
         } else {
           setQuestion(response.question);
           console.log(response);
@@ -65,7 +67,15 @@ function Akinator() {
           })}
         </div>
       ) : (
-        <input value={`Your character is ... ${guessCount}`} />
+        <div>
+          <img src={guessImage} alt={`${guessCount}'s face`} width="200px" />
+          <br />
+          <input value={`Your character is ... ${guessCount}`} />
+          <button type="button">Yes</button>
+          <button type="button" onClick={() => nextQuestion()}>
+            No
+          </button>
+        </div>
       )}
     </div>
   );
