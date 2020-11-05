@@ -6,22 +6,29 @@ import bgImage from '../Images/etoile.jpg';
 
 function Question() {
   const [question, setQuestion] = useState('');
-  const [response, setResponse] = useState('');
+  const [response, setResponse] = useState(
+    "Hi, I'm Archibot your new best friend !"
+  );
   const [messageArray, setMessageArray] = useState([]);
 
+  // /en permanence quand on change l'input/
   const updateQuestion = (e) => {
     setQuestion(e.target.value);
   };
+  // /quand on clique sur l'input/
   const resetQuestion = () => {
     setQuestion('');
   };
+  // on récupère la réponse de l'API
   const updateResponse = (apiResult) => {
     setResponse(apiResult.cnt);
   };
-  const updateMessageArray = () => {
-    setMessageArray([...messageArray, question, response]);
-    console.log(messageArray);
-  };
+  // Quand on clique sur envoyer la question
+  // const updateMessageArray = () => {
+  //   setMessageArray([...messageArray, question, response]);
+  //   console.log(messageArray);
+  // };
+  // Quand on clique sur envoyer la question
   const submitToAPI = () => {
     const encodedURIMessage = encodeURIComponent(question);
     const url = `https://acobot-brainshop-ai-v1.p.rapidapi.com/get?bid=153798&key=SXUv8ChYDG1AboDK&uid=User&msg=${encodedURIMessage}`;
@@ -42,6 +49,8 @@ function Question() {
       .catch((err) => {
         console.log(err);
       });
+    setMessageArray([...messageArray, question, response]);
+    console.log(messageArray);
   };
   const submitQuestionWithEnter = (e) => {
     e.preventDefault();
@@ -65,7 +74,7 @@ function Question() {
         <form
           onSubmit={(e) => {
             submitQuestionWithEnter(e);
-            updateMessageArray();
+            // updateMessageArray();
           }}
         >
           <button type="button" className="chatIcon">
@@ -74,7 +83,7 @@ function Question() {
           <div className="questionArea">
             <input
               className="questionInput"
-              placeholder="Question..."
+              placeholder="Write something here..."
               onFocus={(e) => {
                 e.target.placeholder = '';
               }}
