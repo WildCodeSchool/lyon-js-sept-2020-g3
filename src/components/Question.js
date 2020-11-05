@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Question.scss';
 import Chat from '@material-ui/icons/Chat';
 import questionImg from '../Images/archibot.png';
-import bgImage from '../Images/etoile.jpg';
 
 function Question() {
   const [question, setQuestion] = useState('');
@@ -11,24 +10,19 @@ function Question() {
   );
   const [messageArray, setMessageArray] = useState([]);
 
-  // /en permanence quand on change l'input/
   const updateQuestion = (e) => {
     setQuestion(e.target.value);
   };
-  // /quand on clique sur l'input/
   const resetQuestion = () => {
     setQuestion('');
   };
-  // on récupère la réponse de l'API
   const updateResponse = (apiResult) => {
     setResponse(apiResult.cnt);
   };
-  // Quand on clique sur envoyer la question
-  // const updateMessageArray = () => {
-  //   setMessageArray([...messageArray, question, response]);
-  //   console.log(messageArray);
-  // };
-  // Quand on clique sur envoyer la question
+  const updateMessageArray = () => {
+    setMessageArray([...messageArray, question, response]);
+    console.log(messageArray);
+  };
   const submitToAPI = () => {
     const encodedURIMessage = encodeURIComponent(question);
     const url = `https://acobot-brainshop-ai-v1.p.rapidapi.com/get?bid=153798&key=SXUv8ChYDG1AboDK&uid=User&msg=${encodedURIMessage}`;
@@ -49,21 +43,20 @@ function Question() {
       .catch((err) => {
         console.log(err);
       });
-    setMessageArray([...messageArray, question, response]);
-    console.log(messageArray);
   };
   const submitQuestionWithEnter = (e) => {
     e.preventDefault();
     submitToAPI();
-    resetQuestion();
   };
+
+  useEffect(() => {
+    updateMessageArray();
+    resetQuestion();
+  }, [response]);
 
   return (
     <div>
-      <div
-        className="questionBody"
-        style={{ backgroundImage: `url(${bgImage})` }}
-      >
+      <div className="questionBody">
         <div className="questionBubble">
           <span className="tip">{response}</span>
         </div>
@@ -80,6 +73,7 @@ function Question() {
           <button type="button" className="chatIcon">
             <Chat />
           </button>
+
           <div className="questionArea">
             <input
               className="questionInput"
@@ -88,10 +82,9 @@ function Question() {
                 e.target.placeholder = '';
               }}
               onBlur={(e) => {
-                e.target.placeholder = 'Question...';
+                e.target.placeholder = 'WRITE HERE..';
               }}
               value={question}
-              onClick={resetQuestion}
               onChange={updateQuestion}
             />
             <button
