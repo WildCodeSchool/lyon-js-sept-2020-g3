@@ -5,7 +5,7 @@ function Akinator() {
   const [question, setQuestion] = useState('');
   const [answers, setAnswers] = useState([]);
   const [session, setSession] = useState('');
-  // const [url, setUrl] = useState('');
+  const [guessCount, setGuessCount] = useState('');
 
   const nextQuestion = (answerIndex) => {
     axios
@@ -14,7 +14,13 @@ function Akinator() {
       )
       .then((response) => response.data)
       .then((response) => {
-        setQuestion(response.question);
+        if (response.guessCount !== undefined) {
+          setGuessCount(response.answers[0].name);
+          console.log(response.answers[0]);
+        } else {
+          setQuestion(response.question);
+          console.log(response);
+        }
       });
   };
 
@@ -39,22 +45,28 @@ function Akinator() {
 
   return (
     <div className="answers">
-      <input value={question} />
-      {answers.map((answer, index) => {
-        return (
-          <button
-            type="button"
-            /* eslint-disable */
-            key={index}
-            /* eslint-enable */
-            onClick={() => {
-              nextQuestion(index);
-            }}
-          >
-            {answer}
-          </button>
-        );
-      })}
+      {guessCount === '' ? (
+        <div>
+          <input value={question} />
+          {answers.map((answer, index) => {
+            return (
+              <button
+                type="button"
+                /* eslint-disable */
+                key={index}
+                /* eslint-enable */
+                onClick={() => {
+                  nextQuestion(index);
+                }}
+              >
+                {answer}
+              </button>
+            );
+          })}
+        </div>
+      ) : (
+        <input value={`Your character is ... ${guessCount}`} />
+      )}
     </div>
   );
 }
