@@ -101,12 +101,6 @@ function Question() {
             <input
               className="questionInput"
               placeholder="Write something here..."
-              onFocus={(e) => {
-                e.target.placeholder = '';
-              }}
-              onBlur={(e) => {
-                e.target.placeholder = 'WRITE HERE..';
-              }}
               value={question}
               onChange={updateQuestion}
             />
