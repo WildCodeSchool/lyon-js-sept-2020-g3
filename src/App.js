@@ -3,10 +3,11 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Connexion from './components/Connexion';
 import Contact from './components/Contact';
 import Home from './components/Home';
+import ItemDetails from './components/ItemDetails';
 import Play from './components/Play';
 import Question from './components/Question';
-import Store from './components/Store';
 import Settings from './Settings';
+import Store from './components/Store';
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/store" component={Store} />
+        <Route path="/store/:id" component={ItemDetails} />
         <Route path="/settings" component={Settings} />
         <Route path="/contact" component={Contact} />
         <Route path="/connexion" component={Connexion} />
