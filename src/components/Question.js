@@ -1,26 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Question.scss';
+import Chat from '@material-ui/icons/Chat';
 import questionImg from '../Images/archibot.png';
 
-class Question extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      question: '',
-      response: '',
-    };
-  }
-
-  handleReset = () => {
-    this.setState({ question: '' });
+function Question() {
+  const [question, setQuestion] = useState('');
+  const [response, setResponse] = useState('');
+  const updateQuestion = (e) => {
+    setQuestion(e.target.value);
+  };
+  const resetQuestion = () => {
+    setQuestion('');
+  };
+  const updateResponse = (apiResult) => {
+    setResponse(apiResult.cnt);
   };
 
-  handleInput = (event) => {
-    this.setState({ question: event.target.value });
-  };
-
-  questionToAPI = () => {
-    const { question } = this.state;
+  const submitToAPI = () => {
     const encodedURIMessage = encodeURIComponent(question);
     const url = `https://acobot-brainshop-ai-v1.p.rapidapi.com/get?bid=153798&key=SXUv8ChYDG1AboDK&uid=User&msg=${encodedURIMessage}`;
 
@@ -35,25 +31,34 @@ class Question extends React.Component {
         return res.json();
       })
       .then((res) => {
-        this.setState({ response: res.cnt });
+        updateResponse(res);
       })
       .catch((err) => {
         console.log(err);
       });
-    // }
   };
 
-  render() {
-    const { response, question } = this.state;
-    return (
-      <div>
-        <div className="questionBody">
-          <div className="questionBubble">
-            <span className="tip">{response}</span>
-          </div>
-          <div>
-            <img className="questionImage" src={questionImg} alt="Archibot" />
-          </div>
+  const submitQuestionWithEnter = (e) => {
+    e.preventDefault();
+    submitToAPI();
+    resetQuestion();
+  };
+
+  return (
+    <div>
+      <div className="questionBody">
+        <div className="questionBubble">
+          <span className="tip">{response}</span>
+        </div>
+        <div>
+          <img className="questionImage" src={questionImg} alt="Archibot" />
+        </div>
+
+        <form onSubmit={submitQuestionWithEnter}>
+          <button type="button" className="chatIcon">
+            <Chat />
+          </button>
+
           <div className="questionArea">
             <input
               className="questionInput"
@@ -65,23 +70,22 @@ class Question extends React.Component {
                 e.target.placeholder = 'WRITE HERE..';
               }}
               value={question}
-              onClick={this.handleReset}
-              onChange={this.handleInput}
-              // onKeyPress={this.questionToAPI} // A compléter avec ce qui est en commentaire au début de la fonction --> problème ça ne détecte plus le clic
+              onClick={resetQuestion}
+              onChange={updateQuestion}
             />
             <button
               className="questionButton"
               type="button"
-              onClick={this.questionToAPI}
+              onClick={submitToAPI}
             >
               {' '}
               ASK ME!
             </button>
           </div>
-        </div>
+        </form>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default Question;
