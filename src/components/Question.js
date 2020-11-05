@@ -7,7 +7,8 @@ import bgImage from '../Images/etoile.jpg';
 function Question() {
   const [question, setQuestion] = useState('');
   const [response, setResponse] = useState('');
-  // const [messageArray, setMessageArray] = useState([]);
+  const [messageArray, setMessageArray] = useState([]);
+
   const updateQuestion = (e) => {
     setQuestion(e.target.value);
   };
@@ -17,7 +18,10 @@ function Question() {
   const updateResponse = (apiResult) => {
     setResponse(apiResult.cnt);
   };
-
+  const updateMessageArray = () => {
+    setMessageArray([...messageArray, question, response]);
+    console.log(messageArray);
+  };
   const submitToAPI = () => {
     const encodedURIMessage = encodeURIComponent(question);
     const url = `https://acobot-brainshop-ai-v1.p.rapidapi.com/get?bid=153798&key=SXUv8ChYDG1AboDK&uid=User&msg=${encodedURIMessage}`;
@@ -39,7 +43,6 @@ function Question() {
         console.log(err);
       });
   };
-
   const submitQuestionWithEnter = (e) => {
     e.preventDefault();
     submitToAPI();
@@ -59,7 +62,12 @@ function Question() {
           <img className="questionImage" src={questionImg} alt="Archibot" />
         </div>
 
-        <form onSubmit={submitQuestionWithEnter}>
+        <form
+          onSubmit={(e) => {
+            submitQuestionWithEnter(e);
+            updateMessageArray();
+          }}
+        >
           <button type="button" className="chatIcon">
             <Chat />
           </button>
