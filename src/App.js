@@ -18,15 +18,16 @@ function App() {
     <Router>
       <div className="app">
         <Navbar />
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route path="/store" component={Store} />
-        <Route path="/settings" component={Settings} />
-        <Route path="/contact" component={Contact} />
-        <Route path="/connexion" component={Connexion} />
-        <Route path="/question" component={Question} />
-        <Route path="/akinator" component={Akinator} />
-      </Switch>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/store" component={Store} />
+          <Route path="/settings" component={Settings} />
+          <Route path="/contact" component={Contact} />
+          <Route path="/connexion" component={Connexion} />
+          <Route path="/question" component={Question} />
+          <Route path="/akinator" component={Akinator} />
+        </Switch>
+      </div>
     </Router>
   );
 }
