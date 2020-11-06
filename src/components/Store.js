@@ -18,20 +18,20 @@ const items = [
   },
   {
     id: 3,
-    name: 'Pierre Genthon',
-    src: '/home/verin/Projet_2/lyon-js-sept-2020-g3/src/pictures/pierre.png',
+    name: '&&&',
+    src: '/home/verin/Projet_2/lyon-js-sept-2020-g3/src/pictures/&&&.png',
     price: 'NaN',
   },
   {
     id: 4,
-    name: 'Matthieu Martinot',
-    src: '/home/verin/Projet_2/lyon-js-sept-2020-g3/src/pictures/matthieu.png',
+    name: '!!!',
+    src: '/home/verin/Projet_2/lyon-js-sept-2020-g3/src/pictures/!!!.png',
     price: '0,01 €',
   },
   {
     id: 5,
-    name: 'Thomas Ponthoreau',
-    src: '/home/verin/Projet_2/lyon-js-sept-2020-g3/src/pictures/thomas.png',
+    name: '???',
+    src: '/home/verin/Projet_2/lyon-js-sept-2020-g3/src/pictures/???.png',
     price: 'Undefined',
   },
 ];
