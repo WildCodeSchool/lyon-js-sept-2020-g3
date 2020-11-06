@@ -49,7 +49,7 @@ function Akinator() {
     <div className="answers">
       {guessCount === '' ? (
         <div>
-          <input value={question} />
+          <p>{question}</p>
           {answers.map((answer, index) => {
             return (
               <button
@@ -70,7 +70,7 @@ function Akinator() {
         <div>
           <img src={guessImage} alt={`${guessCount}'s face`} width="200px" />
           <br />
-          <input value={`Your character is ... ${guessCount}`} />
+          <p>{`Your character is ... ${guessCount}`}</p>
           <button type="button">Yes</button>
           <button type="button" onClick={() => nextQuestion()}>
             No
