@@ -70,7 +70,6 @@
   }
 }
 
-
 .questionArea {
   display: flex;
   flex-direction: column;
@@ -157,7 +156,7 @@
     align-items: center;
   }
   .questionBubble {
-    width: 80%;
+    width: 100%;
     min-height: 150px;
   }
   .questionArea {
@@ -186,8 +185,9 @@
   }
 
   .questionBubble {
-    width: 50%;
-    min-height: 150px;
+    width: 100%;
+    max-width: 100%;
+    min-height: 180px;
   }
 
   .questionImage {
