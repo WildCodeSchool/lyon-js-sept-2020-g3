@@ -1,26 +1,31 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './Question.scss';
+import Chat from '@material-ui/icons/Chat';
 import questionImg from '../Images/archibot.png';
 
-class Question extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      question: '',
-      response: '',
-    };
-  }
+function Question() {
+  const [question, setQuestion] = useState('');
+  const [response, setResponse] = useState(
+    "Hi, I'm Archibot your new best friend !"
+  );
+  const [messageArray, setMessageArray] = useState([]);
+  const [chat1, setChat1] = useState('on');
+  const [chat2, setChat2] = useState('off');
 
-  handleReset = () => {
-    this.setState({ question: '' });
+  const updateQuestion = (e) => {
+    setQuestion(e.target.value);
   };
-
-  handleInput = (event) => {
-    this.setState({ question: event.target.value });
+  const resetQuestion = () => {
+    setQuestion('');
   };
-
-  questionToAPI = () => {
-    const { question } = this.state;
+  const updateResponse = (apiResult) => {
+    setResponse(apiResult.cnt);
+  };
+  const updateMessageArray = () => {
+    setMessageArray([...messageArray, question, response]);
+    console.log(messageArray);
+  };
+  const submitToAPI = () => {
     const encodedURIMessage = encodeURIComponent(question);
     const url = `https://acobot-brainshop-ai-v1.p.rapidapi.com/get?bid=153798&key=SXUv8ChYDG1AboDK&uid=User&msg=${encodedURIMessage}`;
 
@@ -35,47 +40,83 @@ class Question extends React.Component {
         return res.json();
       })
       .then((res) => {
-        this.setState({ response: res.cnt });
+        updateResponse(res);
       })
       .catch((err) => {
         console.log(err);
       });
-    // }
+  };
+  const submitQuestionWithEnter = (e) => {
+    e.preventDefault();
+    submitToAPI();
+  };
+  const switchChatMode = () => {
+    setChat1(chat1 === 'on' ? 'off' : 'on');
+    setChat2(chat2 === 'on' ? 'off' : 'on');
   };
 
-  render() {
-    const { response, question } = this.state;
-    return (
-      <div>
-        <div className="questionBody">
+  useEffect(() => {
+    updateMessageArray();
+    resetQuestion();
+  }, [response]);
+
+  return (
+    <div>
+      <div className="questionBody">
+        <div
+          className={chat1 === 'on' ? 'chatContainerOn' : 'chatContainerOff'}
+        >
           <div className="questionBubble">
             <span className="tip">{response}</span>
           </div>
           <div>
             <img className="questionImage" src={questionImg} alt="Archibot" />
           </div>
+        </div>
+        <div
+          className={chat2 === 'on' ? 'chatContainerOn' : 'chatContainerOff'}
+        >
+          {messageArray.map((element) => {
+            let turn = 'human';
+            if (turn === 'human') {
+              turn = 'bot';
+              return <div className="humanChat">{element}</div>;
+            }
+            turn = 'human';
+            return <div className="botChat">{element}</div>;
+          })}
+        </div>
+        <form
+          className="writeArea"
+          onSubmit={(e) => {
+            submitQuestionWithEnter(e);
+            // updateMessageArray();
+          }}
+        >
+          <button type="button" className="chatIcon" onClick={switchChatMode}>
+            <Chat />
+          </button>
+
           <div className="questionArea">
             <input
               className="questionInput"
-              placeholder="Tell me something"
+              placeholder="Write something here..."
               value={question}
-              onClick={this.handleReset}
-              onChange={this.handleInput}
-              // onKeyPress={this.questionToAPI} // A compléter avec ce qui est en commentaire au début de la fonction --> problème ça ne détecte plus le clic
+              onChange={updateQuestion}
             />
             <button
               className="questionButton"
               type="button"
-              onClick={this.questionToAPI}
+              onClick={submitToAPI}
             >
               {' '}
-              Ask !
+              ASK ME!
             </button>
           </div>
-        </div>
+        </form>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default Question;
