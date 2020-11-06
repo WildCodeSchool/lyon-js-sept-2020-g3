@@ -64,7 +64,7 @@ function Question() {
     <div>
       <div className="questionBody">
         <div
-          className={chat1 === 'on' ? 'chatContainerOn' : 'chatContainerOff'}
+          className={chat1 === 'on' ? 'chat1ContainerOn' : 'chatContainerOff'}
         >
           <div className="questionBubble">
             <span className="tip">{response}</span>
@@ -74,16 +74,21 @@ function Question() {
           </div>
         </div>
         <div
-          className={chat2 === 'on' ? 'chatContainerOn' : 'chatContainerOff'}
+          className={chat2 === 'on' ? 'chat2ContainerOn' : 'chatContainerOff'}
         >
-          {messageArray.map((element) => {
-            let turn = 'human';
-            if (turn === 'human') {
-              turn = 'bot';
-              return <div className="humanChat">{element}</div>;
-            }
-            turn = 'human';
-            return <div className="botChat">{element}</div>;
+          {messageArray.map((element, index) => {
+            return (
+              <div>
+                <div key={index} className="Message">
+                  {index !== 0 &&
+                    (index % 2 === 0 ? (
+                      <div className="humanMessage">{`${element}`}</div>
+                    ) : (
+                      <div className="botMessage">{`${element}`}</div>
+                    ))}
+                </div>
+              </div>
+            );
           })}
         </div>
         <form

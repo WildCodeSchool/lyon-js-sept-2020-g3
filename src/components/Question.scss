@@ -30,12 +30,48 @@
   background-position: center;
 }
 
-.chatContainerOn {
+.chat1ContainerOn {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 60%;
 }
+.chat2ContainerOn {
+  background-color: white;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  border-radius: 30px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: scroll;
+  .message {
+    display: flex;
+  }
+  .humanMessage {
+    padding: 4%;
+    background-color: lighten(blue, 20%);
+    color: white;
+    border-radius: 10px;
+    margin: 6px 0px;
+    font-family: 'Poppins', sans-serif;
+    width: fit-content;
+    float: right;
+    text-align: left;
+  }
+  .botMessage {
+    padding: 4%;
+    background-color: $third-color;
+    color: white;
+    border-radius: 10px;
+    margin: 6px 0px;
+    width: fit-content;
+    float: left;
+    text-align: left;
+  }
+}
+
 .chatContainerOff {
   display: none;
 }
