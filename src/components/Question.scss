@@ -30,6 +30,16 @@
   background-position: center;
 }
 
+.chatContainerOn {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 60%;
+}
+.chatContainerOff {
+  display: none;
+}
+
 .questionBubble {
   display: flex;
   background-color: white;
@@ -122,6 +132,9 @@
   }
 }
 
+.writeArea {
+  margin-bottom: 20px;
+}
 .chatIcon {
   position: relative;
   border-radius: 50%;

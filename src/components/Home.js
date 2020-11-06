@@ -8,7 +8,7 @@ const Home = () => {
         <Link to="/question">Ask me a question</Link>
       </button>
       <button type="button" className="play">
-        <Link to="/play">Challenge me</Link>
+        <Link to="/akinator">Challenge me</Link>
       </button>
     </div>
   );
