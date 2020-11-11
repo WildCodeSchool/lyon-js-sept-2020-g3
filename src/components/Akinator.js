@@ -10,6 +10,7 @@ function Akinator() {
   const [counter, setCounter] = useState(0);
   const [clicked, setClicked] = useState(false);
   const [guessed, setGuessed] = useState(false);
+  const [isPlayed, setIsPlayed] = useState(false);
 
   const nextQuestion = (answerIndex) => {
     axios
@@ -56,7 +57,18 @@ function Akinator() {
 
   useEffect(() => {
     getAkinator();
-  }, []);
+  }, [isPlayed]);
+
+  const test = () => {
+    setGuessed(false);
+    setQuestion('');
+    setAnswers([]);
+    setSession('');
+    setGuessCount([]);
+    setClicked(false);
+    setCounter(0);
+    setIsPlayed(!isPlayed);
+  };
 
   const goodAnswer = () => {
     return (
@@ -80,6 +92,12 @@ function Akinator() {
         ) : (
           <div>
             <p>I think you beat me at this point</p>
+            <Link to="/">
+              <button type="button">Home</button>
+            </Link>
+            <button type="button" onClick={() => test()}>
+              Play Again
+            </button>
           </div>
         )}
       </div>
@@ -95,7 +113,9 @@ function Akinator() {
             <Link to="/">
               <button type="button">Home</button>
             </Link>
-            <button type="button">Play Again</button>
+            <button type="button" onClick={() => test()}>
+              Play Again
+            </button>
           </div>
         ) : (
           <div>{goodAnswer()}</div>
