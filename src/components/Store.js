@@ -1,37 +1,42 @@
 import React from 'react';
 import './store.css';
-// import { items } from './StoreItems';
 import Item from './Item';
 
-const items = [
+export const items = [
   {
     id: 1,
     name: 'Maitre Yoda',
-    src: '/home/verin/Projet_2/lyon-js-sept-2020-g3/src/pictures/yoda.png',
+    description:
+      'Become weak you have, me you should buy. Powerfull you will become. Yes, hrrmmm.',
+    src: '',
     price: '1,99 €',
   },
   {
     id: 2,
     name: 'Drunk Bot',
+    description: '"H-h-h-heeeeey! Wheeeere dya think yeeeeer goin ?”',
     src: '/home/verin/Projet_2/lyon-js-sept-2020-g3/src/pictures/yoda.png',
     price: '1,99 €',
   },
   {
     id: 3,
     name: '&&&',
-    src: '/home/verin/Projet_2/lyon-js-sept-2020-g3/src/pictures/&&&.png',
+    description: '&&&',
+    src: '',
     price: 'NaN',
   },
   {
     id: 4,
     name: '!!!',
-    src: '/home/verin/Projet_2/lyon-js-sept-2020-g3/src/pictures/!!!.png',
+    description: '!!!',
+    src: '',
     price: '0,01 €',
   },
   {
     id: 5,
     name: '???',
-    src: '/home/verin/Projet_2/lyon-js-sept-2020-g3/src/pictures/???.png',
+    description: '???',
+    src: '',
     price: 'Undefined',
   },
 ];

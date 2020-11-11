@@ -8,7 +8,7 @@ import Akinator from './components/Akinator';
 import Question from './components/Question';
 import Store from './components/Store';
 import Settings from './components/Settings';
-/* import ItemDetails from './components/ItemDetails'; */
+import ItemDetails from './components/ItemDetails';
 
 import './App.css';
 
@@ -22,7 +22,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/store" component={Store} />
-          {/* <Route path="/store/:id" component={ItemDetails} /> */}
+          <Route path="/store/:id" component={ItemDetails} />
           <Route path="/settings" component={Settings} />
           <Route path="/contact" component={Contact} />
           <Route path="/connexion" component={Connexion} />

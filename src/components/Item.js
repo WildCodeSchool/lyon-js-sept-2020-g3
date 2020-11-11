@@ -7,7 +7,7 @@ const Item = (props) => {
   return (
     <div className="storePart">
       <div className="titleStore" />
-      <div className="card">
+      <div className="uniqueCard">
         <img
           className="storeImg"
           src=""

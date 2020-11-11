@@ -59,7 +59,7 @@ function Akinator() {
     getAkinator();
   }, [isPlayed]);
 
-  const test = () => {
+  const playAgain = () => {
     setGuessed(false);
     setQuestion('');
     setAnswers([]);
@@ -95,7 +95,7 @@ function Akinator() {
             <Link to="/">
               <button type="button">Home</button>
             </Link>
-            <button type="button" onClick={() => test()}>
+            <button type="button" onClick={() => playAgain()}>
               Play Again
             </button>
           </div>
@@ -113,7 +113,7 @@ function Akinator() {
             <Link to="/">
               <button type="button">Home</button>
             </Link>
-            <button type="button" onClick={() => test()}>
+            <button type="button" onClick={() => playAgain()}>
               Play Again
             </button>
           </div>
