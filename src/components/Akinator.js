@@ -19,8 +19,10 @@ function Akinator() {
       .then((response) => response.data)
       .then((response) => {
         if (response.guessCount !== undefined) {
-          for (let i = 0; i < 3; i++) {
+          for (let i = 0; i < 3; i += 1) {
+            /* eslint-disable */
             setGuessCount((guessCount) => [
+              /* eslint-enable */
               ...guessCount,
               {
                 name: response.answers[i].name,

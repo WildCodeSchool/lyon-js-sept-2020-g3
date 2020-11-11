@@ -8,7 +8,7 @@ import Akinator from './components/Akinator';
 import Question from './components/Question';
 import Store from './components/Store';
 import Settings from './components/Settings';
-import ItemDetails from './components/ItemDetails';
+/* import ItemDetails from './components/ItemDetails'; */
 
 import './App.css';
 
