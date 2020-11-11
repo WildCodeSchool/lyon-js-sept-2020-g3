@@ -16,7 +16,7 @@ const Item = (props) => {
           width="150"
         />
         <h2>{data.name}</h2>
-        <Link to={{ pathname: `store/${data.id}` }}>
+        <Link to={`/store/${data.id}`}>
           <button type="button" className="btnStore">
             {data.price}
           </button>

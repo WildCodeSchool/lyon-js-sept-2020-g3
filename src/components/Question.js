@@ -1,11 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Question.scss';
 import Chat from '@material-ui/icons/Chat';
 import questionImg from '../Images/archibot.png';
 
 function Question() {
   const [question, setQuestion] = useState('');
-  const [response, setResponse] = useState('');
+  const [response, setResponse] = useState(
+    "Hi, I'm Archibot your new best friend !"
+  );
+  const [messageArray, setMessageArray] = useState([]);
+  const [chat1, setChat1] = useState('on');
+  const [chat2, setChat2] = useState('off');
+
   const updateQuestion = (e) => {
     setQuestion(e.target.value);
   };
@@ -15,7 +21,10 @@ function Question() {
   const updateResponse = (apiResult) => {
     setResponse(apiResult.cnt);
   };
-
+  const updateMessageArray = () => {
+    setMessageArray([...messageArray, question, response]);
+    console.log(messageArray);
+  };
   const submitToAPI = () => {
     const encodedURIMessage = encodeURIComponent(question);
     const url = `https://acobot-brainshop-ai-v1.p.rapidapi.com/get?bid=153798&key=SXUv8ChYDG1AboDK&uid=User&msg=${encodedURIMessage}`;
@@ -37,40 +46,62 @@ function Question() {
         console.log(err);
       });
   };
-
   const submitQuestionWithEnter = (e) => {
     e.preventDefault();
     submitToAPI();
-    resetQuestion();
   };
+  const switchChatMode = () => {
+    setChat1(chat1 === 'on' ? 'off' : 'on');
+    setChat2(chat2 === 'on' ? 'off' : 'on');
+  };
+
+  useEffect(() => {
+    updateMessageArray();
+    resetQuestion();
+  }, [response]);
 
   return (
     <div>
       <div className="questionBody">
-        <div className="questionBubble">
-          <span className="tip">{response}</span>
+        <div
+          className={chat1 === 'on' ? 'chatContainerOn' : 'chatContainerOff'}
+        >
+          <div className="questionBubble">
+            <span className="tip">{response}</span>
+          </div>
+          <div>
+            <img className="questionImage" src={questionImg} alt="Archibot" />
+          </div>
         </div>
-        <div>
-          <img className="questionImage" src={questionImg} alt="Archibot" />
+        <div
+          className={chat2 === 'on' ? 'chatContainerOn' : 'chatContainerOff'}
+        >
+          {messageArray.map((element) => {
+            let turn = 'human';
+            if (turn === 'human') {
+              turn = 'bot';
+              return <div className="humanChat">{element}</div>;
+            }
+            turn = 'human';
+            return <div className="botChat">{element}</div>;
+          })}
         </div>
-
-        <form onSubmit={submitQuestionWithEnter}>
-          <button type="button" className="chatIcon">
+        <form
+          className="writeArea"
+          onSubmit={(e) => {
+            submitQuestionWithEnter(e);
+            // updateMessageArray();
+          }}
+        >
+          <button type="button" className="chatIcon" onClick={switchChatMode}>
             <Chat />
           </button>
 
           <div className="questionArea">
             <input
               className="questionInput"
-              placeholder="WRITE HERE.."
-              onFocus={(e) => {
-                e.target.placeholder = '';
-              }}
-              onBlur={(e) => {
-                e.target.placeholder = 'WRITE HERE..';
-              }}
+              placeholder="Write something here..."
               value={question}
-              onClick={resetQuestion}
               onChange={updateQuestion}
             />
             <button
