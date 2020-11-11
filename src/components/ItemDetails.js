@@ -9,9 +9,20 @@ const ItemDetails = (props) => {
   const { id } = data;
   const result = items.find((item) => item.id === parseInt(id, 10));
 
+  const test = () => {
+    return (
+      <div>
+        <p>Work in progress</p>
+      </div>
+    );
+  };
+
   return (
     <div className="uniqueStore">
-      <div className="card">
+      <h1 className="storeTitle">Store</h1>
+      <div class="arrow left"></div>
+
+      <div className="uniqueCard">
         <img
           className="storeImg"
           src={yoda}
@@ -19,14 +30,23 @@ const ItemDetails = (props) => {
           height="150"
           width="150"
         />
-        <p>{result.description}</p>
-        <p>{result.price}</p>
-        <h2>{result.name}</h2>
-        <button type="button">Buy</button>
-        <Link to="/store">
-          <button type="button">Store</button>
-        </Link>
+        <div className="uniqueStoreText">
+          <h2>{result.name}</h2>
+          <p>{result.description}</p>
+          <p className="uniqueStorePrice">{result.price}</p>
+        </div>
+        <div className="uniqueStoreButton">
+          <button type="button" onClick={test()}>
+            Buy
+          </button>
+          <Link to="/store">
+            <button type="button">Store</button>
+          </Link>
+        </div>
       </div>
+      <Link to="/store">
+        <div class="arrow right"></div>
+      </Link>
     </div>
   );
 };
