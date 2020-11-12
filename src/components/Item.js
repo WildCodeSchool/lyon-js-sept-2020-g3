@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import yoda from '../pictures/yoda.png';
 
 const Item = (props) => {
   const { data } = props;
@@ -10,7 +9,7 @@ const Item = (props) => {
       <div className="storeCard">
         <img
           className="storeImg"
-          src={yoda}
+          src={data.src}
           alt={`Avatar ${data.name}`}
           height="150"
           width="150"
@@ -27,3 +26,7 @@ const Item = (props) => {
 };
 
 export default Item;
+
+/* const goodAnswer = () => {
+  
+}; */

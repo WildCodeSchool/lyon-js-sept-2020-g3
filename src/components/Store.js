@@ -1,6 +1,11 @@
 import React from 'react';
 import './store.scss';
 import Item from './Item';
+import yoda from '../pictures/yoda.png';
+import drunkBot from '../pictures/drunkBot.jpg';
+import pierre from '../pictures/pierre.png';
+import matthieu from '../pictures/matthieu.png';
+import thomas from '../pictures/thomas.png';
 
 export const items = [
   {
@@ -8,35 +13,35 @@ export const items = [
     name: 'Maitre Yoda',
     description:
       'Become weak you have, me you should buy. Powerfull you will become. Yes, hrrmmm.',
-    src: '',
+    src: yoda,
     price: '1,99€',
   },
   {
     id: 2,
     name: 'Drunk Bot',
     description: '"H-h-h-heeeeey! Wheeeere dya think yeeeeer goin ?”',
-    src: '/home/verin/Projet_2/lyon-js-sept-2020-g3/src/pictures/yoda.png',
+    src: drunkBot,
     price: '1,99€',
   },
   {
     id: 3,
-    name: '&&&',
-    description: '&&&',
-    src: '',
+    name: 'Pierre Genthon',
+    description: '1 mississippi...2 mississippi...3 mississippi... voila voila',
+    src: pierre,
     price: 'NaN',
   },
   {
     id: 4,
-    name: '!!!',
-    description: '!!!',
-    src: '',
+    name: 'Matthieu Martinot',
+    description: 'Quelle est votre question ?',
+    src: matthieu,
     price: '0,01€',
   },
   {
     id: 5,
-    name: '???',
-    description: '???',
-    src: '',
+    name: 'Thomas Ponthoreau',
+    description: 'NPM install les gars !',
+    src: thomas,
     price: 'Undefined',
   },
 ];

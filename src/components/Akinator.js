@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import './Akinator.scss';
 import axios from 'axios';
 
 function Akinator() {
@@ -11,6 +12,9 @@ function Akinator() {
   const [clicked, setClicked] = useState(false);
   const [guessed, setGuessed] = useState(false);
   const [isPlayed, setIsPlayed] = useState(false);
+  const [isThinking, setIsThinking] = useState(false);
+  const [newEnter, setnewEnter] = useState(true);
+  /*   const [loading, setLoading] = useState(true); */
 
   const nextQuestion = (answerIndex) => {
     axios
@@ -50,6 +54,7 @@ function Akinator() {
         );
       })
       .then((response) => {
+        /* setLoading(false); */
         setAnswers(response.data.answers);
         setQuestion(response.data.question);
       });
@@ -70,11 +75,23 @@ function Akinator() {
     setIsPlayed(!isPlayed);
   };
 
-  const goodAnswer = () => {
+  const test = () => {
+    setCounter(counter + 1);
+    setIsThinking(true);
+    if (counter === 2) {
+      setIsThinking(false);
+    } else {
+      setTimeout(() => {
+        setIsThinking(false);
+      }, 2000);
+    }
+  };
+
+  const userAnswer = () => {
     return (
       <div>
         {counter < 3 ? (
-          <div key={guessCount[counter].name}>
+          <div key={guessCount[counter].name} className="akinatorAnswer">
             <img
               src={guessCount[counter].image}
               alt={`${guessCount[counter].name}'s face`}
@@ -82,23 +99,46 @@ function Akinator() {
             />
             <br />
             <p>{`Your character is ... ${guessCount[counter].name}`}</p>
-            <button type="button" onClick={() => setClicked(true)}>
-              Yes
-            </button>
-            <button type="button" onClick={() => setCounter(counter + 1)}>
-              No
-            </button>
+            <div className="akinatorAnswerButton">
+              {' '}
+              <button type="button" onClick={() => setClicked(true)}>
+                Yes
+              </button>
+              <button type="button" onClick={() => test()}>
+                No
+              </button>
+            </div>
           </div>
         ) : (
-          <div>
-            <p>I think you beat me at this point</p>
-            <Link to="/">
-              <button type="button">Home</button>
-            </Link>
-            <button type="button" onClick={() => playAgain()}>
-              Play Again
-            </button>
+          <div className="userWin">
+            <p>
+              Congratulation you beat me, you are the genious now ! Next time is
+              going to be different ...
+            </p>
+            <div className="userWinButton">
+              {' '}
+              <Link to="/">
+                <button type="button">Home</button>
+              </Link>
+              <button type="button" onClick={() => playAgain()}>
+                Play Again
+              </button>
+            </div>
           </div>
+        )}
+      </div>
+    );
+  };
+
+  const goodAnswer = () => {
+    return (
+      <div>
+        {isThinking === true ? (
+          <div className="thinkingAkinator">
+            <p>Mmmm let me think...</p>
+          </div>
+        ) : (
+          <div>{userAnswer()}</div>
         )}
       </div>
     );
@@ -108,14 +148,20 @@ function Akinator() {
     return (
       <div>
         {clicked === true ? (
-          <div>
-            <p>Congratulation you beat me !</p>
-            <Link to="/">
-              <button type="button">Home</button>
-            </Link>
-            <button type="button" onClick={() => playAgain()}>
-              Play Again
-            </button>
+          <div className="finishedAkinator">
+            <p>
+              I read your mind ! How does it feel ? ... Try to beat me next time
+              !
+            </p>
+            <div className="finishedAkinatorButton">
+              {' '}
+              <Link to="/">
+                <button type="button">Home</button>
+              </Link>
+              <button type="button" onClick={() => playAgain()}>
+                Play Again
+              </button>
+            </div>
           </div>
         ) : (
           <div>{goodAnswer()}</div>
@@ -124,29 +170,60 @@ function Akinator() {
     );
   };
 
+  const newQuestion = () => {
+    return (
+      <div className="akinatorContainer">
+        {guessed === false ? (
+          <div className="akinatorQuestion">
+            <p>{question}</p>
+            <div className="akinatorQuestionButton">
+              {answers.map((answer, index) => {
+                return (
+                  <div className="buttonMap">
+                    {' '}
+                    <button
+                      type="button"
+                      /* eslint-disable */
+                      key={index}
+                      /* eslint-enable */
+                      onClick={() => {
+                        nextQuestion(index);
+                      }}
+                    >
+                      {answer}
+                    </button>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        ) : (
+          <div>{robotAnswers()}</div>
+        )}
+      </div>
+    );
+  };
+
   return (
-    <div className="answers">
-      {guessed === false ? (
-        <div>
-          <p>{question}</p>
-          {answers.map((answer, index) => {
-            return (
-              <button
-                type="button"
-                /* eslint-disable */
-                key={index}
-                /* eslint-enable */
-                onClick={() => {
-                  nextQuestion(index);
-                }}
-              >
-                {answer}
-              </button>
-            );
-          })}
+    <div>
+      {newEnter === true ? (
+        <div className="tutoAkinator">
+          <p>
+            Hello my friend, think about a fictive or real character, I will
+            read your mind... Are you ready ?
+          </p>
+          <div className="tutoAkinatorButton">
+            {' '}
+            <button type="button" onClick={() => setnewEnter(!newEnter)}>
+              Ready
+            </button>
+            <Link to="/">
+              <button type="button">Mmmm ... not yet</button>
+            </Link>
+          </div>
         </div>
       ) : (
-        <div>{robotAnswers()}</div>
+        <div>{newQuestion()}</div>
       )}
     </div>
   );

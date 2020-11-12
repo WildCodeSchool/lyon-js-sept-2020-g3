@@ -2,7 +2,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { items } from './Store';
-import yoda from '../pictures/yoda.png';
 
 const ItemDetails = (props) => {
   const data = props.match.params;
@@ -20,12 +19,19 @@ const ItemDetails = (props) => {
   return (
     <div className="uniqueStore">
       <h1 className="storeTitle">Store</h1>
-      <div class="arrow left"></div>
-
+      {result.id === 1 ? (
+        <Link to={`/store/${items.length}`}>
+          <div class="arrow left"></div>
+        </Link>
+      ) : (
+        <Link to={`/store/${result.id - 1}`}>
+          <div class="arrow left"></div>
+        </Link>
+      )}
       <div className="uniqueCard">
         <img
           className="storeImg"
-          src={yoda}
+          src={result.src}
           alt={`Avatar ${result.name}`}
           height="150"
           width="150"
@@ -44,9 +50,15 @@ const ItemDetails = (props) => {
           </Link>
         </div>
       </div>
-      <Link to="/store">
-        <div class="arrow right"></div>
-      </Link>
+      {result.id === items.length ? (
+        <Link to={'/store/1'}>
+          <div class="arrow right"></div>
+        </Link>
+      ) : (
+        <Link to={`/store/${result.id + 1}`}>
+          <div class="arrow right"></div>
+        </Link>
+      )}
     </div>
   );
 };

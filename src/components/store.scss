@@ -51,7 +51,7 @@
 }
 
 .storeImg {
-  margin-top: 35px;
+  margin: 35px 0 10px;
   border-radius: 5px;
 }
 
@@ -65,6 +65,10 @@
   border: solid 1px $secondary-color;
   border-radius: 20px;
   cursor: pointer;
+  &:active {
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
 }
 
 /* ------------------UNIQUE STORE PART---------------------------------------------------------
@@ -136,7 +140,14 @@
   border: solid 1px $secondary-color;
   border-radius: 20px;
   cursor: pointer;
+  &:active {
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
 }
+
+/* ------------------ARROW---------------------------------------------------------
+ */
 
 .arrow {
   border: solid white;
@@ -159,4 +170,32 @@
   transform: rotate(135deg);
   -webkit-transform: rotate(135deg);
   left: 6%;
+}
+
+@media screen and (min-width: 768px) {
+  /* ------------------ARROW---------------------------------------------------------
+ */
+  .right {
+    right: 12%;
+  }
+
+  .left {
+    left: 12%;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .uniqueCard {
+    width: 400px;
+    height: 420px;
+  }
+  /* ------------------ARROW---------------------------------------------------------
+ */
+  .right {
+    right: 15%;
+  }
+
+  .left {
+    left: 15%;
+  }
 }
