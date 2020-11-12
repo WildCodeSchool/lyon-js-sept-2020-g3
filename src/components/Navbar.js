@@ -26,11 +26,15 @@ class Navbar extends React.Component {
     return (
       <div className="navbar">
         <h1 className="navbarLogo">
-          <img src={logo} alt="logo" />
+          <Link to="/">
+            <img src={logo} alt="logo" />
+          </Link>
         </h1>
         <div className="menu">
           <ul>
             <Link to="/">Home</Link>
+            <Link to="/question">Ask Me Something</Link>
+            <Link to="/akinator">Challenge Me</Link>
             <Link to="/store">Store</Link>
             <Link to="/settings">Settings</Link>
             <Link to="/contact">Contact</Link>
@@ -49,6 +53,12 @@ class Navbar extends React.Component {
           <img className="purpleLogo" src={purpleLogo} alt="logo burger" />
           <Link to="/" onClick={this.closeMenu}>
             Home
+          </Link>
+          <Link to="/question" onClick={this.closeMenu}>
+            Ask Me Something
+          </Link>
+          <Link to="/akinator" onClick={this.closeMenu}>
+            Challenge Me
           </Link>
           <Link to="/store" onClick={this.closeMenu}>
             Store

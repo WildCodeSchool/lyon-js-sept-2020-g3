@@ -1,12 +1,20 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import './Akinator.scss';
 import axios from 'axios';
 
 function Akinator() {
   const [question, setQuestion] = useState('');
   const [answers, setAnswers] = useState([]);
   const [session, setSession] = useState('');
-  const [guessCount, setGuessCount] = useState('');
-  const [guessImage, setGuessImage] = useState('');
+  const [guessCount, setGuessCount] = useState([]);
+  const [counter, setCounter] = useState(0);
+  const [clicked, setClicked] = useState(false);
+  const [guessed, setGuessed] = useState(false);
+  const [isPlayed, setIsPlayed] = useState(false);
+  const [isThinking, setIsThinking] = useState(false);
+  const [newEnter, setnewEnter] = useState(true);
+  /*   const [loading, setLoading] = useState(true); */
 
   const nextQuestion = (answerIndex) => {
     axios
@@ -16,9 +24,19 @@ function Akinator() {
       .then((response) => response.data)
       .then((response) => {
         if (response.guessCount !== undefined) {
-          setGuessCount(response.answers[0].name);
-          setGuessImage(response.answers[0].absolute_picture_path);
+          for (let i = 0; i < 3; i += 1) {
+            /* eslint-disable */
+            setGuessCount((guessCount) => [
+              /* eslint-enable */
+              ...guessCount,
+              {
+                name: response.answers[i].name,
+                image: response.answers[i].absolute_picture_path,
+              },
+            ]);
+          }
           console.log(response);
+          setGuessed(true);
         } else {
           setQuestion(response.question);
           console.log(response);
@@ -36,6 +54,7 @@ function Akinator() {
         );
       })
       .then((response) => {
+        /* setLoading(false); */
         setAnswers(response.data.answers);
         setQuestion(response.data.question);
       });
@@ -43,39 +62,168 @@ function Akinator() {
 
   useEffect(() => {
     getAkinator();
-  }, []);
+  }, [isPlayed]);
+
+  const playAgain = () => {
+    setGuessed(false);
+    setQuestion('');
+    setAnswers([]);
+    setSession('');
+    setGuessCount([]);
+    setClicked(false);
+    setCounter(0);
+    setIsPlayed(!isPlayed);
+  };
+
+  const test = () => {
+    setCounter(counter + 1);
+    setIsThinking(true);
+    if (counter === 2) {
+      setIsThinking(false);
+    } else {
+      setTimeout(() => {
+        setIsThinking(false);
+      }, 2000);
+    }
+  };
+
+  const userAnswer = () => {
+    return (
+      <div>
+        {counter < 3 ? (
+          <div key={guessCount[counter].name} className="akinatorAnswer">
+            <img
+              src={guessCount[counter].image}
+              alt={`${guessCount[counter].name}'s face`}
+              width="200px"
+            />
+            <br />
+            <p>{`Your character is ... ${guessCount[counter].name}`}</p>
+            <div className="akinatorAnswerButton">
+              {' '}
+              <button type="button" onClick={() => setClicked(true)}>
+                Yes
+              </button>
+              <button type="button" onClick={() => test()}>
+                No
+              </button>
+            </div>
+          </div>
+        ) : (
+          <div className="userWin">
+            <p>
+              Congratulation you beat me, you are the genious now ! Next time is
+              going to be different ...
+            </p>
+            <div className="userWinButton">
+              {' '}
+              <Link to="/">
+                <button type="button">Home</button>
+              </Link>
+              <button type="button" onClick={() => playAgain()}>
+                Play Again
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
+    );
+  };
+
+  const goodAnswer = () => {
+    return (
+      <div>
+        {isThinking === true ? (
+          <div className="thinkingAkinator">
+            <p>Mmmm let me think...</p>
+          </div>
+        ) : (
+          <div>{userAnswer()}</div>
+        )}
+      </div>
+    );
+  };
+
+  const robotAnswers = () => {
+    return (
+      <div>
+        {clicked === true ? (
+          <div className="finishedAkinator">
+            <p>
+              I read your mind ! How does it feel ? ... Try to beat me next time
+              !
+            </p>
+            <div className="finishedAkinatorButton">
+              {' '}
+              <Link to="/">
+                <button type="button">Home</button>
+              </Link>
+              <button type="button" onClick={() => playAgain()}>
+                Play Again
+              </button>
+            </div>
+          </div>
+        ) : (
+          <div>{goodAnswer()}</div>
+        )}
+      </div>
+    );
+  };
+
+  const newQuestion = () => {
+    return (
+      <div className="akinatorContainer">
+        {guessed === false ? (
+          <div className="akinatorQuestion">
+            <p>{question}</p>
+            <div className="akinatorQuestionButton">
+              {answers.map((answer, index) => {
+                return (
+                  <div className="buttonMap">
+                    {' '}
+                    <button
+                      type="button"
+                      /* eslint-disable */
+                      key={index}
+                      /* eslint-enable */
+                      onClick={() => {
+                        nextQuestion(index);
+                      }}
+                    >
+                      {answer}
+                    </button>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        ) : (
+          <div>{robotAnswers()}</div>
+        )}
+      </div>
+    );
+  };
 
   return (
-    <div className="answers">
-      {guessCount === '' ? (
-        <div>
-          <p>{question}</p>
-          {answers.map((answer, index) => {
-            return (
-              <button
-                type="button"
-                /* eslint-disable */
-                key={index}
-                /* eslint-enable */
-                onClick={() => {
-                  nextQuestion(index);
-                }}
-              >
-                {answer}
-              </button>
-            );
-          })}
+    <div>
+      {newEnter === true ? (
+        <div className="tutoAkinator">
+          <p>
+            Hello my friend, think about a fictive or real character, I will
+            read your mind... Are you ready ?
+          </p>
+          <div className="tutoAkinatorButton">
+            {' '}
+            <button type="button" onClick={() => setnewEnter(!newEnter)}>
+              Ready
+            </button>
+            <Link to="/">
+              <button type="button">Mmmm ... not yet</button>
+            </Link>
+          </div>
         </div>
       ) : (
-        <div>
-          <img src={guessImage} alt={`${guessCount}'s face`} width="200px" />
-          <br />
-          <p>{`Your character is ... ${guessCount}`}</p>
-          <button type="button">Yes</button>
-          <button type="button" onClick={() => nextQuestion()}>
-            No
-          </button>
-        </div>
+        <div>{newQuestion()}</div>
       )}
     </div>
   );

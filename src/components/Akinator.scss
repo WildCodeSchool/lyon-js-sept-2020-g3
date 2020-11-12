@@ -1,0 +1,271 @@
+@import 'variablesCSS';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* -----------------------------------------LOADER AKINATOR--------------------------------------- */
+/* ------------------------------------------TUTO AKINATOR--------------------------------------- */
+
+.tutoAkinator {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(
+    $primary-color,
+    $secondary-color,
+    $third-color,
+    $secondary-color,
+    $primary-color
+  );
+  color: white;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  padding: 50px 10px 10px;
+}
+
+.tutoAkinator p {
+  text-align: center;
+  background-color: white;
+  color: $secondary-color;
+  padding: 15px 20px;
+  border-radius: 30px;
+}
+
+.tutoAkinatorButton {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-bottom: 50px;
+}
+
+.tutoAkinatorButton button {
+  width: 120px;
+  font-size: 20px;
+  background-color: white;
+  color: $secondary-color;
+  text-align: center;
+  padding: 20px 0px;
+  border: solid 1px $secondary-color;
+  border-radius: 20px;
+  cursor: pointer;
+  &:active {
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
+}
+
+/* ---------------------------------------QUESTION AKINATOR--------------------------------------- */
+
+.akinatorContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  color: white;
+  background: linear-gradient(
+    $primary-color,
+    $secondary-color,
+    $third-color,
+    $secondary-color,
+    $primary-color
+  );
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  padding: 50px 10px 10px;
+}
+
+.akinatorQuestion {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.akinatorQuestion p {
+  width: 100%;
+  text-align: center;
+  background-color: white;
+  color: $secondary-color;
+  padding: 15px 20px;
+  border-radius: 30px;
+}
+
+.akinatorQuestionButton {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-end;
+  padding: 10px;
+}
+
+.akinatorQuestionButton button {
+  width: 130px;
+  font-size: 20px;
+  background-color: white;
+  color: $secondary-color;
+  text-align: center;
+  padding: 20px 0px;
+  border: solid 1px $secondary-color;
+  border-radius: 20px;
+  cursor: pointer;
+  &:active {
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
+}
+
+/* ---------------------------------------ANSWERS AKINATOR--------------------------------------- */
+
+.akinatorAnswer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.akinatorAnswer img {
+  margin: 35px 0 10px;
+  border-radius: 5px;
+  width: 210px;
+  height: 200px;
+}
+
+.akinatorAnswerButton {
+  width: 400px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 50px 0;
+}
+
+.akinatorAnswerButton button {
+  width: 120px;
+  font-size: 20px;
+  background-color: white;
+  color: $secondary-color;
+  text-align: center;
+  padding: 20px 0px;
+  border: solid 1px $secondary-color;
+  border-radius: 20px;
+  cursor: pointer;
+  &:active {
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
+}
+
+/* ---------------------------------------THINKING AKINATOR--------------------------------------- */
+
+.thinkingAkinator {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.thinkingAkinator p {
+  text-align: center;
+  background-color: white;
+  color: $secondary-color;
+  padding: 15px 20px;
+  border-radius: 30px;
+}
+
+/* ---------------------------------------FINISHED AKINATOR--------------------------------------- */
+
+.finishedAkinator {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.finishedAkinator p {
+  text-align: center;
+  background-color: white;
+  color: $secondary-color;
+  padding: 15px 20px;
+  border-radius: 30px;
+}
+
+.finishedAkinatorButton {
+  width: 400px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 50px 0;
+}
+
+.finishedAkinatorButton button {
+  width: 120px;
+  font-size: 20px;
+  background-color: white;
+  color: $secondary-color;
+  text-align: center;
+  padding: 20px 0px;
+  border: solid 1px $secondary-color;
+  border-radius: 20px;
+  cursor: pointer;
+  &:active {
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
+}
+
+/*---------------------------------------USER WIN AKINATOR---------------------------------------- */
+
+.userWin {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.userWin p {
+  text-align: center;
+  background-color: white;
+  color: $secondary-color;
+  padding: 15px 20px;
+  border-radius: 30px;
+}
+
+.userWinButton {
+  width: 400px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 50px 0;
+}
+
+.userWinButton button {
+  width: 120px;
+  font-size: 20px;
+  background-color: white;
+  color: $secondary-color;
+  text-align: center;
+  padding: 20px 0px;
+  border: solid 1px $secondary-color;
+  border-radius: 20px;
+  cursor: pointer;
+  &:active {
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
+}
