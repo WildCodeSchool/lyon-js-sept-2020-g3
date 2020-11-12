@@ -7,9 +7,9 @@ const StarRated = ({ rate }) => {
     <div>
       {[...Array(rate)].map(() => {
         return (
-          <fragment>
+          <>
             <FaStar className="star" color="#ffc107" size={20} />
-          </fragment>
+          </>
         );
       })}
     </div>

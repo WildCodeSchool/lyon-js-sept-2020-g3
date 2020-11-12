@@ -12,17 +12,14 @@ const StarRating = () => {
       {[...Array(5)].map((star, i) => {
         const ratingValue = i + 1;
         return (
-          <lable>
-            {/* <input type="radio" name="rating" value={ratingValue} /> */}
-            <FaStar
-              className="star"
-              color={ratingValue <= (hover || rating) ? '#ffc107' : '#e4e5e9'}
-              size={50}
-              onClick={() => setRating(ratingValue)}
-              onMouseEnter={() => setHover(ratingValue)}
-              onMouseLeave={() => setHover(null)}
-            />
-          </lable>
+          <FaStar
+            className="star"
+            color={ratingValue <= (hover || rating) ? '#ffc107' : '#e4e5e9'}
+            size={50}
+            onClick={() => setRating(ratingValue)}
+            onMouseEnter={() => setHover(ratingValue)}
+            onMouseLeave={() => setHover(null)}
+          />
         );
       })}
       <div className="rate">
