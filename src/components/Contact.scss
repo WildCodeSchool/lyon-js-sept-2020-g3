@@ -1,0 +1,113 @@
+@import 'variablesCSS';
+@import url('https://fonts.googleapis.com/css2?family=Turret+Road:wght@500;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
+.contactBody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2%;
+  background: linear-gradient(
+    $primary-color,
+    $secondary-color,
+    $third-color,
+    $secondary-color,
+    $primary-color
+  );
+}
+
+.title {
+  background-color: white;
+  margin: 2%;
+  padding: 5px;
+  font-size: 15px;
+  text-align: center;
+  border-radius: 20px;
+}
+
+.screen {
+  width: 90vw;
+  height: 50vh;
+  background-image: url('../Images/screen@4x.png');
+  background-size: 80%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.goldenBook {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: scroll;
+  position: relative;
+  width: 90vw;
+  height: 25vh;
+  top: 50px;
+}
+
+.reviewArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2%;
+  width: 100%;
+}
+
+.starRating {
+  margin: 2%;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  margin: 2%;
+  position: absolute;
+}
+
+.reviewInput {
+  background-color: white;
+  border-radius: 20px;
+  margin-bottom: 5%;
+  width: 100%;
+  height: 10px;
+  padding: 20px;
+  text-align: center;
+}
+
+.submitButton {
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  align-items: center;
+  margin-bottom: 50px;
+  font-size: 1rem;
+  width: 100%;
+  height: 35px;
+  border-radius: 50px;
+  cursor: pointer;
+  border: 3px solid lighten(blue, 8%);
+  background: radial-gradient(
+    ellipse at center,
+    lighten(blue, 17%),
+    lighten(blue, 12%)
+  );
+  box-shadow: 2px 2px 1px blue, 0px 2px 0px lighten(blue, 30%),
+    inset 2px 2px 0px lighten(blue, 30%);
+  transition: all 0.3s ease;
+
+  &:active {
+    margin-top: 1px;
+    transform: scale(0.95);
+    transition: all 0.3s ease;
+    outline: none;
+    background: radial-gradient(
+      ellipse at center,
+      lighten(blue, 15%),
+      lighten(blue, 10%)
+    );
+    box-shadow: 0 0px 0px violet, 0 0px 30px lighten(blue, 30%),
+      inset 0 -5px 0px lighten(blue, 10%);
+  }
+  &:focus {
+    outline: none;
+  }
+}
