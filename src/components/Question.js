@@ -93,7 +93,7 @@ function Question() {
               <div
                 /* eslint-disable */
                 key={index}
-                /* eslint-disable */
+                /* eslint-enable */
                 className="Message"
               >
                 {index !== 0 &&
@@ -105,7 +105,7 @@ function Question() {
               </div>
             );
           })}
-          <div ref={conversationBottom}></div>
+          <div ref={conversationBottom} />
         </div>
 
         <form
