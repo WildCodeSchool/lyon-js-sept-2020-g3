@@ -212,6 +212,7 @@ function Akinator() {
             Hello my friend, think about a fictive or real character, I will
             read your mind... Are you ready ?
           </p>
+          <div className="imageContainer" />
           <div className="tutoAkinatorButton">
             {' '}
             <button type="button" onClick={() => setnewEnter(!newEnter)}>
