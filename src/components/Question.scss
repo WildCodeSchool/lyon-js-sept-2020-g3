@@ -30,6 +30,14 @@
   background-position: center;
 }
 
+.questionImage {
+  height: auto;
+  width: 400px;
+  position: relative;
+  top: -160px;
+  left: -20px;
+}
+
 .chat1ContainerOn {
   display: flex;
   flex-direction: column;
@@ -227,8 +235,10 @@
   }
 
   img.questionImage {
-    width: 10%;
-    height: 10%;
+    background-color: yellow;
+
+    height: auto;
+    width: 200px;
   }
 
   .questionArea {

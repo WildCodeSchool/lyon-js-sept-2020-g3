@@ -6,9 +6,7 @@ import questionImg from '../Images/robot.gif';
 
 function Question() {
   const [question, setQuestion] = useState('');
-  const [response, setResponse] = useState(
-    "Hi, I'm Archibot your new best friend !"
-  );
+  const [response, setResponse] = useState('Ask me what you want !');
   const [messageArray, setMessageArray] = useState([]);
   const [chat1, setChat1] = useState('on');
   const [chat2, setChat2] = useState('off');
@@ -117,7 +115,6 @@ function Question() {
           className="writeArea"
           onSubmit={(e) => {
             submitQuestionWithEnter(e);
-            // updateMessageArray();
           }}
         >
           <button type="button" className="chatIcon" onClick={switchChatMode}>
