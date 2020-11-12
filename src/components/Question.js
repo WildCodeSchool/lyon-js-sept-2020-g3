@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 
 import './Question.scss';
 import Chat from '@material-ui/icons/Chat';
-import questionImg from '../Images/robot.gif';
 
 function Question() {
   const [question, setQuestion] = useState('');
@@ -84,9 +83,7 @@ function Question() {
           <div className="questionBubble">
             <span className="tip">{response}</span>
           </div>
-          <div>
-            <img className="questionImage" src={questionImg} alt="Archibot" />
-          </div>
+          <div className="imageContainer" />
         </div>
         <div
           className={chat2 === 'on' ? 'chat2ContainerOn' : 'chatContainerOff'}
