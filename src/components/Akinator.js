@@ -83,7 +83,7 @@ function Akinator() {
     } else {
       setTimeout(() => {
         setIsThinking(false);
-      }, 20000);
+      }, 2000);
     }
   };
 
