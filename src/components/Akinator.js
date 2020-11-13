@@ -83,7 +83,7 @@ function Akinator() {
     } else {
       setTimeout(() => {
         setIsThinking(false);
-      }, 2000);
+      }, 20000);
     }
   };
 
@@ -91,15 +91,17 @@ function Akinator() {
     return (
       <div>
         {counter < 3 ? (
-          <div key={guessCount[counter].name} className="akinatorAnswer">
+          <div key={guessCount[counter].name} className="akinatorBody">
             <img
               src={guessCount[counter].image}
               alt={`${guessCount[counter].name}'s face`}
-              width="200px"
+              className="akinatorAnswerImg"
             />
             <br />
-            <p>{`Your character is ... ${guessCount[counter].name}`}</p>
-            <div className="akinatorAnswerButton">
+            <div className="answerBubble">
+              <p>{`Your character is ... ${guessCount[counter].name} ?`}</p>
+            </div>
+            <div className="akinatorButton">
               {' '}
               <button type="button" onClick={() => setClicked(true)}>
                 Yes
@@ -110,12 +112,17 @@ function Akinator() {
             </div>
           </div>
         ) : (
-          <div className="userWin">
-            <p>
-              Congratulation you beat me, you are the genious now ! Next time is
-              going to be different ...
-            </p>
-            <div className="userWinButton">
+          <div className="akinatorBody">
+            <div className="homeBubble">
+              {' '}
+              <p>
+                Congratulation you beat me, you are the genious now !
+                <br />
+                Next time is going to be different ...
+              </p>
+            </div>
+            <div className="imageContainer" />
+            <div className="akinatorButton">
               {' '}
               <Link to="/">
                 <button type="button">Home</button>
@@ -134,8 +141,12 @@ function Akinator() {
     return (
       <div>
         {isThinking === true ? (
-          <div className="thinkingAkinator">
-            <p>Mmmm let me think...</p>
+          <div className="akinatorBody">
+            {' '}
+            <div className="homeBubble">
+              <p>Mmmm let me think...</p>
+            </div>
+            <div className=".imageContainerThinking" />
           </div>
         ) : (
           <div>{userAnswer()}</div>
@@ -148,12 +159,15 @@ function Akinator() {
     return (
       <div>
         {clicked === true ? (
-          <div className="finishedAkinator">
-            <p>
-              I read your mind ! How does it feel ? ... Try to beat me next time
-              !
-            </p>
-            <div className="finishedAkinatorButton">
+          <div className="akinatorBody">
+            <div className="homeBubble">
+              <p>
+                I read your mind ! How does it feel ? ... Try to beat me next
+                time !
+              </p>
+            </div>
+            <div className="imageContainer" />
+            <div className="akinatorButton">
               {' '}
               <Link to="/">
                 <button type="button">Home</button>
@@ -172,10 +186,13 @@ function Akinator() {
 
   const newQuestion = () => {
     return (
-      <div className="akinatorContainer">
+      <div>
         {guessed === false ? (
-          <div className="akinatorQuestion">
-            <p>{question}</p>
+          <div className="akinatorBody">
+            <div className="homeBubble">
+              <p>{question}</p>
+            </div>
+
             <div className="akinatorQuestionButton">
               {answers.map((answer, index) => {
                 return (
@@ -207,13 +224,16 @@ function Akinator() {
   return (
     <div>
       {newEnter === true ? (
-        <div className="tutoAkinator">
-          <p>
-            Hello my friend, think about a fictive or real character, I will
-            read your mind... Are you ready ?
-          </p>
+        <div className="akinatorBody">
+          <div className="homeBubble">
+            <p>
+              Hello my friend, think about a fictive or real character, I will
+              read your mind... Are you ready ?
+            </p>
+          </div>
+
           <div className="imageContainer" />
-          <div className="tutoAkinatorButton">
+          <div className="akinatorButton">
             {' '}
             <button type="button" onClick={() => setnewEnter(!newEnter)}>
               Ready
