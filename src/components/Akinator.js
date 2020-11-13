@@ -14,7 +14,7 @@ function Akinator() {
   const [isPlayed, setIsPlayed] = useState(false);
   const [isThinking, setIsThinking] = useState(false);
   const [newEnter, setnewEnter] = useState(true);
-  /*   const [loading, setLoading] = useState(true); */
+  const [isLoading, setIsLoading] = useState(true);
 
   const nextQuestion = (answerIndex) => {
     axios
@@ -54,7 +54,7 @@ function Akinator() {
         );
       })
       .then((response) => {
-        /* setLoading(false); */
+        setIsLoading(false);
         setAnswers(response.data.answers);
         setQuestion(response.data.question);
       });
@@ -73,6 +73,7 @@ function Akinator() {
     setClicked(false);
     setCounter(0);
     setIsPlayed(!isPlayed);
+    setIsLoading(true);
   };
 
   const test = () => {
@@ -83,7 +84,7 @@ function Akinator() {
     } else {
       setTimeout(() => {
         setIsThinking(false);
-      }, 2000);
+      }, 200000);
     }
   };
 
@@ -113,7 +114,7 @@ function Akinator() {
           </div>
         ) : (
           <div className="akinatorBody">
-            <div className="homeBubble">
+            <div className="akinatorBubble">
               {' '}
               <p>
                 Congratulation you beat me, you are the genious now !
@@ -137,16 +138,16 @@ function Akinator() {
     );
   };
 
-  const goodAnswer = () => {
+  const thinkingRobot = () => {
     return (
       <div>
         {isThinking === true ? (
           <div className="akinatorBody">
             {' '}
-            <div className="homeBubble">
+            <div className="thinkingBubble">
               <p>Mmmm let me think...</p>
             </div>
-            <div className=".imageContainerThinking" />
+            <div className="imageContainerThinking" />
           </div>
         ) : (
           <div>{userAnswer()}</div>
@@ -160,10 +161,11 @@ function Akinator() {
       <div>
         {clicked === true ? (
           <div className="akinatorBody">
-            <div className="homeBubble">
+            <div className="akinatorBubble">
               <p>
-                I read your mind ! How does it feel ? ... Try to beat me next
-                time !
+                I read your mind ! How does it feel ?...
+                <br />
+                Try to beat me next time !
               </p>
             </div>
             <div className="imageContainer" />
@@ -178,7 +180,7 @@ function Akinator() {
             </div>
           </div>
         ) : (
-          <div>{goodAnswer()}</div>
+          <div>{thinkingRobot()}</div>
         )}
       </div>
     );
@@ -189,27 +191,25 @@ function Akinator() {
       <div>
         {guessed === false ? (
           <div className="akinatorBody">
-            <div className="homeBubble">
+            <div className="akinatorBubble">
               <p>{question}</p>
             </div>
-
+            <div className="imageContainer" />
             <div className="akinatorQuestionButton">
               {answers.map((answer, index) => {
                 return (
-                  <div className="buttonMap">
-                    {' '}
-                    <button
-                      type="button"
-                      /* eslint-disable */
-                      key={index}
-                      /* eslint-enable */
-                      onClick={() => {
-                        nextQuestion(index);
-                      }}
-                    >
-                      {answer}
-                    </button>
-                  </div>
+                  <button
+                    className="questionAkinatorButton"
+                    type="button"
+                    /* eslint-disable */
+                    key={index}
+                    /* eslint-enable */
+                    onClick={() => {
+                      nextQuestion(index);
+                    }}
+                  >
+                    {answer}
+                  </button>
                 );
               })}
             </div>
@@ -221,30 +221,44 @@ function Akinator() {
     );
   };
 
+  const akinatorStart = () => {
+    return (
+      <div>
+        {newEnter === true ? (
+          <div className="akinatorBody">
+            <div className="akinatorBubble">
+              <p>
+                Hello my friend, think about a fictive or real character, I will
+                read your mind... Are you ready ?
+              </p>
+            </div>
+
+            <div className="imageContainer" />
+            <div className="akinatorButton">
+              {' '}
+              <button type="button" onClick={() => setnewEnter(!newEnter)}>
+                Ready
+              </button>
+              <Link to="/">
+                <button type="button">Mmmm ... not yet</button>
+              </Link>
+            </div>
+          </div>
+        ) : (
+          <div>{newQuestion()}</div>
+        )}
+      </div>
+    );
+  };
+
   return (
     <div>
-      {newEnter === true ? (
+      {isLoading === true ? (
         <div className="akinatorBody">
-          <div className="homeBubble">
-            <p>
-              Hello my friend, think about a fictive or real character, I will
-              read your mind... Are you ready ?
-            </p>
-          </div>
-
-          <div className="imageContainer" />
-          <div className="akinatorButton">
-            {' '}
-            <button type="button" onClick={() => setnewEnter(!newEnter)}>
-              Ready
-            </button>
-            <Link to="/">
-              <button type="button">Mmmm ... not yet</button>
-            </Link>
-          </div>
+          <div className="loader">LOADING...</div>
         </div>
       ) : (
-        <div>{newQuestion()}</div>
+        <div>{akinatorStart()}</div>
       )}
     </div>
   );

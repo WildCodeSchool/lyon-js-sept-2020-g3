@@ -28,29 +28,26 @@ const ItemDetails = (props) => {
           <div class="arrow left"></div>
         </Link>
       )}
-      <div className="uniqueCardTest">
-        <div className="test">
-          {' '}
-          <img
-            className="storeImg"
-            src={result.src}
-            alt={`Avatar ${result.name}`}
-            height="150"
-            width="150"
-          />
-          <div className="uniqueStoreText">
-            <h2>{result.name}</h2>
-            <p>{result.description}</p>
-            <p className="uniqueStorePrice">{result.price}</p>
-          </div>
-          <div className="uniqueStoreButton">
-            <button type="button" onClick={test()}>
-              Buy
-            </button>
-            <Link to="/store">
-              <button type="button">Store</button>
-            </Link>
-          </div>
+      <div className="uniqueCard">
+        <img
+          className="storeImg"
+          src={result.src}
+          alt={`Avatar ${result.name}`}
+          height="150"
+          width="150"
+        />
+        <div className="uniqueStoreText">
+          <h2>{result.name}</h2>
+          <p>{result.description}</p>
+          <p className="uniqueStorePrice">{result.price}</p>
+        </div>
+        <div className="uniqueStoreButton">
+          <button type="button" onClick={test()}>
+            Buy
+          </button>
+          <Link to="/store">
+            <button type="button">Store</button>
+          </Link>
         </div>
       </div>
       {result.id === items.length ? (
