@@ -23,19 +23,65 @@
     $primary-color
   );
   text-align: center;
-  position: fixed;
+  position: absolute;
   min-width: 100%;
   min-height: 100%;
   background-size: cover;
   background-position: center;
 }
 
-.chatContainerOn {
+.questionImage {
+  height: auto;
+  width: 400px;
+  position: relative;
+  top: -160px;
+  left: -20px;
+}
+
+.chat1ContainerOn {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
   height: 60%;
 }
+.chat2ContainerOn {
+  background-color: white;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  border-radius: 30px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  height: 70vh;
+  overflow: scroll;
+  overflow-x: hidden;
+  .message {
+    display: flex;
+  }
+  .humanMessage {
+    padding: 4%;
+    background-color: lighten(blue, 20%);
+    color: white;
+    border-radius: 10px;
+    margin: 6px 0px;
+    font-family: 'Poppins', sans-serif;
+    width: fit-content;
+    float: right;
+    text-align: left;
+  }
+  .botMessage {
+    padding: 4%;
+    background-color: $third-color;
+    color: white;
+    border-radius: 10px;
+    margin: 6px 0px;
+    width: fit-content;
+    float: left;
+    text-align: left;
+  }
+}
+
 .chatContainerOff {
   display: none;
 }
@@ -189,8 +235,11 @@
     min-height: 150px;
   }
 
-  .questionImage {
-    height: 210px;
+  img.questionImage {
+    background-color: yellow;
+
+    height: auto;
+    width: 200px;
   }
 
   .questionArea {

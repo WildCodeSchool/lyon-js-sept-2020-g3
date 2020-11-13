@@ -1,0 +1,201 @@
+@import 'variablesCSS';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* ------------------STORE PART---------------------------------------------------------
+ */
+.storePart {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(
+    $primary-color,
+    $secondary-color,
+    $third-color,
+    $secondary-color,
+    $primary-color
+  );
+}
+
+.storeTitle {
+  color: white;
+  font-size: 50px;
+  text-align: center;
+  background-color: $primary-color;
+  padding-top: 25px;
+  position: relative;
+}
+
+.storeCard {
+  background: white;
+  color: $secondary-color;
+  width: 250px;
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border: solid 1px black;
+  border-radius: 20px;
+  padding: 5px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.storeCard h2 {
+  margin: 20px 0 20px;
+}
+
+.storeImg {
+  margin: 35px 0 10px;
+  border-radius: 5px;
+}
+
+.btnStore {
+  width: 100px;
+  font-size: 20px;
+  background-color: $secondary-color;
+  color: white;
+  text-align: center;
+  padding: 20px 0px;
+  border: solid 1px $secondary-color;
+  border-radius: 20px;
+  cursor: pointer;
+  &:active {
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
+}
+
+/* ------------------UNIQUE STORE PART---------------------------------------------------------
+ */
+
+.uniqueStore {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(
+    $primary-color,
+    $secondary-color,
+    $third-color,
+    $secondary-color,
+    $primary-color
+  );
+  position: absolute;
+  min-width: 100%;
+  min-height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+.uniqueCard {
+  background: white;
+  color: $secondary-color;
+  width: 300px;
+  height: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border: solid 1px black;
+  border-radius: 20px;
+  padding: 5px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.uniqueStoreText {
+  padding: 10px;
+}
+.uniqueStoreText p {
+  padding: 5px;
+}
+
+.uniqueStorePrice {
+  font-weight: bolder;
+  font-size: 20px;
+}
+
+.uniqueStoreButton {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 90%;
+  border-radius: 20px;
+  cursor: pointer;
+  padding-bottom: 10px;
+}
+
+.uniqueStoreButton button {
+  width: 100px;
+  font-size: 20px;
+  background-color: $secondary-color;
+  color: white;
+  text-align: center;
+  padding: 20px 0px;
+  border: solid 1px $secondary-color;
+  border-radius: 20px;
+  cursor: pointer;
+  &:active {
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
+}
+
+/* ------------------ARROW---------------------------------------------------------
+ */
+
+.arrow {
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  position: absolute;
+  top: 50%;
+  width: 30px;
+  height: 30px;
+}
+
+.right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  right: 6%;
+}
+
+.left {
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+  left: 6%;
+}
+
+@media screen and (min-width: 768px) {
+  /* ------------------ARROW---------------------------------------------------------
+ */
+  .right {
+    right: 12%;
+  }
+
+  .left {
+    left: 12%;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .uniqueCard {
+    width: 400px;
+    height: 420px;
+  }
+  /* ------------------ARROW---------------------------------------------------------
+ */
+  .right {
+    right: 15%;
+  }
+
+  .left {
+    left: 15%;
+  }
+}
