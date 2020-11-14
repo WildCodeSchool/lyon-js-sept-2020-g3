@@ -15,6 +15,7 @@ function Akinator() {
   const [isThinking, setIsThinking] = useState(false);
   const [newEnter, setnewEnter] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
+  const [disableButton, setDisableButton] = useState(false);
 
   const nextQuestion = (answerIndex) => {
     axios
@@ -23,6 +24,7 @@ function Akinator() {
       )
       .then((response) => response.data)
       .then((response) => {
+        setDisableButton(false);
         if (response.guessCount !== undefined) {
           for (let i = 0; i < 3; i += 1) {
             /* eslint-disable */
@@ -39,6 +41,7 @@ function Akinator() {
           setGuessed(true);
         } else {
           setQuestion(response.question);
+          setDisableButton(false);
           console.log(response);
         }
       });
@@ -84,8 +87,12 @@ function Akinator() {
     } else {
       setTimeout(() => {
         setIsThinking(false);
-      }, 200000);
+      }, 2000);
     }
+  };
+
+  const isDisableButton = () => {
+    setDisableButton(true);
   };
 
   const userAnswer = () => {
@@ -199,13 +206,18 @@ function Akinator() {
               {answers.map((answer, index) => {
                 return (
                   <button
-                    className="questionAkinatorButton"
+                    className={
+                      disableButton === true
+                        ? 'disableButton'
+                        : 'questionAkinatorButton'
+                    }
                     type="button"
                     /* eslint-disable */
                     key={index}
                     /* eslint-enable */
                     onClick={() => {
                       nextQuestion(index);
+                      isDisableButton();
                     }}
                   >
                     {answer}
