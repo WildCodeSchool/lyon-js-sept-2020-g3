@@ -69,8 +69,7 @@
   }
 }
 
-/* ------------------UNIQUE STORE PART---------------------------------------------------------
- */
+/* ------------------------------UNIQUE STORE PART-------------------------------------------------*/
 
 .uniqueStore {
   display: flex;
@@ -83,7 +82,7 @@
     $secondary-color,
     $primary-color
   );
-  position: absolute;
+  position: relative;
   min-width: 100%;
   min-height: 100%;
   background-size: cover;
@@ -104,27 +103,6 @@
   padding: 5px;
   margin-top: 50px;
   margin-bottom: 50px;
-}
-
-.uniqueCardTest {
-  position: relative;
-  width: 300px;
-  height: 420px;
-  perspective: 1000px;
-  margin: 0;
-  transform-origin: center;
-  background-color: white;
-  border: solid 1px black;
-}
-
-.test {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  transform-origin: center;
-  transform-style: preserve-3d;
-  transform: translateZ(-30vw) rotateY(0);
-  animation: carousel 10s infinite cubic-bezier(0.77, 0, 0.175, 1) forwards;
 }
 
 .uniqueStoreText {
@@ -166,8 +144,7 @@
   }
 }
 
-/* ------------------ARROW---------------------------------------------------------
- */
+/* ----------------------------------ARROW---------------------------------------------------------*/
 
 .arrow {
   border: solid white;
@@ -192,8 +169,12 @@
   left: 6%;
 }
 
+.mode-open {
+  text-align: center;
+}
+
 @media screen and (min-width: 768px) {
-  /* -------------------------------------STORE PART-----------------------------------------------*/
+  /* ---------------------------------------STORE PART-----------------------------------------------*/
 
   .storePart {
     display: flex;
@@ -205,8 +186,7 @@
     margin: 0 20px 40px;
   }
 
-  /* ------------------ARROW---------------------------------------------------------
- */
+  /* ----------------------------------ARROW---------------------------------------------------------*/
   .right {
     right: 12%;
   }
@@ -221,8 +201,7 @@
     width: 400px;
     height: 420px;
   }
-  /* ------------------ARROW---------------------------------------------------------
- */
+  /* ----------------------------------ARROW---------------------------------------------------------*/
   .right {
     right: 15%;
   }
