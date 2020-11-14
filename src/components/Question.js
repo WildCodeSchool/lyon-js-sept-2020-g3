@@ -78,7 +78,7 @@ function Question() {
     <div>
       <div className="questionBody">
         <div
-          className={chat1 === 'on' ? 'chat1ContainerOn' : 'chatContainerOff'}
+          className={chat1 === 'on' ? 'chat1ContainerOn' : 'chat1ContainerOff'}
         >
           <div className="questionBubble">
             <span className="tip">{response}</span>
@@ -86,7 +86,7 @@ function Question() {
           <div className="imageContainer" />
         </div>
         <div
-          className={chat2 === 'on' ? 'chat2ContainerOn' : 'chatContainerOff'}
+          className={chat2 === 'on' ? 'chat2ContainerOn' : 'chat2ContainerOff'}
         >
           {messageArray.map((element, index) => {
             return (
