@@ -14,7 +14,6 @@ function Akinator() {
   const [isPlayed, setIsPlayed] = useState(false);
   const [isThinking, setIsThinking] = useState(false);
   const [newEnter, setnewEnter] = useState(true);
-  /*   const [loading, setLoading] = useState(true); */
 
   const nextQuestion = (answerIndex) => {
     axios
