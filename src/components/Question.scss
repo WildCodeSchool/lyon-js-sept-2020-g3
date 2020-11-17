@@ -9,7 +9,6 @@
 }
 
 // Taille mobile et tablette ____________________________________________________________________________________________________________
-
 @media screen and (max-width: 1024px) {
   .questionBody {
     display: flex;
@@ -191,12 +190,13 @@
   }
 }
 
+// Taille desktop ____________________________________________________________________________________________________________
 @media screen and (min-width: 1024px) {
   .questionBody {
     display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: flex-end;
+    align-items: center;
     height: 92vh;
     width: 100vw;
     padding: 20px;
@@ -212,7 +212,8 @@
     background-size: cover;
     background-position: center;
 
-    .chat1ContainerOn {
+    .chat1ContainerOn,
+    .chat1ContainerOff {
       padding-right: 20px;
       display: flex;
       flex-direction: column;
@@ -252,7 +253,7 @@
       }
     }
 
-    .chat2ContainerOff {
+    .chat2ContainerOn {
       background-color: white;
       margin-top: 20px;
       margin-bottom: 10px;
@@ -260,10 +261,12 @@
       padding: 20px;
       display: flex;
       flex-direction: column;
-      height: 70vh;
-      width: 50%;
+      height: 60vh;
+      width: 250px;
       overflow: scroll;
       overflow-x: hidden;
+      position: relative;
+      left: 36vw;
       .message {
         display: flex;
       }
@@ -290,6 +293,10 @@
       }
     }
 
+    .chat2ContainerOff {
+      display: none;
+    }
+
     .writeArea {
       padding-top: 20px;
       height: 20%;
@@ -297,7 +304,9 @@
       margin-bottom: 20px;
 
       .chatIcon {
-        display: none;
+        position: relative;
+        left: calc(50vw - 150px);
+        top: calc(50vh - 250px);
       }
 
       .questionArea {
