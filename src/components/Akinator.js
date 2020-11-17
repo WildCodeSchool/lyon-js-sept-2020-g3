@@ -14,6 +14,8 @@ function Akinator() {
   const [isPlayed, setIsPlayed] = useState(false);
   const [isThinking, setIsThinking] = useState(false);
   const [newEnter, setnewEnter] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
+  const [disableButton, setDisableButton] = useState(false);
 
   const nextQuestion = (answerIndex) => {
     axios
@@ -22,6 +24,7 @@ function Akinator() {
       )
       .then((response) => response.data)
       .then((response) => {
+        setDisableButton(false);
         if (response.guessCount !== undefined) {
           for (let i = 0; i < 3; i += 1) {
             /* eslint-disable */
@@ -38,6 +41,7 @@ function Akinator() {
           setGuessed(true);
         } else {
           setQuestion(response.question);
+          setDisableButton(false);
           console.log(response);
         }
       });
@@ -53,7 +57,7 @@ function Akinator() {
         );
       })
       .then((response) => {
-        /* setLoading(false); */
+        setIsLoading(false);
         setAnswers(response.data.answers);
         setQuestion(response.data.question);
       });
@@ -72,6 +76,7 @@ function Akinator() {
     setClicked(false);
     setCounter(0);
     setIsPlayed(!isPlayed);
+    setIsLoading(true);
   };
 
   const test = () => {
@@ -86,19 +91,25 @@ function Akinator() {
     }
   };
 
+  const isDisableButton = () => {
+    setDisableButton(true);
+  };
+
   const userAnswer = () => {
     return (
       <div>
         {counter < 3 ? (
-          <div key={guessCount[counter].name} className="akinatorAnswer">
+          <div key={guessCount[counter].name} className="akinatorBody">
             <img
               src={guessCount[counter].image}
               alt={`${guessCount[counter].name}'s face`}
-              width="200px"
+              className="akinatorAnswerImg"
             />
             <br />
-            <p>{`Your character is ... ${guessCount[counter].name}`}</p>
-            <div className="akinatorAnswerButton">
+            <div className="answerBubble">
+              <p>{`Your character is ... ${guessCount[counter].name} ?`}</p>
+            </div>
+            <div className="akinatorButton">
               {' '}
               <button type="button" onClick={() => setClicked(true)}>
                 Yes
@@ -109,12 +120,17 @@ function Akinator() {
             </div>
           </div>
         ) : (
-          <div className="userWin">
-            <p>
-              Congratulation you beat me, you are the genious now ! Next time is
-              going to be different ...
-            </p>
-            <div className="userWinButton">
+          <div className="akinatorBody">
+            <div className="akinatorBubble">
+              {' '}
+              <p>
+                Congratulation you beat me, you are the genious now !
+                <br />
+                Next time is going to be different ...
+              </p>
+            </div>
+            <div className="imageContainer" />
+            <div className="akinatorButton">
               {' '}
               <Link to="/">
                 <button type="button">Home</button>
@@ -129,12 +145,16 @@ function Akinator() {
     );
   };
 
-  const goodAnswer = () => {
+  const thinkingRobot = () => {
     return (
       <div>
         {isThinking === true ? (
-          <div className="thinkingAkinator">
-            <p>Mmmm let me think...</p>
+          <div className="akinatorBody">
+            {' '}
+            <div className="thinkingBubble">
+              <p>Mmmm let me think...</p>
+            </div>
+            <div className="imageContainerThinking" />
           </div>
         ) : (
           <div>{userAnswer()}</div>
@@ -147,12 +167,16 @@ function Akinator() {
     return (
       <div>
         {clicked === true ? (
-          <div className="finishedAkinator">
-            <p>
-              I read your mind ! How does it feel ? ... Try to beat me next time
-              !
-            </p>
-            <div className="finishedAkinatorButton">
+          <div className="akinatorBody">
+            <div className="akinatorBubble">
+              <p>
+                I read your mind ! How does it feel ?...
+                <br />
+                Try to beat me next time !
+              </p>
+            </div>
+            <div className="imageContainer" />
+            <div className="akinatorButton">
               {' '}
               <Link to="/">
                 <button type="button">Home</button>
@@ -163,7 +187,7 @@ function Akinator() {
             </div>
           </div>
         ) : (
-          <div>{goodAnswer()}</div>
+          <div>{thinkingRobot()}</div>
         )}
       </div>
     );
@@ -171,27 +195,33 @@ function Akinator() {
 
   const newQuestion = () => {
     return (
-      <div className="akinatorContainer">
+      <div>
         {guessed === false ? (
-          <div className="akinatorQuestion">
-            <p>{question}</p>
+          <div className="akinatorBody">
+            <div className="akinatorBubble">
+              <p>{question}</p>
+            </div>
+            <div className="imageContainer" />
             <div className="akinatorQuestionButton">
               {answers.map((answer, index) => {
                 return (
-                  <div className="buttonMap">
-                    {' '}
-                    <button
-                      type="button"
-                      /* eslint-disable */
-                      key={index}
-                      /* eslint-enable */
-                      onClick={() => {
-                        nextQuestion(index);
-                      }}
-                    >
-                      {answer}
-                    </button>
-                  </div>
+                  <button
+                    className={
+                      disableButton === true
+                        ? 'disableButton'
+                        : 'questionAkinatorButton'
+                    }
+                    type="button"
+                    /* eslint-disable */
+                    key={index}
+                    /* eslint-enable */
+                    onClick={() => {
+                      nextQuestion(index);
+                      isDisableButton();
+                    }}
+                  >
+                    {answer}
+                  </button>
                 );
               })}
             </div>
@@ -203,27 +233,44 @@ function Akinator() {
     );
   };
 
+  const akinatorStart = () => {
+    return (
+      <div>
+        {newEnter === true ? (
+          <div className="akinatorBody">
+            <div className="akinatorBubble">
+              <p>
+                Hello my friend, think about a fictive or real character, I will
+                read your mind... Are you ready ?
+              </p>
+            </div>
+
+            <div className="imageContainer" />
+            <div className="akinatorButton">
+              {' '}
+              <button type="button" onClick={() => setnewEnter(!newEnter)}>
+                Ready
+              </button>
+              <Link to="/">
+                <button type="button">Mmmm ... not yet</button>
+              </Link>
+            </div>
+          </div>
+        ) : (
+          <div>{newQuestion()}</div>
+        )}
+      </div>
+    );
+  };
+
   return (
     <div>
-      {newEnter === true ? (
-        <div className="tutoAkinator">
-          <p>
-            Hello my friend, think about a fictive or real character, I will
-            read your mind... Are you ready ?
-          </p>
-          <div className="imageContainer" />
-          <div className="tutoAkinatorButton">
-            {' '}
-            <button type="button" onClick={() => setnewEnter(!newEnter)}>
-              Ready
-            </button>
-            <Link to="/">
-              <button type="button">Mmmm ... not yet</button>
-            </Link>
-          </div>
+      {isLoading === true ? (
+        <div className="akinatorBody">
+          <div className="loader">LOADING...</div>
         </div>
       ) : (
-        <div>{newQuestion()}</div>
+        <div>{akinatorStart()}</div>
       )}
     </div>
   );
