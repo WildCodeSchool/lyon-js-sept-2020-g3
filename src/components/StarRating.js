@@ -22,9 +22,6 @@ const StarRating = () => {
           />
         );
       })}
-      <div className="rate">
-        <p>{`The rating is ${rating}`}</p>
-      </div>
     </div>
   );
 };
