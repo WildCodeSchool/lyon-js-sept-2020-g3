@@ -1,0 +1,66 @@
+@import 'variablesCSS';
+@import url('https://fonts.googleapis.com/css2?family=Turret+Road:wght@500;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
+.modalBackground {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.modalContainer {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin: 20px 0 20px;
+  background-color: white;
+  color: $primary-color;
+  border-radius: 30px;
+}
+
+.modalHeader {
+  padding-top: 20px;
+  border-bottom: solid 3px $primary-color;
+  height: 60px;
+  margin: 30px;
+}
+
+.modalBody {
+  background-color: white;
+  margin: 30px;
+  text-align: center;
+}
+
+.modalFooter {
+  border-top: solid 3px $primary-color;
+  margin: 30px;
+  padding-top: 30px;
+  display: flex;
+  justify-content: flex-end;
+  text-align: center;
+  align-items: center;
+  button {
+    margin-top: 0px;
+    width: 80px;
+    font-size: 20px;
+    background-color: $secondary-color;
+    color: white;
+    text-align: center;
+    padding: 20px 0px;
+    border: solid 1px $secondary-color;
+    border-radius: 40px;
+    cursor: pointer;
+    &:active {
+      box-shadow: 0 5px #666;
+      transform: translateY(4px);
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+}

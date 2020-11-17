@@ -1,7 +1,8 @@
 import React from 'react';
+import './Connexion.scss';
 
 const Connexion = () => {
-  return <div>Connexion</div>;
+  return <div className="connexionBody">Connexion</div>;
 };
 
 export default Connexion;
