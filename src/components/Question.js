@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 
 import './Question.scss';
 import Chat from '@material-ui/icons/Chat';
+import Background from './Background';
 
 function Question() {
   const [question, setQuestion] = useState('');
@@ -77,6 +78,7 @@ function Question() {
   return (
     <div>
       <div className="questionBody">
+        <Background />
         <div
           className={chat1 === 'on' ? 'chat1ContainerOn' : 'chat1ContainerOff'}
         >

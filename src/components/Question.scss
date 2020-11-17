@@ -76,14 +76,18 @@
       display: flex;
       flex-direction: column;
       height: 70vh;
-      overflow: scroll;
+      overflow-y: scroll;
       overflow-x: hidden;
+      &::-webkit-scrollbar {
+        width: 10px;
+        background-color: lighten($primary-color, 20%);
+      }
       .message {
         display: flex;
       }
       .humanMessage {
         padding: 10px;
-        background-color: lighten(blue, 20%);
+        background-color: lighten(#283656, 20%);
         color: white;
         border-radius: 10px;
         margin: 6px 0px;
@@ -244,7 +248,12 @@
       height: 60vh;
       width: 250px;
       overflow: scroll;
+      overflow-y: scroll;
       overflow-x: hidden;
+      &::-webkit-scrollbar {
+        width: 10px;
+        background-color: lighten($primary-color, 20%);
+      }
       position: absolute;
       left: 75vw;
       .message {
@@ -252,7 +261,7 @@
       }
       .humanMessage {
         padding: 15px;
-        background-color: lighten(blue, 20%);
+        background-color: lighten(#283656, 20%);
         color: white;
         border-radius: 10px;
         margin: 6px 0px;
