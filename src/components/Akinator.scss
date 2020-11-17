@@ -1,4 +1,6 @@
 @import 'variablesCSS';
+@import url('https://fonts.googleapis.com/css2?family=Turret+Road:wght@500;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
 
 * {
   margin: 0;
@@ -6,9 +8,9 @@
   box-sizing: border-box;
 }
 /* -----------------------------------------LOADER AKINATOR--------------------------------------- */
-/* ------------------------------------------TUTO AKINATOR--------------------------------------- */
+/* ----------------------------------------GENERAL AKINATOR--------------------------------------- */
 
-.tutoAkinator {
+.akinatorBody {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -20,252 +22,441 @@
     $secondary-color,
     $primary-color
   );
-  color: white;
-  height: 100%;
+  color: black;
+  height: 95vh;
   width: 100%;
-  position: absolute;
-  padding: 50px 10px 10px;
+  position: fixed;
+  padding: 20px 10px 10px;
 }
 
-.tutoAkinator p {
-  text-align: center;
+.akinatorBubble {
+  display: flex;
   background-color: white;
-  color: $secondary-color;
   padding: 15px 20px;
   border-radius: 30px;
-}
-
-.tutoAkinatorButton {
   width: 80%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  margin-bottom: 50px;
+  min-height: 150px;
+  margin-top: 27px;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: 'Turret Road', cursive;
+  font-size: 20px;
+
+  &:after {
+    content: '';
+    background-color: #fff;
+    border-radius: 60%;
+    display: block;
+    position: absolute;
+    z-index: 1;
+    bottom: -20px;
+    right: 40px;
+    width: 30px;
+    height: 30px;
+    box-shadow: -20px 25px 0px -9px #fff, -10px 15px 0 -5px #fff;
+  }
 }
 
-.tutoAkinatorButton button {
+.imageContainer {
+  background-image: url('../Images/robot.gif');
+  background-size: 90%;
+  background-repeat: no-repeat;
+  background-position: top;
+  width: 300px;
+  height: 200px;
+  margin-bottom: 40px;
+  img {
+    height: auto;
+    width: 400px;
+    position: relative;
+    top: -240px;
+    left: -20px;
+  }
+}
+
+.akinatorButton {
+  width: 100%;
+  margin-bottom: 50px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+button {
   width: 120px;
+  height: 70px;
   font-size: 20px;
+  font-weight: bolder;
   background-color: white;
-  color: $secondary-color;
+  color: black;
   text-align: center;
-  padding: 20px 0px;
+  margin: 0px 20px;
+  padding: 10px;
   border: solid 1px $secondary-color;
-  border-radius: 20px;
+  border-radius: 40px;
   cursor: pointer;
+  &:hover {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: box-shadow, transform;
+    transition-property: box-shadow, transform;
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.2);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
   &:active {
     box-shadow: 0 5px #666;
     transform: translateY(4px);
+  }
+  &:focus {
+    outline: none;
+  }
+}
+
+/* ----------------------------------------LOADER AKINATOR--------------------------------------- */
+
+.loader {
+  width: 100%;
+  height: 40px;
+  color: white;
+  line-height: 50px;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 30px;
+  letter-spacing: 0.2em;
+  &::before,
+  &::after {
+    content: '';
+    display: block;
+    width: 15px;
+    height: 15px;
+    background: white;
+    position: absolute;
+    animation: load 1s infinite alternate ease-in-out;
+  }
+
+  &::before {
+    top: 0;
+  }
+
+  &::after {
+    bottom: 0;
+  }
+}
+
+@keyframes load {
+  0% {
+    left: 17%;
+    height: 30px;
+    width: 15px;
+  }
+  50% {
+    height: 8px;
+    width: 40px;
+  }
+  100% {
+    left: 82%;
+    height: 30px;
+    width: 15px;
   }
 }
 
 /* ---------------------------------------QUESTION AKINATOR--------------------------------------- */
 
-.akinatorContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  color: white;
-  background: linear-gradient(
-    $primary-color,
-    $secondary-color,
-    $third-color,
-    $secondary-color,
-    $primary-color
-  );
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  padding: 50px 10px 10px;
-}
-
-.akinatorQuestion {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.akinatorQuestion p {
-  width: 100%;
-  text-align: center;
-  background-color: white;
-  color: $secondary-color;
-  padding: 15px 20px;
-  border-radius: 30px;
-}
-
 .akinatorQuestionButton {
-  width: 100%;
+  width: 340px;
+  height: 154px;
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
   justify-content: center;
-  align-items: flex-end;
-  padding: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+  button:nth-child(-n + 2) {
+    margin: 0 15px 10px;
+    width: 110px;
+  }
 }
 
-.akinatorQuestionButton button {
-  width: 130px;
+.questionAkinatorButton {
+  width: 100px;
+  height: 70px;
   font-size: 20px;
+  font-weight: bolder;
   background-color: white;
-  color: $secondary-color;
+  color: black;
   text-align: center;
-  padding: 20px 0px;
+  margin: 0 10px 20px 0;
+  padding: 10px;
   border: solid 1px $secondary-color;
-  border-radius: 20px;
+  border-radius: 40px;
   cursor: pointer;
+  &:hover {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: box-shadow, transform;
+    transition-property: box-shadow, transform;
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.2);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
   &:active {
     box-shadow: 0 5px #666;
     transform: translateY(4px);
   }
+  &:focus {
+    outline: none;
+  }
+}
+
+.disableButton {
+  width: 100px;
+  height: 70px;
+  font-size: 20px;
+  font-weight: bolder;
+  background-color: rgb(255, 255, 255);
+  color: black;
+  text-align: center;
+  margin: 0 10px 20px 0;
+  padding: 10px;
+  border: solid 1px $secondary-color;
+  border-radius: 40px;
+  cursor: not-allowed;
 }
 
 /* ---------------------------------------ANSWERS AKINATOR--------------------------------------- */
-
-.akinatorAnswer {
+.answerBubble {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.akinatorAnswer img {
-  margin: 35px 0 10px;
-  border-radius: 5px;
-  width: 210px;
-  height: 200px;
-}
-
-.akinatorAnswerButton {
-  width: 400px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  margin: 50px 0;
-}
-
-.akinatorAnswerButton button {
-  width: 120px;
-  font-size: 20px;
   background-color: white;
-  color: $secondary-color;
+  padding: 15px 20px;
+  border-radius: 30px;
+  height: 80px;
+  width: 80%;
+  margin-bottom: 30px;
+  position: relative;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  padding: 20px 0px;
-  border: solid 1px $secondary-color;
-  border-radius: 20px;
-  cursor: pointer;
-  &:active {
-    box-shadow: 0 5px #666;
-    transform: translateY(4px);
-  }
+  font-family: 'Turret Road', cursive;
+  font-size: 20px;
+}
+
+.akinatorAnswerImg {
+  margin: 25px 0 0;
+  border-radius: 5px;
+  height: auto;
+  max-height: 350px;
+  width: 230px;
 }
 
 /* ---------------------------------------THINKING AKINATOR--------------------------------------- */
 
-.thinkingAkinator {
+.thinkingBubble {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  height: 100%;
-  width: 100%;
-}
-
-.thinkingAkinator p {
-  text-align: center;
   background-color: white;
-  color: $secondary-color;
   padding: 15px 20px;
   border-radius: 30px;
-}
-
-/* ---------------------------------------FINISHED AKINATOR--------------------------------------- */
-
-.finishedAkinator {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  width: 80%;
+  min-height: 150px;
+  margin-top: 40px;
+  position: relative;
   align-items: center;
-  height: 100%;
-  width: 100%;
-}
-
-.finishedAkinator p {
+  justify-content: center;
   text-align: center;
-  background-color: white;
-  color: $secondary-color;
-  padding: 15px 20px;
-  border-radius: 30px;
-}
-
-.finishedAkinatorButton {
-  width: 400px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  margin: 50px 0;
-}
-
-.finishedAkinatorButton button {
-  width: 120px;
+  font-family: 'Turret Road', cursive;
   font-size: 20px;
-  background-color: white;
-  color: $secondary-color;
-  text-align: center;
-  padding: 20px 0px;
-  border: solid 1px $secondary-color;
-  border-radius: 20px;
-  cursor: pointer;
-  &:active {
-    box-shadow: 0 5px #666;
-    transform: translateY(4px);
+
+  &:after {
+    content: '';
+    background-color: #fff;
+    border-radius: 60%;
+    display: block;
+    position: absolute;
+    z-index: 1;
+    bottom: -20px;
+    right: 40px;
+    width: 30px;
+    height: 30px;
+    box-shadow: -20px 25px 0px -9px #fff, -10px 15px 0 -5px #fff;
   }
 }
 
-/*---------------------------------------USER WIN AKINATOR---------------------------------------- */
-
-.userWin {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  height: 100%;
-  width: 100%;
+.imageContainerThinking {
+  background-image: url('../Images/robot.gif');
+  background-size: 90%;
+  background-repeat: no-repeat;
+  background-position: top;
+  width: 330px;
+  height: 230px;
+  padding-bottom: 40px;
+  margin-bottom: 200px;
+  img {
+    height: auto;
+    width: 400px;
+    position: absolute;
+    top: -240px;
+    left: -20px;
+  }
 }
 
-.userWin p {
-  text-align: center;
-  background-color: white;
-  color: $secondary-color;
-  padding: 15px 20px;
-  border-radius: 30px;
+/* -----------------------------RESPONSIVE----------------------------------- */
+/* ------------------------------------500px------------------------------------------ */
+/* ---------------------------------------------------------------------------------------------- */
+
+@media screen and (min-width: 500px) {
+  /* ---------------------------------------QUESTION AKINATOR--------------------------------------- */
+
+  .akinatorQuestionButton {
+    width: 450px;
+    height: 170px;
+    margin-bottom: 20px;
+
+    button:nth-child(-n + 2) {
+      width: 135px;
+      margin: 0 15px 20px;
+    }
+    button:nth-child(4) {
+      width: 125px;
+    }
+    button {
+      width: 110px;
+      margin: 0 10px 20px;
+    }
+  }
+
+  @keyframes load {
+    0% {
+      left: 25%;
+      height: 30px;
+      width: 15px;
+    }
+    50% {
+      height: 8px;
+      width: 40px;
+    }
+    100% {
+      left: 70%;
+      height: 30px;
+      width: 15px;
+    }
+  }
 }
 
-.userWinButton {
-  width: 400px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  margin: 50px 0;
+/* -----------------------------RESPONSIVE----------------------------------- */
+/* ------------------------------------768px------------------------------------------ */
+/* ---------------------------------------------------------------------------------------------- */
+
+@media screen and (min-width: 768px) {
+  /* ---------------------------------------GENERAL AKINATOR--------------------------------------- */
+
+  .akinatorBubble {
+    width: 60%;
+  }
+  button {
+    margin: 0px 60px;
+  }
+
+  @keyframes load {
+    0% {
+      left: 30%;
+      height: 30px;
+      width: 15px;
+    }
+    50% {
+      height: 8px;
+      width: 40px;
+    }
+    100% {
+      left: 67%;
+      height: 30px;
+      width: 15px;
+    }
+  }
 }
 
-.userWinButton button {
-  width: 120px;
-  font-size: 20px;
-  background-color: white;
-  color: $secondary-color;
-  text-align: center;
-  padding: 20px 0px;
-  border: solid 1px $secondary-color;
-  border-radius: 20px;
-  cursor: pointer;
-  &:active {
-    box-shadow: 0 5px #666;
-    transform: translateY(4px);
+/* -----------------------------RESPONSIVE----------------------------------- */
+/* ------------------------------------1024px------------------------------------------ */
+/* ---------------------------------------------------------------------------------------------- */
+
+@media screen and (min-width: 1024px) {
+  /* ---------------------------------------GENERAL AKINATOR--------------------------------------- */
+
+  .akinatorBubble {
+    width: 50%;
+  }
+  button {
+    width: 170px;
+    height: 80px;
+    margin: 0px 100px 40px;
+  }
+
+  /* ---------------------------------------ANSWERS AKINATOR--------------------------------------- */
+
+  .akinatorAnswerImg {
+    margin: 20px 0 0;
+    border-radius: 5px;
+    width: 280px;
+    height: 300px;
+  }
+
+  /* -------------------------------------QUESTION AKINATOR--------------------------------------- */
+
+  .akinatorQuestionButton {
+    width: 450px;
+    height: 170px;
+    margin-bottom: 30px;
+
+    button:nth-child(-n + 2) {
+      width: 145px;
+      margin: 0 15px 20px;
+    }
+    button:nth-child(4) {
+      width: 135px;
+    }
+    button {
+      width: 120px;
+      margin: 0 10px 20px;
+    }
+  }
+  @keyframes load {
+    0% {
+      left: 38%;
+      height: 30px;
+      width: 15px;
+    }
+    50% {
+      height: 8px;
+      width: 40px;
+    }
+    100% {
+      left: 59%;
+      height: 30px;
+      width: 15px;
+    }
+  }
+  /* -------------------------------------THINKING AKINATOR--------------------------------------- */
+
+  .thinkingBubble {
+    width: 30%;
   }
 }
