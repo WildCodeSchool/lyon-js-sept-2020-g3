@@ -11,7 +11,7 @@ const Home = () => {
       <div className="imageContainer" />
       <div className="homebuttons">
         <button type="button" className="question">
-          <Link to="/question">Ask me a question</Link>
+          <Link to="/question">Ask me</Link>
         </button>
         <button type="button" className="play">
           <Link to="/akinator">Challenge me</Link>

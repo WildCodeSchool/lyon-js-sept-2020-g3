@@ -13,7 +13,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  height: 90vh;
+  height: 100vh;
   width: 100vw;
   padding: 10px;
   background: linear-gradient(
@@ -43,7 +43,7 @@
   justify-content: center;
   text-align: center;
   font-family: 'Turret Road', cursive;
-  font-size: 20px;
+  font-size: 19px;
 
   &:after {
     content: '';
@@ -59,6 +59,37 @@
     box-shadow: -20px 25px 0px -9px #fff, -10px 15px 0 -5px #fff;
   }
 }
+
+// .tip {
+//   color: black;
+//   overflow: hidden; /* Ensures the content is not revealed until the animation */
+//   border-right: 0.15em solid orange; /* The typwriter cursor */
+//   white-space: nowrap; /* Keeps the content on a single line */
+//   margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+//   letter-spacing: 0.15em; /* Adjust as needed */
+//   animation: typing 3.5s steps(30, end), blink-caret 0.5s step-end infinite;
+// }
+
+// /* The typing effect */
+// @keyframes typing {
+//   from {
+//     width: 0;
+//   }
+//   to {
+//     width: 100%;
+//   }
+// }
+
+// /* The typewriter cursor effect */
+// @keyframes blink-caret {
+//   from,
+//   to {
+//     border-color: transparent;
+//   }
+//   50% {
+//     border-color: $third-color;
+//   }
+// }
 
 .imageContainer {
   background-image: url('../Images/robot.gif');
@@ -77,17 +108,44 @@
 }
 
 .homebuttons {
-  margin-bottom: 20px;
+  margin-bottom: 50px;
   display: flex;
   width: 100%;
   height: auto;
   justify-content: space-around;
+
   button {
     margin: 10px;
     width: 200px;
     height: 100px;
     border-radius: 20px;
     padding: 10px;
+    cursor: pointer;
+    border: 3px solid lighten(blue, 8%);
+    background: radial-gradient(
+      ellipse at center,
+      lighten(blue, 17%),
+      lighten(blue, 12%)
+    );
+    box-shadow: 2px 2px 1px blue, 0px 2px 0px lighten(blue, 30%),
+      inset 2px 2px 0px lighten(blue, 30%);
+    transition: all 0.3s ease;
+    &:active {
+      margin-top: 1px;
+      transform: scale(0.95);
+      transition: all 0.3s ease;
+      outline: none;
+      background: radial-gradient(
+        ellipse at center,
+        lighten(blue, 15%),
+        lighten(blue, 10%)
+      );
+      box-shadow: 0 0px 0px violet, 0 0px 30px lighten(blue, 30%),
+        inset 0 -5px 0px lighten(blue, 10%);
+    }
+    &:focus {
+      outline: none;
+    }
     a {
       text-align: center;
       font-weight: bolder;
