@@ -118,6 +118,9 @@ button {
     box-shadow: 0 5px #666;
     transform: translateY(4px);
   }
+  &:focus {
+    outline: none;
+  }
 }
 
 /* ----------------------------------------LOADER AKINATOR--------------------------------------- */
@@ -220,6 +223,9 @@ button {
   &:active {
     box-shadow: 0 5px #666;
     transform: translateY(4px);
+  }
+  &:focus {
+    outline: none;
   }
 }
 
