@@ -5,9 +5,8 @@
 .connexionBody {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   height: 93vh;
+  width: 100vw;
   background: linear-gradient(
     $primary-color,
     $secondary-color,

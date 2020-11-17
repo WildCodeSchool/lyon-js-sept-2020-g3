@@ -10,7 +10,7 @@
   position: absolute;
   top: 0;
   width: 100vw;
-  height: 100vh;
+  height: 93vh;
 }
 
 .modalContainer {
@@ -62,5 +62,16 @@
     &:focus {
       outline: none;
     }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .modalContainer {
+    width: 60%;
+  }
+
+  .modalFooter button {
+    width: 120px;
+    margin-top: 20px;
   }
 }
