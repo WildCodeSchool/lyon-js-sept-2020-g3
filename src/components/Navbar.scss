@@ -135,19 +135,27 @@
   .menu {
     width: 80%;
     height: 50px;
-    padding-top: 10px;
+    padding-top: 20px;
     display: block;
+    cursor: pointer;
     ul {
       display: flex;
       justify-content: space-around;
-      padding-top: 10px;
+
       margin-top: 5px;
     }
     a {
       text-decoration: none;
       color: white;
-      &hover {
-        background: red;
+      &:hover {
+        background: white;
+        color: $primary-color;
+        padding: 9px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        &:active {
+          background: pink;
+        }
       }
     }
   }
