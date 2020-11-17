@@ -25,11 +25,11 @@ const ItemDetails = (props) => {
       <div className={isModalOpen ? 'uniqueStoreModalOpen' : 'uniqueStore'}>
         {result.id === 1 ? (
           <Link to={`/store/${items.length}`}>
-            <div class="arrow left"></div>
+            <div className="arrow left" />
           </Link>
         ) : (
           <Link to={`/store/${result.id - 1}`}>
-            <div class="arrow left"></div>
+            <div className="arrow left" />
           </Link>
         )}
         <div className="uniqueCard">
@@ -42,23 +42,25 @@ const ItemDetails = (props) => {
           />
           <div className="uniqueStoreText">
             <h2>{result.name}</h2>
-            <p>{result.description}</p>
+            <p className="uniqueStoreDescription">{result.description}</p>
             <p className="uniqueStorePrice">{result.price}</p>
           </div>
           <div className="uniqueStoreButton">
             {' '}
-            <button onClick={openModal}>Buy</button>
+            <button type="button" onClick={openModal}>
+              Buy
+            </button>
             <Link to="/store">
               <button type="button">Store</button>
             </Link>
           </div>
           {result.id === items.length ? (
-            <Link to={'/store/1'}>
-              <div class="arrow right"></div>
+            <Link to="/store/1">
+              <div className="arrow right" />
             </Link>
           ) : (
             <Link to={`/store/${result.id + 1}`}>
-              <div class="arrow right"></div>
+              <div className="arrow right" />
             </Link>
           )}
         </div>
@@ -70,7 +72,8 @@ const ItemDetails = (props) => {
         </div>
         <div className="modalBody">
           <h3>
-            This item will be available very soon <br></br>don't miss it !
+            This item will be available very soon <br />
+            don't miss it !
           </h3>
         </div>
         <div className="modalFooter">
