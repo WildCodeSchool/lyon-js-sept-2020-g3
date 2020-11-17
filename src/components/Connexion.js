@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Connexion.scss';
 import Modal from './Modal';
 import './Modal.scss';
@@ -21,9 +22,12 @@ const Connexion = () => {
           </h3>
         </div>
         <div className="modalFooter">
-          <button type="button" className="modalButton">
-            Home
-          </button>
+          <Link to="/">
+            {' '}
+            <button type="button" className="modalButton">
+              Home
+            </button>
+          </Link>
         </div>
       </Modal>
     </div>
