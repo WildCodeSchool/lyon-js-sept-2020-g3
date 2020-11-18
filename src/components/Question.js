@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 import './Question.scss';
-import Chat from '@material-ui/icons/Chat';
 import Background from './Background';
+import conversation from '../Images/conversation.png';
 
 function Question() {
   const [question, setQuestion] = useState('');
@@ -118,8 +118,15 @@ function Question() {
             submitQuestionWithEnter(e);
           }}
         >
-          <button type="button" className="chatIcon" onClick={switchChatMode}>
-            <Chat />
+          <button
+            type="button"
+            className="chatIconButton"
+            onClick={switchChatMode}
+          >
+            <div
+              className="chatIcon"
+              style={{ backgroundImage: `url(${conversation})` }}
+            />
           </button>
 
           <div className="questionArea">
