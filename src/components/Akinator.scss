@@ -89,8 +89,8 @@ button {
   height: 70px;
   font-size: 20px;
   font-weight: bolder;
-  background-color: white;
-  color: black;
+  background-color: #bb5759;
+  color: white;
   text-align: center;
   margin: 0px 20px;
   padding: 10px;
@@ -127,7 +127,7 @@ button {
 
 .loader {
   width: 100%;
-  height: 40px;
+  height: 45px;
   color: white;
   line-height: 50px;
   text-align: center;
@@ -153,7 +153,7 @@ button {
   }
 
   &::after {
-    bottom: 0;
+    bottom: 2%;
   }
 }
 
@@ -229,21 +229,6 @@ button {
   }
 }
 
-.disableButton {
-  width: 100px;
-  height: 70px;
-  font-size: 20px;
-  font-weight: bolder;
-  background-color: rgb(255, 255, 255);
-  color: black;
-  text-align: center;
-  margin: 0 10px 20px 0;
-  padding: 10px;
-  border: solid 1px $secondary-color;
-  border-radius: 40px;
-  cursor: not-allowed;
-}
-
 /* ---------------------------------------ANSWERS AKINATOR--------------------------------------- */
 .answerBubble {
   display: flex;
@@ -252,7 +237,8 @@ button {
   border-radius: 30px;
   height: 80px;
   width: 80%;
-  margin-bottom: 30px;
+  margin-top: 20px;
+
   position: relative;
   align-items: center;
   justify-content: center;
@@ -263,10 +249,70 @@ button {
 
 .akinatorAnswerImg {
   margin: 25px 0 0;
-  border-radius: 5px;
+  border-radius: 20px;
   height: auto;
-  max-height: 350px;
-  width: 230px;
+  max-height: 300px;
+  width: 300px;
+}
+
+.akinatorAnswerButton {
+  width: 100%;
+  margin-bottom: 50px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  button {
+    width: 120px;
+    height: 70px;
+    font-size: 20px;
+    font-weight: bolder;
+    background-color: white;
+    color: black;
+    text-align: center;
+    margin: 0px 20px;
+    padding: 10px;
+    border: solid 1px $secondary-color;
+    border-radius: 40px;
+    cursor: pointer;
+    &:hover {
+      display: inline-block;
+      vertical-align: middle;
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+      box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-transition-duration: 0.3s;
+      transition-duration: 0.3s;
+      -webkit-transition-property: box-shadow, transform;
+      transition-property: box-shadow, transform;
+      box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.2);
+      -webkit-transform: scale(1.1);
+      transform: scale(1.1);
+    }
+    &:active {
+      box-shadow: 0 5px #666;
+      transform: translateY(4px);
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.previousButton {
+  justify-content: center;
+  display: flex;
+  width: 60px;
+  height: 40px;
+  font-size: 25px;
+  color: white;
+  font-weight: bolder;
+  background-color: #bb5759;
+  position: absolute;
+  right: 0%;
+  top: 63%;
 }
 
 /* ---------------------------------------THINKING AKINATOR--------------------------------------- */
@@ -373,7 +419,7 @@ button {
     width: 60%;
   }
   button {
-    margin: 0px 60px;
+    margin: 0px 40px;
   }
 
   @keyframes load {
@@ -407,7 +453,7 @@ button {
   button {
     width: 170px;
     height: 80px;
-    margin: 0px 100px 40px;
+    margin: 0px 40px 40px;
   }
 
   /* ---------------------------------------ANSWERS AKINATOR--------------------------------------- */

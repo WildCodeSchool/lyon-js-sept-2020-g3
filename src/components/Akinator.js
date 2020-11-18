@@ -15,7 +15,9 @@ function Akinator() {
   const [isThinking, setIsThinking] = useState(false);
   const [newEnter, setnewEnter] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
-  const [disableButton, setDisableButton] = useState(false);
+  const [getAnswer, setGetAnswer] = useState([]);
+  const [allQuestion, setAllQuestion] = useState([]);
+  const [userClick, setUserClick] = useState(false);
 
   const nextQuestion = (answerIndex) => {
     axios
@@ -24,27 +26,32 @@ function Akinator() {
       )
       .then((response) => response.data)
       .then((response) => {
-        setDisableButton(false);
-        if (response.guessCount !== undefined) {
-          for (let i = 0; i < 3; i += 1) {
-            /* eslint-disable */
-            setGuessCount((guessCount) => [
-              /* eslint-enable */
-              ...guessCount,
-              {
-                name: response.answers[i].name,
-                image: response.answers[i].absolute_picture_path,
-              },
-            ]);
-          }
-          console.log(response);
-          setGuessed(true);
-        } else {
-          setQuestion(response.question);
-          setDisableButton(false);
-          console.log(response);
-        }
+        setGetAnswer(response);
+        console.log(response);
       });
+  };
+
+  const guessCountAnswer = () => {
+    if (getAnswer.guessCount <= 2) {
+      for (let i = 0; i < getAnswer.guessCount; i += 1) {
+        /* eslint-disable */
+        console.log(getAnswer);
+        setGuessCount((guessCount) => [
+          /* eslint-enable */
+          ...guessCount,
+          {
+            name: getAnswer.answers[i].name,
+            image: getAnswer.answers[i].absolute_picture_path,
+          },
+        ]);
+      }
+      console.log(getAnswer);
+      setGuessed(true);
+    } else {
+      setQuestion(getAnswer.question);
+      setUserClick(false);
+      console.log(getAnswer);
+    }
   };
 
   const getAkinator = () => {
@@ -67,6 +74,10 @@ function Akinator() {
     getAkinator();
   }, [isPlayed]);
 
+  useEffect(() => {
+    guessCountAnswer();
+  }, [getAnswer]);
+
   const playAgain = () => {
     setGuessed(false);
     setQuestion('');
@@ -79,7 +90,7 @@ function Akinator() {
     setIsLoading(true);
   };
 
-  const test = () => {
+  const thinking = () => {
     setCounter(counter + 1);
     setIsThinking(true);
     if (counter === 2) {
@@ -91,30 +102,37 @@ function Akinator() {
     }
   };
 
-  const isDisableButton = () => {
-    setDisableButton(true);
+  const previousQuestion = () => {
+    if (allQuestion.length > 1) {
+      setQuestion(allQuestion[allQuestion.length - 1]);
+      /* eslint-disable */
+      const deleteLastQuestion = allQuestion.pop();
+      /* eslint-enable */
+    } else {
+      setQuestion('Is your character real ?');
+    }
   };
 
   const userAnswer = () => {
     return (
       <div>
-        {counter < 3 ? (
+        {counter < getAnswer.guessCount ? (
           <div key={guessCount[counter].name} className="akinatorBody">
+            <div className="answerBubble">
+              <p>{`Your character is ... ${guessCount[counter].name} ?`}</p>
+            </div>
             <img
               src={guessCount[counter].image}
               alt={`${guessCount[counter].name}'s face`}
               className="akinatorAnswerImg"
             />
             <br />
-            <div className="answerBubble">
-              <p>{`Your character is ... ${guessCount[counter].name} ?`}</p>
-            </div>
-            <div className="akinatorButton">
+            <div className="akinatorAnswerButton">
               {' '}
               <button type="button" onClick={() => setClicked(true)}>
                 Yes
               </button>
-              <button type="button" onClick={() => test()}>
+              <button type="button" onClick={() => thinking()}>
                 No
               </button>
             </div>
@@ -198,6 +216,15 @@ function Akinator() {
       <div>
         {guessed === false ? (
           <div className="akinatorBody">
+            <div className="previousQuestionButton">
+              <button
+                className="previousButton"
+                type="button"
+                onClick={() => previousQuestion()}
+              >
+                ↺
+              </button>
+            </div>
             <div className="akinatorBubble">
               <p>{question}</p>
             </div>
@@ -206,18 +233,16 @@ function Akinator() {
               {answers.map((answer, index) => {
                 return (
                   <button
-                    className={
-                      disableButton === true
-                        ? 'disableButton'
-                        : 'questionAkinatorButton'
-                    }
+                    disabled={userClick === true}
+                    className="questionAkinatorButton"
                     type="button"
                     /* eslint-disable */
                     key={index}
                     /* eslint-enable */
                     onClick={() => {
                       nextQuestion(index);
-                      isDisableButton();
+                      setAllQuestion([...allQuestion, question]);
+                      setUserClick(true);
                     }}
                   >
                     {answer}
