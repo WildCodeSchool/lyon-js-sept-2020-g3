@@ -1,14 +1,15 @@
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  position: relative;
+  // margin: 0;
+  // padding: 0;
+  // box-sizing: border-box;
+  // position: relative;
 }
 
 .dot1 {
   height: 2px;
   width: 2px;
   background: transparent;
+  border-radius: 50%;
   animation: animDot 50s linear infinite;
   box-shadow: 324px 420px #fff, 303px 586px #fff, 1312px 276px #fff,
     451px 625px #fff, 1418px 664px #fff, 1084px 232px #fff, 1722px 243px #fff,
@@ -71,7 +72,7 @@
     1850px 185px #fff, 884px 299px #fff, 1860px 396px #fff, 1885px 685px #fff,
     226px 506px #fff, 911px 174px #fff, 1111px 521px #fff, 1150px 85px #fff,
     794px 502px #fff, 1809px 368px #fff, 1655px 311px #fff, 1803px 352px #fff,
-    865px 306px #fff, 212px 458px #fff, 1144px 60px #fff -324px 42px #fff,
+    865px 306px #fff, 212px 458px #fff, 1144px 60px #fff, -324px 42px #fff,
     -303px 586px #fff, -1312px 276px #fff, -451px 625px #fff, -1418px 664px #fff,
     -1084px 232px #fff, -1722px 243px #fff, -586px 384px #fff, -164px 527px #fff,
     -8px 646px #fff, -1364px 230px #fff, -304px 686px #fff, -614px 751px #fff,

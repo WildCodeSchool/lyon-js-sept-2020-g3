@@ -66,11 +66,13 @@ function Question() {
     setChat1(chat1 === 'on' ? 'off' : 'on');
     setChat2(chat2 === 'on' ? 'off' : 'on');
   };
+
   // Met à jour le tableau de stockage des Q/A et clear l'input de question quand le state response change
   useEffect(() => {
     updateMessageArray();
     resetQuestion();
   }, [response]);
+
   useEffect(() => {
     scrollToBottom();
   }, [messageArray]);
@@ -83,7 +85,7 @@ function Question() {
           className={chat1 === 'on' ? 'chat1ContainerOn' : 'chat1ContainerOff'}
         >
           <div className="questionBubble">
-            <span className="tip">{response}</span>
+            <span>{response}</span>
           </div>
           <div className="imageContainer" />
         </div>
@@ -100,9 +102,9 @@ function Question() {
               >
                 {index !== 0 &&
                   (index % 2 === 0 ? (
-                    <div className="humanMessage">{`${element}`}</div>
+                    <div className="humanMessage">{element}</div>
                   ) : (
-                    <div className="botMessage">{`${element}`}</div>
+                    <div className="botMessage">{element}</div>
                   ))}
               </div>
             );
