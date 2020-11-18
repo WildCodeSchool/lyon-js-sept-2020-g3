@@ -6,6 +6,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  z-index: 0;
 }
 
 .homeBody {
@@ -16,6 +17,7 @@
   height: 100vh;
   width: 100vw;
   padding: 10px;
+  overflow-x: hidden;
   background: linear-gradient(
     $primary-color,
     $secondary-color,
@@ -37,7 +39,7 @@
   border-radius: 30px;
   width: 90%;
   min-height: 150px;
-  margin-top: 30px;
+  margin-bottom: 30px;
   position: relative;
   align-items: center;
   justify-content: center;
@@ -98,6 +100,7 @@
   background-position: top;
   width: 300px;
   height: 200px;
+  margin-bottom: 40px;
   img {
     height: auto;
     width: 400px;
@@ -108,15 +111,15 @@
 }
 
 .homebuttons {
-  margin-bottom: 50px;
+  margin-bottom: 70px;
   display: flex;
   width: 100%;
   height: auto;
   justify-content: space-around;
   button {
     border: 3px solid lighten(#e16c69, 8%);
-    margin: 20px;
-    border-radius: 30px;
+    margin: 20px 20px;
+    border-radius: 20px;
     height: 80px;
     width: 200px;
     &:active {
@@ -128,12 +131,10 @@
   button,
   a {
     text-align: center;
-    padding: 3px;
-    font-weight: bolder;
     font-family: 'Poppins', sans-serif;
     color: white;
     text-decoration: none;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
     cursor: pointer;
     background-color: #e16c69;
 
@@ -143,7 +144,9 @@
   }
 
   a {
-    font-size: 16px;
+    padding: 2px;
+    font-size: 20px;
+    font-weight: bolder;
   }
 }
 
@@ -151,7 +154,6 @@
   /*Tablette*/
   .homeBubble {
     margin: 0;
-    margin-top: 5%;
     width: 70%;
   }
 
@@ -165,12 +167,19 @@
   /*Desktop*/
   .homeBubble {
     margin: 0;
-    margin-top: 5%;
+    margin-bottom: 50px;
     width: 50%;
   }
 
   .homebuttons {
     justify-content: center;
     margin-bottom: 100px;
+    a {
+      font-size: 19px;
+    }
+  }
+
+  .imageContainer {
+    margin-bottom: 50px;
   }
 }
