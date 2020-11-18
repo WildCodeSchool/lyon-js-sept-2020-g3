@@ -49,7 +49,7 @@ export const items = [
 const Store = () => {
   return (
     <div className="storePart">
-      <h1 className="storeTitle">Store</h1>
+      {/* <h1 className="storeTitle">Store</h1> */}
       {items.map((item) => (
         <Item key={item.id} data={item} />
       ))}

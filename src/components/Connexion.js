@@ -18,7 +18,7 @@ const Connexion = () => {
           <h3>
             This page is a work in progress
             <br />
-            come check back soon !
+            Come check back soon !
           </h3>
         </div>
         <div className="modalFooter">
