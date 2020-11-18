@@ -60,36 +60,37 @@
   }
 }
 
-// .tip {
-//   color: black;
-//   overflow: hidden; /* Ensures the content is not revealed until the animation */
-//   border-right: 0.15em solid orange; /* The typwriter cursor */
-//   white-space: nowrap; /* Keeps the content on a single line */
-//   margin: 0 auto; /* Gives that scrolling effect as the typing happens */
-//   letter-spacing: 0.15em; /* Adjust as needed */
-//   animation: typing 3.5s steps(30, end), blink-caret 0.5s step-end infinite;
-// }
+.tip {
+  color: black;
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: 0.15em solid red; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
 
-// /* The typing effect */
-// @keyframes typing {
-//   from {
-//     width: 0;
-//   }
-//   to {
-//     width: 100%;
-//   }
-// }
+  margin: auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: 0.15em; /* Adjust as needed */
+  animation: typing 3.5s steps(30, end), blink-caret 0.5s step-end infinite;
+}
 
-// /* The typewriter cursor effect */
-// @keyframes blink-caret {
-//   from,
-//   to {
-//     border-color: transparent;
-//   }
-//   50% {
-//     border-color: $third-color;
-//   }
-// }
+/* The typing effect */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: $third-color;
+  }
+}
 
 .imageContainer {
   background-image: url('../Images/robot.gif');
@@ -119,20 +120,21 @@
     border-radius: 50px;
     height: 100px;
     width: 200px;
+    box-shadow: 0 4px #666;
   }
 
   button,
   a {
     text-align: center;
     padding: 3px;
-    font-weight: bolder;
+    font-weight: 900;
     font-family: 'Poppins', sans-serif;
     color: white;
     text-decoration: none;
     font-size: 15px;
-    letter-spacing: 2px;
     cursor: pointer;
-    background-color: #e16c69;
+
+    background-color: #bb5759;
 
     &:focus {
       outline: 0;
