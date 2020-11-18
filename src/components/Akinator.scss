@@ -1,5 +1,6 @@
 @import 'variablesCSS';
-
+@import url('https://fonts.googleapis.com/css2?family=Turret+Road:wght@500;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
 * {
   margin: 0;
   padding: 0;
@@ -7,8 +8,7 @@
 }
 /* -----------------------------------------LOADER AKINATOR--------------------------------------- */
 /* ------------------------------------------TUTO AKINATOR--------------------------------------- */
-
-.tutoAkinator {
+.akinatorBody {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -20,96 +20,109 @@
     $secondary-color,
     $primary-color
   );
-  color: white;
-  height: 100%;
+  color: black;
+  height: 95vh;
   width: 100%;
-  position: absolute;
+  position: fixed;
   padding: 50px 10px 10px;
 }
-
-.tutoAkinator p {
-  text-align: center;
+.homeBubble {
+  display: flex;
   background-color: white;
-  color: $secondary-color;
   padding: 15px 20px;
   border-radius: 30px;
-}
-
-.tutoAkinatorButton {
   width: 80%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  margin-bottom: 50px;
-}
-
-.tutoAkinatorButton button {
-  width: 120px;
-  font-size: 20px;
-  background-color: white;
-  color: $secondary-color;
+  min-height: 150px;
+  margin-top: 0;
+  position: relative;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  padding: 20px 0px;
+  font-family: 'Turret Road', cursive;
+  font-size: 20px;
+  &:after {
+    content: '';
+    background-color: #fff;
+    border-radius: 60%;
+    display: block;
+    position: absolute;
+    z-index: 1;
+    bottom: -20px;
+    right: 40px;
+    width: 30px;
+    height: 30px;
+    box-shadow: -20px 25px 0px -9px #fff, -10px 15px 0 -5px #fff;
+  }
+}
+.imageContainer {
+  background-image: url('../Images/robot.gif');
+  background-size: 90%;
+  background-repeat: no-repeat;
+  background-position: top;
+  width: 300px;
+  height: 200px;
+  margin-bottom: 40px;
+  img {
+    height: auto;
+    width: 400px;
+    position: relative;
+    top: -240px;
+    left: -20px;
+  }
+}
+.akinatorButton {
+  width: 100%;
+  margin-bottom: 50px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+button {
+  width: 120px;
+  height: 70px;
+  font-size: 20px;
+  font-weight: bolder;
+  background-color: white;
+  color: black;
+  text-align: center;
+  margin: 0px 20px;
+  padding: 10px;
   border: solid 1px $secondary-color;
   border-radius: 20px;
   cursor: pointer;
+  &:hover {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: box-shadow, transform;
+    transition-property: box-shadow, transform;
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.2);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
   &:active {
     box-shadow: 0 5px #666;
     transform: translateY(4px);
   }
 }
-
 /* ---------------------------------------QUESTION AKINATOR--------------------------------------- */
-
-.akinatorContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  color: white;
-  background: linear-gradient(
-    $primary-color,
-    $secondary-color,
-    $third-color,
-    $secondary-color,
-    $primary-color
-  );
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  padding: 50px 10px 10px;
-}
-
-.akinatorQuestion {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.akinatorQuestion p {
-  width: 100%;
-  text-align: center;
-  background-color: white;
-  color: $secondary-color;
-  padding: 15px 20px;
-  border-radius: 30px;
-}
-
 .akinatorQuestionButton {
   width: 100%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-end;
-  padding: 10px;
+  button {
+    margin-bottom: 10px;
+  }
 }
-
-.akinatorQuestionButton button {
+/* .akinatorQuestionButton button {
   width: 130px;
   font-size: 20px;
   background-color: white;
@@ -123,149 +136,64 @@
     box-shadow: 0 5px #666;
     transform: translateY(4px);
   }
-}
-
+ } */
 /* ---------------------------------------ANSWERS AKINATOR--------------------------------------- */
-
-.akinatorAnswer {
+.answerBubble {
   display: flex;
-  flex-direction: column;
+  background-color: white;
+  padding: 15px 20px;
+  border-radius: 30px;
+  height: 80px;
+  width: 80%;
+  margin-bottom: 30px;
+  position: relative;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  text-align: center;
+  font-family: 'Turret Road', cursive;
+  font-size: 20px;
 }
-
-.akinatorAnswer img {
-  margin: 35px 0 10px;
+.akinatorAnswerImg {
+  margin: 25px 0 0;
   border-radius: 5px;
-  width: 210px;
-  height: 200px;
+  width: 230px;
+  height: 250px;
 }
-
-.akinatorAnswerButton {
-  width: 400px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  margin: 50px 0;
-}
-
-.akinatorAnswerButton button {
-  width: 120px;
-  font-size: 20px;
-  background-color: white;
-  color: $secondary-color;
-  text-align: center;
-  padding: 20px 0px;
-  border: solid 1px $secondary-color;
-  border-radius: 20px;
-  cursor: pointer;
-  &:active {
-    box-shadow: 0 5px #666;
-    transform: translateY(4px);
-  }
-}
-
 /* ---------------------------------------THINKING AKINATOR--------------------------------------- */
-
-.thinkingAkinator {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  height: 100%;
-  width: 100%;
-}
-
-.thinkingAkinator p {
-  text-align: center;
-  background-color: white;
-  color: $secondary-color;
-  padding: 15px 20px;
-  border-radius: 30px;
-}
-
-/* ---------------------------------------FINISHED AKINATOR--------------------------------------- */
-
-.finishedAkinator {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  height: 100%;
-  width: 100%;
-}
-
-.finishedAkinator p {
-  text-align: center;
-  background-color: white;
-  color: $secondary-color;
-  padding: 15px 20px;
-  border-radius: 30px;
-}
-
-.finishedAkinatorButton {
-  width: 400px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  margin: 50px 0;
-}
-
-.finishedAkinatorButton button {
-  width: 120px;
-  font-size: 20px;
-  background-color: white;
-  color: $secondary-color;
-  text-align: center;
-  padding: 20px 0px;
-  border: solid 1px $secondary-color;
-  border-radius: 20px;
-  cursor: pointer;
-  &:active {
-    box-shadow: 0 5px #666;
-    transform: translateY(4px);
+.imageContainerThinking {
+  background-image: url('../Images/robot.gif');
+  background-size: 90%;
+  background-repeat: no-repeat;
+  background-position: top;
+  width: 300px;
+  height: 200px;
+  margin-bottom: 40px;
+  img {
+    height: auto;
+    width: 400px;
+    position: relative;
+    top: -240px;
+    left: -20px;
   }
 }
-
-/*---------------------------------------USER WIN AKINATOR---------------------------------------- */
-
-.userWin {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  height: 100%;
-  width: 100%;
+/* --------------------------------------RESPONSIVE AKINATOR-------------------------------------- */
+@media screen and (min-width: 768px) {
+  /* -----------------------------------------TUTO AKINATOR--------------------------------------- */
+  .homeBubble {
+    width: 60%;
+  }
+  button {
+    margin: 0px 60px;
+  }
 }
-
-.userWin p {
-  text-align: center;
-  background-color: white;
-  color: $secondary-color;
-  padding: 15px 20px;
-  border-radius: 30px;
-}
-
-.userWinButton {
-  width: 400px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  margin: 50px 0;
-}
-
-.userWinButton button {
-  width: 120px;
-  font-size: 20px;
-  background-color: white;
-  color: $secondary-color;
-  text-align: center;
-  padding: 20px 0px;
-  border: solid 1px $secondary-color;
-  border-radius: 20px;
-  cursor: pointer;
-  &:active {
-    box-shadow: 0 5px #666;
-    transform: translateY(4px);
+@media screen and (min-width: 1024px) {
+  /* -----------------------------------------TUTO AKINATOR--------------------------------------- */
+  .homeBubble {
+    width: 50%;
+  }
+  button {
+    width: 150px;
+    height: 80px;
+    margin: 0px 100px 40px;
   }
 }

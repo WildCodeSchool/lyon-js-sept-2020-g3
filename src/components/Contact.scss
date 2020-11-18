@@ -2,10 +2,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Turret+Road:wght@500;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .contactBody {
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 94vh;
+  overflow-x: hidden;
   padding: 2%;
   background: linear-gradient(
     $primary-color,
@@ -23,91 +31,332 @@
   font-size: 15px;
   text-align: center;
   border-radius: 20px;
+  z-index: 0;
 }
 
 .screen {
   width: 90vw;
   height: 50vh;
+  margin: 3%;
   background-image: url('../Images/screen@4x.png');
-  background-size: 80%;
+  background-size: 300px;
   background-repeat: no-repeat;
   background-position: center;
+  z-index: 0;
 }
-.goldenBook {
+
+.goldenScreen {
   display: flex;
   flex-direction: column;
   align-items: center;
   overflow: scroll;
   position: relative;
   width: 90vw;
-  height: 25vh;
-  top: 50px;
+  height: 20vh;
+  top: 75px;
+  z-index: 0;
 }
 
 .reviewArea {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  margin: 2%;
   width: 100%;
-}
-
-.starRating {
-  margin: 2%;
+  z-index: 0;
 }
 
 .form {
   display: flex;
   flex-direction: column;
-  width: 95%;
+  align-items: center;
+  height: 100px;
+  width: 100%;
+  z-index: 0;
+}
+
+.starRating {
   margin: 2%;
-  position: absolute;
+  z-index: 0;
 }
 
 .reviewInput {
   background-color: white;
-  border-radius: 20px;
-  margin-bottom: 5%;
-  width: 100%;
-  height: 10px;
-  padding: 20px;
+  border-radius: 40px;
+  height: 5vh;
+  width: 90%;
   text-align: center;
+  margin-bottom: 5px;
+  z-index: 0;
+  &:focus {
+    outline: 0;
+  }
 }
 
 .submitButton {
+  width: 90%;
+  margin: 0;
   font-family: 'Poppins', sans-serif;
   color: white;
-  align-items: center;
-  margin-bottom: 50px;
-  font-size: 1rem;
-  width: 100%;
-  height: 35px;
-  border-radius: 50px;
+  background-color: #e16c69;
   cursor: pointer;
-  border: 3px solid lighten(blue, 8%);
-  background: radial-gradient(
-    ellipse at center,
-    lighten(blue, 17%),
-    lighten(blue, 12%)
-  );
-  box-shadow: 2px 2px 1px blue, 0px 2px 0px lighten(blue, 30%),
-    inset 2px 2px 0px lighten(blue, 30%);
-  transition: all 0.3s ease;
-
+  z-index: 0;
   &:active {
-    margin-top: 1px;
-    transform: scale(0.95);
-    transition: all 0.3s ease;
-    outline: none;
-    background: radial-gradient(
-      ellipse at center,
-      lighten(blue, 15%),
-      lighten(blue, 10%)
-    );
-    box-shadow: 0 0px 0px violet, 0 0px 30px lighten(blue, 30%),
-      inset 0 -5px 0px lighten(blue, 10%);
+    background-color: #bb5759;
+    box-shadow: 0 4px #666;
   }
   &:focus {
-    outline: none;
+    outline: 0;
+  }
+}
+
+@media screen and (min-width: 400px) and (max-width: 589px) {
+  /*Grand Smartphone*/
+
+  .title {
+    max-width: 60vw;
+  }
+
+  .screen {
+    width: 85vw;
+    height: 60vh;
+    background-image: url('../Images/screen@4x.png');
+    background-size: 300px;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 2%;
+    margin-bottom: 0;
+  }
+  .goldenScreen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: scroll;
+    position: relative;
+    font-size: 1rem;
+    width: 90vw;
+    height: 20vh;
+    top: 14vh;
+    padding-left: 22%;
+    padding-right: 25%;
+    text-align: center;
+  }
+
+  .reviewInput {
+    background-color: white;
+    font-size: 1rem;
+    border-radius: 20px;
+    margin-bottom: 2%;
+    width: 60vw;
+    height: 20px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .submitButton {
+    font-size: 1rem;
+    width: 60vw;
+    height: 55px;
+  }
+}
+
+@media screen and (min-width: 590px) and (max-width: 829px) {
+  /*Tablette*/
+
+  .title {
+    max-width: 60vw;
+  }
+
+  .screen {
+    width: 85vw;
+    height: 60vh;
+    background-image: url('../Images/screen@4x.png');
+    background-size: 300px;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 2%;
+    margin-bottom: 0;
+  }
+  .goldenScreen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: scroll;
+    position: relative;
+    font-size: 1rem;
+    width: 90vw;
+    height: 22vh;
+    top: 11vh;
+    padding-left: 22%;
+    padding-right: 25%;
+    text-align: center;
+  }
+
+  .reviewInput {
+    background-color: white;
+    font-size: 1rem;
+    border-radius: 20px;
+    margin-bottom: 2%;
+    width: 60vw;
+    height: 20px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .submitButton {
+    font-size: 1rem;
+    width: 60vw;
+    height: 55px;
+  }
+}
+
+@media screen and (min-width: 830px) and (max-width: 949px) {
+  /*Moyenne Tablette*/
+
+  .title {
+    max-width: 60vw;
+  }
+
+  .screen {
+    width: 85vw;
+    height: 60vh;
+    background-image: url('../Images/screen@4x.png');
+    background-size: 300px;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 2%;
+    margin-bottom: 0;
+  }
+  .goldenScreen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: scroll;
+    position: relative;
+    font-size: 1rem;
+    width: 90vw;
+    height: 22vh;
+    top: 10vh;
+    padding-left: 22%;
+    padding-right: 25%;
+    text-align: center;
+  }
+
+  .reviewInput {
+    background-color: white;
+    font-size: 1rem;
+    border-radius: 20px;
+    margin-bottom: 2%;
+    width: 60vw;
+    height: 20px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .submitButton {
+    font-size: 1rem;
+    width: 60vw;
+    height: 55px;
+  }
+}
+
+@media screen and (min-width: 950px) and (max-width: 1024px) {
+  /*Big Tablette*/
+
+  .title {
+    max-width: 60vw;
+  }
+
+  .screen {
+    width: 85vw;
+    height: 60vh;
+    background-image: url('../Images/screen@4x.png');
+    background-size: 350px;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 2%;
+    margin-bottom: 0;
+  }
+  .goldenScreen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: scroll;
+    position: relative;
+    font-size: 1rem;
+    width: 90vw;
+    height: 22vh;
+    top: 9vh;
+    padding-left: 22%;
+    padding-right: 25%;
+    text-align: center;
+  }
+
+  .reviewInput {
+    background-color: white;
+    font-size: 1rem;
+    border-radius: 20px;
+    margin-bottom: 2%;
+    width: 60vw;
+    height: 20px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .submitButton {
+    font-size: 1rem;
+    width: 60vw;
+    height: 55px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  /*Desktop*/
+
+  .title {
+    max-width: 60vw;
+  }
+
+  .screen {
+    width: 90vw;
+    height: 65vh;
+    background-image: url('../Images/screen@4x.png');
+    background-size: 325px;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-top: 10px;
+    margin-right: 6vw;
+    margin-bottom: 0;
+  }
+  .goldenScreen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: scroll;
+    position: relative;
+    font-size: 1rem;
+    width: 90vw;
+    height: 23vh;
+    top: 6.5vh;
+    padding-left: 24%;
+    padding-right: 25%;
+    text-align: center;
+  }
+
+  .reviewInput {
+    background-color: white;
+    font-size: 1rem;
+    border-radius: 20px;
+    margin-bottom: 1%;
+    width: 60vw;
+    height: 20px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .submitButton {
+    font-size: 1rem;
+    width: 60vw;
+    height: 55px;
   }
 }
