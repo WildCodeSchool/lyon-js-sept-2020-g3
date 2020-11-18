@@ -29,6 +29,7 @@
     position: absolute;
     background-size: cover;
     background-position: center;
+    overflow-x: hidden;
 
     .chat1ContainerOn {
       display: flex;
@@ -196,6 +197,7 @@
 @media screen and (min-width: 600px) and (max-width: 1024px) {
   .questionBody {
     padding: 0px 20%;
+    overflow-x: hidden;
   }
 }
 
@@ -220,6 +222,7 @@
     position: absolute;
     background-size: cover;
     background-position: center;
+    overflow-x: hidden;
 
     .chat1ContainerOn,
     .chat1ContainerOff {
