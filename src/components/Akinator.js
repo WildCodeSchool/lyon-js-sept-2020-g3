@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Akinator.scss';
 import axios from 'axios';
+
 function Akinator() {
   const [question, setQuestion] = useState('');
   const [answers, setAnswers] = useState([]);

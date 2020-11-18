@@ -6,6 +6,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  z-index: 1;
 }
 
 .contactBody {
@@ -13,6 +14,7 @@
   flex-direction: column;
   align-items: center;
   height: 94vh;
+  overflow-x: hidden;
   padding: 2%;
   background: linear-gradient(
     $primary-color,
@@ -37,7 +39,7 @@
   height: 50vh;
   margin: 3%;
   background-image: url('../Images/screen@4x.png');
-  background-size: 80vw;
+  background-size: 300px;
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -77,9 +79,12 @@
   background-color: white;
   border-radius: 40px;
   height: 5vh;
-  width: 100%;
+  width: 90%;
   text-align: center;
   margin-bottom: 5px;
+  &:focus {
+    outline: 0;
+  }
 }
 
 .submitButton {
@@ -98,8 +103,8 @@
   }
 }
 
-@media screen and (min-width: 400px) and (max-width: 559px) {
-  /*Tablette*/
+@media screen and (min-width: 400px) and (max-width: 589px) {
+  /*Grand Smartphone*/
 
   .title {
     max-width: 60vw;
@@ -109,7 +114,7 @@
     width: 85vw;
     height: 60vh;
     background-image: url('../Images/screen@4x.png');
-    background-size: 60vw;
+    background-size: 300px;
     background-repeat: no-repeat;
     background-position: center;
     margin: 2%;
@@ -148,7 +153,7 @@
   }
 }
 
-@media screen and (min-width: 560px) and (max-width: 829px) {
+@media screen and (min-width: 590px) and (max-width: 829px) {
   /*Tablette*/
 
   .title {
@@ -159,7 +164,7 @@
     width: 85vw;
     height: 60vh;
     background-image: url('../Images/screen@4x.png');
-    background-size: 60vw;
+    background-size: 300px;
     background-repeat: no-repeat;
     background-position: center;
     margin: 2%;
@@ -173,8 +178,8 @@
     position: relative;
     font-size: 1rem;
     width: 90vw;
-    height: 25vh;
-    top: 10vh;
+    height: 22vh;
+    top: 11vh;
     padding-left: 22%;
     padding-right: 25%;
     text-align: center;
@@ -199,7 +204,7 @@
 }
 
 @media screen and (min-width: 830px) and (max-width: 949px) {
-  /*Tablette*/
+  /*Moyenne Tablette*/
 
   .title {
     max-width: 60vw;
@@ -209,7 +214,7 @@
     width: 85vw;
     height: 60vh;
     background-image: url('../Images/screen@4x.png');
-    background-size: 40vw;
+    background-size: 300px;
     background-repeat: no-repeat;
     background-position: center;
     margin: 2%;
@@ -223,8 +228,8 @@
     position: relative;
     font-size: 1rem;
     width: 90vw;
-    height: 25vh;
-    top: 8vh;
+    height: 22vh;
+    top: 10vh;
     padding-left: 22%;
     padding-right: 25%;
     text-align: center;
@@ -249,7 +254,7 @@
 }
 
 @media screen and (min-width: 950px) and (max-width: 1024px) {
-  /*Tablette*/
+  /*Big Tablette*/
 
   .title {
     max-width: 60vw;
@@ -259,7 +264,7 @@
     width: 85vw;
     height: 60vh;
     background-image: url('../Images/screen@4x.png');
-    background-size: 35vw;
+    background-size: 350px;
     background-repeat: no-repeat;
     background-position: center;
     margin: 2%;
@@ -307,9 +312,9 @@
 
   .screen {
     width: 90vw;
-    height: 60vh;
+    height: 65vh;
     background-image: url('../Images/screen@4x.png');
-    background-size: 25%;
+    background-size: 325px;
     background-repeat: no-repeat;
     background-position: center;
     margin-top: 10px;
@@ -325,7 +330,7 @@
     font-size: 1rem;
     width: 90vw;
     height: 23vh;
-    top: 6vh;
+    top: 6.5vh;
     padding-left: 24%;
     padding-right: 25%;
     text-align: center;
