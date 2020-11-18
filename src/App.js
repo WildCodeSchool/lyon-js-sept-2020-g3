@@ -19,6 +19,7 @@ function App() {
     <Router>
       <div className="app">
         <Navbar />
+
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/store" component={Store} />
