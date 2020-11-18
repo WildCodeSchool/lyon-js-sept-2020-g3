@@ -42,6 +42,7 @@ class Navbar extends React.Component {
           </ul>
         </div>
         <Menu
+          className="menuNavbar"
           isOpen={menuOpen}
           onStateChange={(state) => this.handleStateChange(state)}
           noOverlay
