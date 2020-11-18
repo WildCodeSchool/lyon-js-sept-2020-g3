@@ -17,9 +17,9 @@
   display: flex;
   flex-direction: column;
   width: 90%;
-  margin: 20px 0 20px;
+  margin: 50px 0 20px;
   background-color: white;
-  color: $primary-color;
+  color: black;
   border-radius: 30px;
 }
 
@@ -30,10 +30,23 @@
   margin: 30px;
 }
 
+.modalHeaderConnexion {
+  padding-top: 20px;
+  border-bottom: solid 3px $primary-color;
+  height: 60px;
+  margin: 30px 30px 10px 30px;
+}
+
 .modalBody {
   background-color: white;
   margin: 30px;
   text-align: center;
+}
+
+.connexionModalImage {
+  width: 90px;
+  height: 90px;
+  margin-bottom: 20px;
 }
 
 .modalFooter {
@@ -53,7 +66,7 @@
     text-align: center;
     padding: 20px 0px;
     border: solid 1px $secondary-color;
-    border-radius: 40px;
+    border-radius: 20px;
     cursor: pointer;
     &:active {
       box-shadow: 0 5px #666;
@@ -65,13 +78,72 @@
   }
 }
 
+.modalFooterConnexion {
+  border-top: solid 3px $primary-color;
+  margin: 20px 30px 20px 30px;
+  padding-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+  text-align: center;
+  align-items: center;
+  button {
+    margin-top: 0px;
+    width: 80px;
+    font-size: 20px;
+    background-color: $secondary-color;
+    color: white;
+    text-align: center;
+    padding: 20px 0px;
+    border: solid 1px $secondary-color;
+    border-radius: 20px;
+    cursor: pointer;
+    &:active {
+      box-shadow: 0 5px #666;
+      transform: translateY(4px);
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .modalButton {
+    width: 200px;
+  }
+}
+
 @media screen and (min-width: 1024px) {
   .modalContainer {
     width: 60%;
   }
 
-  .modalFooter button {
-    width: 120px;
-    margin-top: 20px;
+  .modalFooterConnexion {
+    border-top: solid 3px $primary-color;
+    margin: 20px 30px 20px 30px;
+    padding-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+    text-align: center;
+    align-items: center;
+    button {
+      margin-top: 0px;
+      width: 80px;
+      font-size: 20px;
+      background-color: $secondary-color;
+      color: white;
+      text-align: center;
+      padding: 20px 0px;
+      border: solid 1px $secondary-color;
+      border-radius: 20px;
+      cursor: pointer;
+      &:active {
+        box-shadow: 0 5px #666;
+        transform: translateY(4px);
+      }
+      &:focus {
+        outline: none;
+      }
+    }
   }
 }
