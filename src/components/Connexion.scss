@@ -14,7 +14,7 @@
 .connexionBody {
   display: flex;
   flex-direction: column;
-  height: 93vh;
+  height: 93.8vh;
   width: 100vw;
   background: linear-gradient(
     $primary-color,
@@ -28,4 +28,10 @@
   min-height: 100%;
   background-size: cover;
   background-position: center;
+}
+
+@media screen and (min-width: 768px) {
+}
+
+@media screen and (min-width: 1024px) {
 }
