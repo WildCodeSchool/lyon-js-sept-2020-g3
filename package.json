@@ -12,9 +12,11 @@
     "icons": "^1.0.0",
     "node-sass": "^4.14.1",
     "react": "^17.0.1",
+    "react-bootstrap-validation": "^0.1.11",
     "react-burger-menu": "^2.9.0",
     "react-dom": "^17.0.0",
     "react-icons": "^3.11.0",
+    "react-modal-bootstrap": "^1.1.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.4",
     "react-scroll-to-bottom": "^4.0.0"

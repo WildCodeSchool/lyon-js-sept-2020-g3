@@ -5,8 +5,8 @@
   padding: 0;
   box-sizing: border-box;
 }
-/* ------------------STORE PART---------------------------------------------------------
- */
+/* ---------------------------------------STORE PART-----------------------------------------------*/
+
 .storePart {
   display: flex;
   flex-direction: column;
@@ -44,15 +44,13 @@
   padding: 5px;
   margin-top: 50px;
   margin-bottom: 50px;
-}
-
-.storeCard h2 {
-  margin: 20px 0 20px;
-}
-
-.storeImg {
-  margin: 35px 0 10px;
-  border-radius: 5px;
+  h2 {
+    margin: 20px 0 20px;
+  }
+  img {
+    margin: 35px 0 10px;
+    border-radius: 5px;
+  }
 }
 
 .btnStore {
@@ -69,15 +67,19 @@
     box-shadow: 0 5px #666;
     transform: translateY(4px);
   }
+  &:focus {
+    outline: none;
+  }
 }
 
-/* ------------------UNIQUE STORE PART---------------------------------------------------------
- */
+/* ------------------------------UNIQUE STORE PART-------------------------------------------------*/
 
 .uniqueStore {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
+  height: 93vh;
   background: linear-gradient(
     $primary-color,
     $secondary-color,
@@ -85,7 +87,7 @@
     $secondary-color,
     $primary-color
   );
-  position: absolute;
+  position: relative;
   min-width: 100%;
   min-height: 100%;
   background-size: cover;
@@ -99,35 +101,39 @@
   height: 420px;
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
   align-items: center;
   text-align: center;
   border: solid 1px black;
   border-radius: 20px;
-  padding: 5px;
-  margin-top: 50px;
-  margin-bottom: 50px;
 }
 
 .uniqueStoreText {
   padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-.uniqueStoreText p {
-  padding: 5px;
+
+.uniqueStoreDescription {
+  height: 50px;
 }
 
 .uniqueStorePrice {
   font-weight: bolder;
   font-size: 20px;
+  margin-top: 5px;
+  height: 10px;
 }
 
 .uniqueStoreButton {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  width: 90%;
+  width: 98%;
   border-radius: 20px;
   cursor: pointer;
-  padding-bottom: 10px;
 }
 
 .uniqueStoreButton button {
@@ -144,10 +150,46 @@
     box-shadow: 0 5px #666;
     transform: translateY(4px);
   }
+  &:focus {
+    outline: none;
+  }
 }
 
-/* ------------------ARROW---------------------------------------------------------
- */
+.modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(
+    $primary-color,
+    $secondary-color,
+    $third-color,
+    $secondary-color,
+    $primary-color
+  );
+}
+
+.uniqueStoreModalOpen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 93vh;
+  opacity: 0.7;
+  background: linear-gradient(
+    $primary-color,
+    $secondary-color,
+    $third-color,
+    $secondary-color,
+    $primary-color
+  );
+  position: relative;
+  min-width: 100%;
+  min-height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+/* ----------------------------------ARROW---------------------------------------------------------*/
 
 .arrow {
   border: solid white;
@@ -163,18 +205,33 @@
 .right {
   transform: rotate(-45deg);
   -webkit-transform: rotate(-45deg);
-  right: 6%;
+  right: 4%;
 }
 
 .left {
   transform: rotate(135deg);
   -webkit-transform: rotate(135deg);
-  left: 6%;
+  left: 4%;
+}
+
+.mode-open {
+  text-align: center;
 }
 
 @media screen and (min-width: 768px) {
-  /* ------------------ARROW---------------------------------------------------------
- */
+  /* ---------------------------------------STORE PART-----------------------------------------------*/
+
+  .storePart {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .storeCard {
+    margin: 0 20px 40px;
+  }
+
+  /* ----------------------------------ARROW---------------------------------------------------------*/
   .right {
     right: 12%;
   }
@@ -185,12 +242,26 @@
 }
 
 @media screen and (min-width: 1024px) {
+  .storeCard {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    position: relative;
+    width: 60vw;
+    height: 40vw;
+    max-width: 380px;
+    max-height: 250px;
+    margin: 0;
+    color: white;
+    perspective: 1000px;
+    transform-origin: center;
+  }
+
   .uniqueCard {
     width: 400px;
     height: 420px;
   }
-  /* ------------------ARROW---------------------------------------------------------
- */
+  /* ----------------------------------ARROW---------------------------------------------------------*/
   .right {
     right: 15%;
   }
