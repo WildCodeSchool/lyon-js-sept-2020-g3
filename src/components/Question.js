@@ -141,7 +141,6 @@ function Question() {
               type="button"
               onClick={submitToAPI}
             >
-              {' '}
               ASK ME!
             </button>
           </div>
