@@ -185,8 +185,8 @@ button {
   flex-wrap: wrap;
   margin-bottom: 30px;
   button:nth-child(-n + 2) {
-    margin: 0 15px 10px;
-    width: 110px;
+    margin: 0 12px 10px;
+    width: 145px;
   }
 }
 
@@ -236,7 +236,7 @@ button {
   padding: 15px 20px;
   border-radius: 30px;
   height: 80px;
-  width: 80%;
+  width: 300px;
   margin-top: 20px;
 
   position: relative;
@@ -304,6 +304,7 @@ button {
 .previousButton {
   justify-content: center;
   display: flex;
+  align-items: center;
   width: 60px;
   height: 40px;
   font-size: 25px;
@@ -312,7 +313,8 @@ button {
   background-color: #bb5759;
   position: absolute;
   right: 0%;
-  top: 63%;
+  top: 61%;
+  padding-top: 12px;
 }
 
 /* ---------------------------------------THINKING AKINATOR--------------------------------------- */
@@ -390,6 +392,10 @@ button {
     }
   }
 
+  .previousButton {
+    right: 3%;
+  }
+
   @keyframes load {
     0% {
       left: 25%;
@@ -414,6 +420,13 @@ button {
 
 @media screen and (min-width: 768px) {
   /* ---------------------------------------GENERAL AKINATOR--------------------------------------- */
+
+  .previousButton {
+    top: 70%;
+    right: 10%;
+    width: 80px;
+    height: 50px;
+  }
 
   .akinatorBubble {
     width: 60%;
@@ -457,6 +470,11 @@ button {
   }
 
   /* ---------------------------------------ANSWERS AKINATOR--------------------------------------- */
+
+  .previousButton {
+    top: 72%;
+    right: 25%;
+  }
 
   .akinatorAnswerImg {
     margin: 20px 0 0;
