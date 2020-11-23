@@ -2,10 +2,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Turret+Road:wght@500;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
 
+.connexionTitle {
+  color: white;
+  font-size: 50px;
+  text-align: center;
+  padding-top: 25px;
+  position: relative;
+  margin-bottom: 20px;
+}
+
 .connexionBody {
   display: flex;
   flex-direction: column;
-  height: 93vh;
+  height: 93.8vh;
   width: 100vw;
   background: linear-gradient(
     $primary-color,
@@ -19,4 +28,10 @@
   min-height: 100%;
   background-size: cover;
   background-position: center;
+}
+
+@media screen and (min-width: 768px) {
+}
+
+@media screen and (min-width: 1024px) {
 }
