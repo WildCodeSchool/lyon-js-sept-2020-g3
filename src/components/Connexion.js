@@ -4,12 +4,14 @@ import './Connexion.scss';
 import Modal from './Modal';
 import './Modal.scss';
 import workInProgress from '../Images/workInProgress.png';
+import Background from './Background';
 
 const Connexion = () => {
   const isModalOpen = true;
 
   return (
     <div className="connexionBody">
+      <Background />
       <h1 className="connexionTitle">Connexion</h1>
       <Modal showModal={isModalOpen}>
         <div className="modalHeaderConnexion">

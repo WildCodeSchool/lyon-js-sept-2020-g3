@@ -10,12 +10,14 @@
   display: flex;
   justify-content: space-between;
   background-color: $primary-color;
-  height: 5%;
+  height: 60px;
+
   .navbarLogo {
     img {
       width: 115px;
       padding-left: 10px;
-      padding-top: 5px;
+      padding-top: 10px;
+      margin-left: 2px;
     }
     width: 30%;
   }
@@ -38,7 +40,8 @@
 /* Color/shape of burger icon bars */
 .bm-burger-bars {
   background: white;
-  border-radius: 10px;
+  border-radius: 0px;
+  max-height: 5px;
 }
 
 /* Color/shape of burger icon bars on hover*/
@@ -132,16 +135,35 @@
     display: none;
   }
   .menu {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
     width: 80%;
+
+    height: 50px;
+    padding-top: 20px;
     display: block;
+    cursor: pointer;
     ul {
       display: flex;
       justify-content: space-around;
-      padding-top: 10px;
+      margin-top: 5px;
+      width: 100%;
     }
     a {
+      width: 12%;
       text-decoration: none;
       color: white;
+      &:hover {
+        background: white;
+        color: $primary-color;
+        padding: 5px 0;
+        border-radius: 10px;
+        &:active {
+          background: #e16c69;
+          color: white;
+        }
+      }
     }
   }
 }
