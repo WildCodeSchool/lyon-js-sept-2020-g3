@@ -2,7 +2,27 @@ import React, { useState, useEffect, useRef } from 'react';
 
 import './Question.scss';
 import Background from './Background';
+
 import conversation from '../Images/conversation.png';
+import love from '../Images/ReactionArchiGIF/archibot-amoureux.gif';
+import classic from '../Images/ReactionArchiGIF/archibot-bouche-classique.gif';
+import wink from '../Images/ReactionArchiGIF/archibot-clin-doeil.gif';
+import dingo from '../Images/ReactionArchiGIF/archibot-dingo.gif';
+import mouth from '../Images/ReactionArchiGIF/archibot-grosse-bouche.gif';
+import nocomprendo from '../Images/ReactionArchiGIF/archibot-incompris.gif';
+import angry from '../Images/ReactionArchiGIF/archibot-mecontent.gif';
+import sad from '../Images/ReactionArchiGIF/archibot-sad.gif';
+
+const archibotReactionsGif = [
+  love,
+  classic,
+  wink,
+  dingo,
+  mouth,
+  nocomprendo,
+  angry,
+  sad,
+];
 
 function Question() {
   const [question, setQuestion] = useState('');
@@ -10,6 +30,7 @@ function Question() {
   const [messageArray, setMessageArray] = useState([]);
   const [chat1, setChat1] = useState('on');
   const [chat2, setChat2] = useState('off');
+  const [randomImage, setRandomImage] = useState(0);
 
   // useRef utilisé pour atteindre le bas de la conversation dans le mode de chat avec tous les messages
   const conversationBottom = useRef(null);
@@ -72,11 +93,15 @@ function Question() {
     setChat1(chat1 === 'on' ? 'off' : 'on');
     setChat2(chat2 === 'on' ? 'off' : 'on');
   };
+  const randomImageGif = () => {
+    setRandomImage(Math.floor(Math.random() * archibotReactionsGif.length));
+  };
 
   // Met à jour le tableau de stockage des Q/A et clear l'input de question quand le state response change
   useEffect(() => {
     updateMessageArray();
     resetQuestion();
+    randomImageGif();
   }, [response]);
 
   useEffect(() => {
@@ -93,7 +118,12 @@ function Question() {
           <div className="questionBubble">
             <span>{response}</span>
           </div>
-          <div className="imageContainer" />
+          <div
+            className="imageContainer"
+            style={{
+              backgroundImage: `url(${archibotReactionsGif[randomImage]})`,
+            }}
+          />
         </div>
         <div
           className={chat2 === 'on' ? 'chat2ContainerOn' : 'chat2ContainerOff'}
