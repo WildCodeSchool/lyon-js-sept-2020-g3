@@ -12,8 +12,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 94vh;
-  overflow-x: hidden;
+  height: 92vh;
+  overflow: hidden;
   padding: 2%;
   background: linear-gradient(
     $primary-color,
@@ -107,6 +107,9 @@
   }
   &:focus {
     outline: 0;
+  }
+  &:hover {
+    transform: scale (0);
   }
 }
 

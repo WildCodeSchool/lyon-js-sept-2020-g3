@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 import './Question.scss';
-import Chat from '@material-ui/icons/Chat';
+import Background from './Background';
+import conversation from '../Images/conversation.png';
 
 function Question() {
   const [question, setQuestion] = useState('');
@@ -65,11 +66,13 @@ function Question() {
     setChat1(chat1 === 'on' ? 'off' : 'on');
     setChat2(chat2 === 'on' ? 'off' : 'on');
   };
+
   // Met à jour le tableau de stockage des Q/A et clear l'input de question quand le state response change
   useEffect(() => {
     updateMessageArray();
     resetQuestion();
   }, [response]);
+
   useEffect(() => {
     scrollToBottom();
   }, [messageArray]);
@@ -77,16 +80,17 @@ function Question() {
   return (
     <div>
       <div className="questionBody">
+        <Background />
         <div
-          className={chat1 === 'on' ? 'chat1ContainerOn' : 'chatContainerOff'}
+          className={chat1 === 'on' ? 'chat1ContainerOn' : 'chat1ContainerOff'}
         >
           <div className="questionBubble">
-            <span className="tip">{response}</span>
+            <span>{response}</span>
           </div>
           <div className="imageContainer" />
         </div>
         <div
-          className={chat2 === 'on' ? 'chat2ContainerOn' : 'chatContainerOff'}
+          className={chat2 === 'on' ? 'chat2ContainerOn' : 'chat2ContainerOff'}
         >
           {messageArray.map((element, index) => {
             return (
@@ -98,9 +102,9 @@ function Question() {
               >
                 {index !== 0 &&
                   (index % 2 === 0 ? (
-                    <div className="humanMessage">{`${element}`}</div>
+                    <div className="humanMessage">{element}</div>
                   ) : (
-                    <div className="botMessage">{`${element}`}</div>
+                    <div className="botMessage">{element}</div>
                   ))}
               </div>
             );
@@ -114,8 +118,15 @@ function Question() {
             submitQuestionWithEnter(e);
           }}
         >
-          <button type="button" className="chatIcon" onClick={switchChatMode}>
-            <Chat />
+          <button
+            type="button"
+            className="chatIconButton"
+            onClick={switchChatMode}
+          >
+            <div
+              className="chatIcon"
+              style={{ backgroundImage: `url(${conversation})` }}
+            />
           </button>
 
           <div className="questionArea">
@@ -130,7 +141,6 @@ function Question() {
               type="button"
               onClick={submitToAPI}
             >
-              {' '}
               ASK ME!
             </button>
           </div>
