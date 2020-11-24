@@ -1,37 +1,27 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
-import './Question.scss';
+import './QuestionDrunk.scss';
 import Background from './Background';
 
 import conversation from '../Images/conversation.png';
 import love from '../Images/ReactionArchiGIF/archibot-amoureux.gif';
-import classic from '../Images/ReactionArchiGIF/archibot-bouche-classique.gif';
-import wink from '../Images/ReactionArchiGIF/archibot-clin-doeil.gif';
 import dingo from '../Images/ReactionArchiGIF/archibot-dingo.gif';
-import mouth from '../Images/ReactionArchiGIF/archibot-grosse-bouche.gif';
 import nocomprendo from '../Images/ReactionArchiGIF/archibot-incompris.gif';
 import angry from '../Images/ReactionArchiGIF/archibot-mecontent.gif';
 import sad from '../Images/ReactionArchiGIF/archibot-sad.gif';
+import beer from '../Images/beer.png';
 
-const archibotReactionsGif = [
-  love,
-  classic,
-  wink,
-  dingo,
-  mouth,
-  nocomprendo,
-  angry,
-  sad,
-];
+const archibotReactionsGif = [love, dingo, nocomprendo, angry, sad];
 
-function Question() {
+function QuestionDrunk() {
   const [question, setQuestion] = useState('');
-  const [response, setResponse] = useState('Ask me what you want !');
+  const [response, setResponse] = useState('What *burp* do you want ?');
   const [messageArray, setMessageArray] = useState([]);
   const [chat1, setChat1] = useState('on');
   const [chat2, setChat2] = useState('off');
   const [randomImage, setRandomImage] = useState(0);
+  const [drunkLevel, setDrunkLevel] = useState(1);
 
   // useRef utilisé pour atteindre le bas de la conversation dans le mode de chat avec tous les messages
   const conversationBottom = useRef(null);
@@ -48,23 +38,57 @@ function Question() {
   const resetQuestion = () => {
     setQuestion('');
   };
-  // Mise à jour du state réponse en fonction du retour de l'API
-  const updateResponse = (apiResult) => {
-    setResponse(apiResult.cnt);
-  };
   // Mise à jour du state array qui rassemble toutes les questions et réponses à la suite
   const updateMessageArray = () => {
     setMessageArray([...messageArray, question, response]);
   };
+  const drunkLevelUp = () => {
+    if (drunkLevel < 3) {
+      setDrunkLevel(drunkLevel + 1);
+    }
+  };
+  const drunkLevelDown = () => {
+    if (drunkLevel > 1) {
+      setDrunkLevel(drunkLevel - 1);
+    }
+  };
+
+  const botResponseDrunkLevel1 = (string) => {
+    const voyels = ['a', 'e', 'i', 'o', 'u'];
+    const responseArray = string.split('');
+    for (let i = 1; i <= responseArray.length; i += 1) {
+      if (
+        i % 3 === 0 &&
+        voyels.includes(responseArray[i]) === true &&
+        responseArray.length - i >= 2
+      ) {
+        responseArray[i] = voyels[Math.floor(Math.random() * voyels.length)];
+      }
+    }
+    return responseArray.join('');
+  };
+  const botResponseDrunkLevel2 = (string) => {
+    const responseArray = string.split(' ');
+    let wordTmp = '';
+    for (let i = 1; i <= responseArray.length; i += 1) {
+      if (i % 3 === 0 && responseArray.length - i >= 2) {
+        wordTmp = responseArray[i];
+        responseArray[i] = responseArray[i + 1];
+        responseArray[i + 1] = wordTmp;
+      }
+    }
+    return responseArray.join(' ');
+  };
+
   // Envoi de la question à l'API et stockage de la réponse dans le state
   const submitToAPI = () => {
-    const encodedURIMessage = encodeURIComponent(question);
-    const url = `https://acobot-brainshop-ai-v1.p.rapidapi.com/get?bid=153798&key=SXUv8ChYDG1AboDK&uid=User&msg=${encodedURIMessage}`;
+    let encodedURIMessage = encodeURIComponent(question);
+    let url = `https://acobot-brainshop-ai-v1.p.rapidapi.com/get?bid=153798&key=SXUv8ChYDG1AboDK&uid=User&msg=${encodedURIMessage}`;
 
     if (question === '') {
       setQuestion('...');
-      setResponse('What is your question ?');
-    } else {
+      setResponse('hhmmm... want a beer buddy ?!');
+    } else if (drunkLevel === 1) {
       fetch(url, {
         method: 'GET',
         headers: {
@@ -77,7 +101,50 @@ function Question() {
           return res.json();
         })
         .then((res) => {
-          updateResponse(res);
+          const resDrunkLevel1 = botResponseDrunkLevel1(res.cnt);
+          setResponse(resDrunkLevel1);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else if (drunkLevel === 2) {
+      fetch(url, {
+        method: 'GET',
+        headers: {
+          'x-rapidapi-host': 'acobot-brainshop-ai-v1.p.rapidapi.com',
+          'x-rapidapi-key':
+            '9d66c11fc3msh0ddb29e8617b481p17897bjsn28a020b0c4bf',
+        },
+      })
+        .then((res) => {
+          return res.json();
+        })
+        .then((res) => {
+          const resDrunkLevel1 = botResponseDrunkLevel2(res.cnt);
+          setResponse(resDrunkLevel1);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      encodedURIMessage = encodeURIComponent('qsdqsdqsd');
+      url = `https://acobot-brainshop-ai-v1.p.rapidapi.com/get?bid=153798&key=SXUv8ChYDG1AboDK&uid=User&msg=${encodedURIMessage}`;
+      fetch(url, {
+        method: 'GET',
+        headers: {
+          'x-rapidapi-host': 'acobot-brainshop-ai-v1.p.rapidapi.com',
+          'x-rapidapi-key':
+            '9d66c11fc3msh0ddb29e8617b481p17897bjsn28a020b0c4bf',
+        },
+      })
+        .then((res) => {
+          return res.json();
+        })
+        .then((res) => {
+          const resDrunkLevel1 = botResponseDrunkLevel1(
+            botResponseDrunkLevel2(res.cnt)
+          );
+          setResponse(resDrunkLevel1);
         })
         .catch((err) => {
           console.log(err);
@@ -114,7 +181,7 @@ function Question() {
       <div className="questionBody">
         <Background />
         <button type="button" className="robotMode">
-          <Link to="/QuestionDrunk">Drunk mode</Link>
+          <Link to="/Question">Normal mode</Link>
         </button>
         <div
           className={chat1 === 'on' ? 'chat1ContainerOn' : 'chat1ContainerOff'}
@@ -158,6 +225,41 @@ function Question() {
             submitQuestionWithEnter(e);
           }}
         >
+          <div className="drunkSettings">
+            <button
+              className="drunkDown"
+              type="button"
+              onClick={drunkLevelDown}
+            >
+              -
+              <img src={beer} alt="beer icon" />
+            </button>
+            <div className="drunkLevel">
+              {drunkLevel === 1 && (
+                <div className="beerNb">
+                  <img src={beer} alt="beer icon" className="beer" />
+                </div>
+              )}
+              {drunkLevel === 2 && (
+                <div className="beerNb">
+                  <img src={beer} alt="beer icon" className="beer" />
+                  <img src={beer} alt="beer icon" className="beer" />
+                </div>
+              )}
+              {drunkLevel === 3 && (
+                <div className="beerNb">
+                  <img src={beer} alt="beer icon" className="beer" />
+                  <img src={beer} alt="beer icon" className="beer" />
+                  <img src={beer} alt="beer icon" className="beer" />
+                </div>
+              )}
+            </div>
+            <button className="drunkUp" type="button" onClick={drunkLevelUp}>
+              +
+              <img src={beer} alt="beer icon" />
+            </button>
+          </div>
+
           <button
             type="button"
             className="chatIconButton"
@@ -190,4 +292,4 @@ function Question() {
   );
 }
 
-export default Question;
+export default QuestionDrunk;
