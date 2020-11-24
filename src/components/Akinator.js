@@ -27,7 +27,6 @@ function Akinator() {
       .then((response) => response.data)
       .then((response) => {
         setGetAnswer(response);
-        console.log(response);
       });
   };
 
@@ -45,12 +44,10 @@ function Akinator() {
           },
         ]);
       }
-      console.log(getAnswer);
       setGuessed(true);
     } else {
       setQuestion(getAnswer.question);
       setUserClick(false);
-      console.log(getAnswer);
     }
   };
 
@@ -129,10 +126,18 @@ function Akinator() {
             <br />
             <div className="akinatorAnswerButton">
               {' '}
-              <button type="button" onClick={() => setClicked(true)}>
+              <button
+                type="button"
+                className="akinatorBtn"
+                onClick={() => setClicked(true)}
+              >
                 Yes
               </button>
-              <button type="button" onClick={() => thinking()}>
+              <button
+                type="button"
+                className="akinatorBtn"
+                onClick={() => thinking()}
+              >
                 No
               </button>
             </div>
@@ -151,9 +156,15 @@ function Akinator() {
             <div className="akinatorButton">
               {' '}
               <Link to="/">
-                <button type="button">Home</button>
+                <button type="button" className="akinatorBtn">
+                  Home
+                </button>
               </Link>
-              <button type="button" onClick={() => playAgain()}>
+              <button
+                type="button"
+                className="akinatorBtn"
+                onClick={() => playAgain()}
+              >
                 Play Again
               </button>
             </div>
@@ -197,9 +208,15 @@ function Akinator() {
             <div className="akinatorButton">
               {' '}
               <Link to="/">
-                <button type="button">Home</button>
+                <button type="button" className="akinatorBtn">
+                  Home
+                </button>
               </Link>
-              <button type="button" onClick={() => playAgain()}>
+              <button
+                type="button"
+                className="akinatorBtn"
+                onClick={() => playAgain()}
+              >
                 Play Again
               </button>
             </div>
@@ -273,11 +290,17 @@ function Akinator() {
             <div className="imageContainer" />
             <div className="akinatorButton">
               {' '}
-              <button type="button" onClick={() => setnewEnter(!newEnter)}>
+              <button
+                type="button"
+                className="akinatorBtn"
+                onClick={() => setnewEnter(!newEnter)}
+              >
                 Ready
               </button>
               <Link to="/">
-                <button type="button">Mmmm ... not yet</button>
+                <button type="button" className="akinatorBtn">
+                  Mmmm ... not yet
+                </button>
               </Link>
             </div>
           </div>
