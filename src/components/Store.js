@@ -49,14 +49,12 @@ export const items = [
 
 const Store = () => {
   return (
-    <div className="storeBody">
+    <div className="storePart">
       <Background />
-      <div className="storePart">
-        {/* <h1 className="storeTitle">Store</h1> */}
-        {items.map((item) => (
-          <Item key={item.id} data={item} />
-        ))}
-      </div>
+      <h1 className="storeTitle">Store</h1>
+      {items.map((item) => (
+        <Item key={item.id} data={item} />
+      ))}
     </div>
   );
 };

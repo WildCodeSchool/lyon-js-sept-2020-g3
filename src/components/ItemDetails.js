@@ -35,6 +35,7 @@ const ItemDetails = (props) => {
             <div className="arrow left" />
           </Link>
         )}
+        <h1 className="uniqueStoreTitle">Store</h1>
         <div className="uniqueCard">
           <img
             className="storeImg"

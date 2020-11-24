@@ -1,11 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Background from './Background';
 
 const Item = (props) => {
   const { data } = props;
 
   return (
-    <div className="storeBody">
+    <div>
+      <Background />
       <div className="storeCard">
         <img
           className="storeImg"
