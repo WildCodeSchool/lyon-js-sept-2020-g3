@@ -46,7 +46,6 @@ function Akinator() {
         }
       });
   };
-
   const getAkinator = () => {
     axios
       .get('https://akinator-api.wild-projects.duckdns.org/newsession')
@@ -62,11 +61,9 @@ function Akinator() {
         setQuestion(response.data.question);
       });
   };
-
   useEffect(() => {
     getAkinator();
   }, [isPlayed]);
-
   const playAgain = () => {
     setGuessed(false);
     setQuestion('');
@@ -78,7 +75,6 @@ function Akinator() {
     setIsPlayed(!isPlayed);
     setIsLoading(true);
   };
-
   const test = () => {
     setCounter(counter + 1);
     setIsThinking(true);
@@ -162,7 +158,6 @@ function Akinator() {
       </div>
     );
   };
-
   const robotAnswers = () => {
     return (
       <div>
@@ -192,7 +187,6 @@ function Akinator() {
       </div>
     );
   };
-
   const newQuestion = () => {
     return (
       <div>
@@ -275,5 +269,4 @@ function Akinator() {
     </div>
   );
 }
-
 export default Akinator;

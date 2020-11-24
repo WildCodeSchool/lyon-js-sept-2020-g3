@@ -5,6 +5,7 @@ import Form from './Form';
 import StarRating from './StarRating';
 /* eslint-enable */
 import StarRated from './StarRated';
+import Background from './Background';
 
 export const GoldenBook = React.createContext();
 
@@ -36,11 +37,12 @@ const Contact = () => {
 
   return (
     <div className="contactBody">
+      <Background />
       <div className="title">
         <h3>Rate & Write me a comment to make me improve my friend !</h3>
       </div>
       <div className="screen">
-        <div className="goldenBook">
+        <div className="goldenScreen">
           {commentArray.map((element, index) => {
             return (
               <div

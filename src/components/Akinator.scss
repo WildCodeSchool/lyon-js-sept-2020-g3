@@ -1,7 +1,6 @@
 @import 'variablesCSS';
 @import url('https://fonts.googleapis.com/css2?family=Turret+Road:wght@500;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
-
 * {
   margin: 0;
   padding: 0;
@@ -43,7 +42,6 @@
   text-align: center;
   font-family: 'Turret Road', cursive;
   font-size: 20px;
-
   &:after {
     content: '';
     background-color: #fff;
@@ -58,7 +56,6 @@
     box-shadow: -20px 25px 0px -9px #fff, -10px 15px 0 -5px #fff;
   }
 }
-
 .imageContainer {
   background-image: url('../Images/robot.gif');
   background-size: 90%;
@@ -75,7 +72,6 @@
     left: -20px;
   }
 }
-
 .akinatorButton {
   width: 100%;
   margin-bottom: 50px;
@@ -83,7 +79,6 @@
   justify-content: center;
   display: flex;
 }
-
 button {
   width: 120px;
   height: 70px;

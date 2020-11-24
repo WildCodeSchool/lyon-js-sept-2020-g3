@@ -6,6 +6,7 @@ import drunkBot from '../pictures/drunkBot.jpg';
 import pierre from '../pictures/pierre.png';
 import matthieu from '../pictures/matthieu.png';
 import thomas from '../pictures/thomas.png';
+import Background from './Background';
 
 export const items = [
   {
@@ -48,11 +49,14 @@ export const items = [
 
 const Store = () => {
   return (
-    <div className="storePart">
-      {/* <h1 className="storeTitle">Store</h1> */}
-      {items.map((item) => (
-        <Item key={item.id} data={item} />
-      ))}
+    <div className="storeBody">
+      <Background />
+      <div className="storePart">
+        {/* <h1 className="storeTitle">Store</h1> */}
+        {items.map((item) => (
+          <Item key={item.id} data={item} />
+        ))}
+      </div>
     </div>
   );
 };

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { items } from './Store';
 import Modal from './Modal';
+import Background from './Background';
 import './Modal.scss';
 
 const ItemDetails = (props) => {
@@ -24,6 +25,7 @@ const ItemDetails = (props) => {
   return (
     <div>
       <div className={isModalOpen ? 'uniqueStoreModalOpen' : 'uniqueStore'}>
+        <Background />
         {result.id === 1 ? (
           <Link to={`/store/${items.length}`}>
             <div className="arrow left" />

@@ -5,7 +5,7 @@ const Item = (props) => {
   const { data } = props;
 
   return (
-    <div>
+    <div className="storeBody">
       <div className="storeCard">
         <img
           className="storeImg"
