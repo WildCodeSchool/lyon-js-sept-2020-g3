@@ -39,22 +39,29 @@ function Question() {
     const encodedURIMessage = encodeURIComponent(question);
     const url = `https://acobot-brainshop-ai-v1.p.rapidapi.com/get?bid=153798&key=SXUv8ChYDG1AboDK&uid=User&msg=${encodedURIMessage}`;
 
-    fetch(url, {
-      method: 'GET',
-      headers: {
-        'x-rapidapi-host': 'acobot-brainshop-ai-v1.p.rapidapi.com',
-        'x-rapidapi-key': '9d66c11fc3msh0ddb29e8617b481p17897bjsn28a020b0c4bf',
-      },
-    })
-      .then((res) => {
-        return res.json();
+    if (question === '') {
+      console.log('coucou');
+      setQuestion('...');
+      setResponse('What is your question ?');
+    } else {
+      fetch(url, {
+        method: 'GET',
+        headers: {
+          'x-rapidapi-host': 'acobot-brainshop-ai-v1.p.rapidapi.com',
+          'x-rapidapi-key':
+            '9d66c11fc3msh0ddb29e8617b481p17897bjsn28a020b0c4bf',
+        },
       })
-      .then((res) => {
-        updateResponse(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+        .then((res) => {
+          return res.json();
+        })
+        .then((res) => {
+          updateResponse(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   };
   // Lance la fonction submitToAPI() sur pression de la touche entrée
   const submitQuestionWithEnter = (e) => {
