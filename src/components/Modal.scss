@@ -1,0 +1,151 @@
+@import 'variablesCSS';
+@import url('https://fonts.googleapis.com/css2?family=Turret+Road:wght@500;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
+.modalBackground {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  height: 93vh;
+}
+
+.modalContainer {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin: 50px 0 20px;
+  background-color: white;
+  color: black;
+  border-radius: 30px;
+}
+
+.modalHeader {
+  padding-top: 20px;
+  border-bottom: solid 3px $primary-color;
+  height: 60px;
+  margin: 30px;
+}
+
+.modalHeaderConnexion {
+  padding-top: 20px;
+  border-bottom: solid 3px $primary-color;
+  height: 60px;
+  margin: 30px 30px 10px 30px;
+}
+
+.modalBody {
+  background-color: white;
+  margin: 30px;
+  text-align: center;
+}
+
+.connexionModalImage {
+  width: 90px;
+  height: 90px;
+  margin-bottom: 20px;
+}
+
+.modalFooter {
+  border-top: solid 3px $primary-color;
+  margin: 30px;
+  padding-top: 30px;
+  display: flex;
+  justify-content: flex-end;
+  text-align: center;
+  align-items: center;
+  button {
+    margin-top: 0px;
+    width: 80px;
+    font-size: 20px;
+    background-color: $secondary-color;
+    color: white;
+    text-align: center;
+    padding: 20px 0px;
+    border: solid 1px $secondary-color;
+    border-radius: 20px;
+    cursor: pointer;
+    &:active {
+      box-shadow: 0 5px #666;
+      transform: translateY(4px);
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.modalFooterConnexion {
+  border-top: solid 3px $primary-color;
+  margin: 20px 30px 20px 30px;
+  padding-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+  text-align: center;
+  align-items: center;
+  button {
+    margin-top: 0px;
+    width: 80px;
+    font-size: 20px;
+    background-color: $secondary-color;
+    color: white;
+    text-align: center;
+    padding: 20px 0px;
+    border: solid 1px $secondary-color;
+    border-radius: 20px;
+    cursor: pointer;
+    &:active {
+      box-shadow: 0 5px #666;
+      transform: translateY(4px);
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .modalButton {
+    width: 200px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .modalContainer {
+    width: 60%;
+  }
+
+  .modalFooterConnexion {
+    border-top: solid 3px $primary-color;
+    margin: 20px 30px 0 30px;
+    padding-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+    text-align: center;
+    align-items: center;
+    button {
+      margin-top: 0px;
+      margin-bottom: 18px;
+      width: 90px;
+      height: 60px;
+      font-size: 20px;
+      background-color: $secondary-color;
+      color: white;
+      text-align: center;
+      padding: 20px 0px;
+      border: solid 1px $secondary-color;
+      border-radius: 20px;
+      cursor: pointer;
+      &:active {
+        box-shadow: 0 5px #666;
+        transform: translateY(4px);
+      }
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+}
