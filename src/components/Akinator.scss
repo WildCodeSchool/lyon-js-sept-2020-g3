@@ -1,7 +1,6 @@
 @import 'variablesCSS';
 @import url('https://fonts.googleapis.com/css2?family=Turret+Road:wght@500;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
-
 * {
   margin: 0;
   padding: 0;
@@ -15,6 +14,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  z-index: 0;
   background: linear-gradient(
     $primary-color,
     $secondary-color,
@@ -40,10 +40,10 @@
   position: relative;
   align-items: center;
   justify-content: center;
+  z-index: 0;
   text-align: center;
   font-family: 'Turret Road', cursive;
   font-size: 20px;
-
   &:after {
     content: '';
     background-color: #fff;
@@ -58,12 +58,12 @@
     box-shadow: -20px 25px 0px -9px #fff, -10px 15px 0 -5px #fff;
   }
 }
-
 .imageContainer {
   background-image: url('../Images/robot.gif');
   background-size: 90%;
   background-repeat: no-repeat;
   background-position: top;
+  z-index: 0;
   width: 300px;
   height: 200px;
   margin-bottom: 40px;
@@ -75,11 +75,11 @@
     left: -20px;
   }
 }
-
 .akinatorButton {
   width: 100%;
   margin-bottom: 50px;
   align-items: center;
+  z-index: 0;
   justify-content: center;
   display: flex;
 }
@@ -88,6 +88,7 @@
   width: 120px;
   height: 70px;
   font-size: 20px;
+  z-index: 0;
   font-weight: bolder;
   background-color: #bb5759;
   color: white;
@@ -132,6 +133,7 @@
   line-height: 50px;
   text-align: center;
   position: absolute;
+  z-index: 0;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -182,6 +184,7 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
+  z-index: 0;
   flex-wrap: wrap;
   margin-bottom: 30px;
   button:nth-child(-n + 2) {
@@ -199,6 +202,7 @@
   color: black;
   text-align: center;
   margin: 0 10px 20px 0;
+  z-index: 0;
   padding: 10px;
   border: solid 1px $secondary-color;
   border-radius: 40px;
@@ -236,6 +240,7 @@
   padding: 15px 20px;
   border-radius: 30px;
   height: 80px;
+  z-index: 0;
   width: 300px;
   margin-top: 20px;
 
@@ -250,6 +255,7 @@
 .akinatorAnswerImg {
   margin: 25px 0 0;
   border-radius: 20px;
+  z-index: 0;
   height: auto;
   max-height: 300px;
   width: 300px;
@@ -259,6 +265,7 @@
   width: 100%;
   margin-bottom: 50px;
   align-items: center;
+  z-index: 0;
   justify-content: center;
   display: flex;
   button {
@@ -308,6 +315,7 @@
   width: 60px;
   height: 40px;
   font-size: 25px;
+  z-index: 0;
   color: white;
   font-weight: bolder;
   background-color: #bb5759;
@@ -353,6 +361,7 @@
   width: 80%;
   min-height: 150px;
   margin-top: 40px;
+  z-index: 0;
   position: relative;
   align-items: center;
   justify-content: center;
@@ -380,6 +389,7 @@
   background-size: 90%;
   background-repeat: no-repeat;
   background-position: top;
+  z-index: 0;
   width: 330px;
   height: 230px;
   padding-bottom: 40px;

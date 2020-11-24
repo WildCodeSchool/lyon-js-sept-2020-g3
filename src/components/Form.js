@@ -15,7 +15,7 @@ const Form = () => {
   };
 
   return (
-    <form classeName="form" onSubmit={handleSubmit}>
+    <form className="form" onSubmit={handleSubmit}>
       <input
         type="text"
         className="reviewInput"

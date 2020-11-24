@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Akinator.scss';
+import Background from './Background';
 import axios from 'axios';
 
 function Akinator() {
@@ -66,7 +67,6 @@ function Akinator() {
         setQuestion(response.data.question);
       });
   };
-
   useEffect(() => {
     getAkinator();
   }, [isPlayed]);
@@ -115,6 +115,7 @@ function Akinator() {
       <div>
         {counter < getAnswer.guessCount ? (
           <div key={guessCount[counter].name} className="akinatorBody">
+            <Background />
             <div className="answerBubble">
               <p>{`Your character is ... ${guessCount[counter].name} ?`}</p>
             </div>
@@ -145,7 +146,7 @@ function Akinator() {
         ) : (
           <div className="akinatorBody">
             <div className="akinatorBubble">
-              {' '}
+              <Background />
               <p>
                 Congratulation you beat me, you are the genious now !
                 <br />
@@ -179,7 +180,7 @@ function Akinator() {
       <div>
         {isThinking === true ? (
           <div className="akinatorBody">
-            {' '}
+            <Background />
             <div className="thinkingBubble">
               <p>Mmmm let me think...</p>
             </div>
@@ -191,12 +192,12 @@ function Akinator() {
       </div>
     );
   };
-
   const robotAnswers = () => {
     return (
       <div>
         {clicked === true ? (
           <div className="akinatorBody">
+            <Background />
             <div className="akinatorBubble">
               <p>
                 I read your mind ! How does it feel ?...
@@ -227,12 +228,12 @@ function Akinator() {
       </div>
     );
   };
-
   const newQuestion = () => {
     return (
       <div>
         {guessed === false ? (
           <div className="akinatorBody">
+            <Background />
             <div className="previousQuestionButton">
               <button
                 className="previousButton"
@@ -280,6 +281,7 @@ function Akinator() {
       <div>
         {newEnter === true ? (
           <div className="akinatorBody">
+            <Background />
             <div className="akinatorBubble">
               <p>
                 Hello my friend, think about a fictive or real character, I will
@@ -315,6 +317,7 @@ function Akinator() {
     <div>
       {isLoading === true ? (
         <div className="akinatorBody">
+          <Background />
           <div className="loader">LOADING...</div>
         </div>
       ) : (
@@ -323,5 +326,4 @@ function Akinator() {
     </div>
   );
 }
-
 export default Akinator;
