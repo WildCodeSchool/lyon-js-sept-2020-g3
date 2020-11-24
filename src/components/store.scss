@@ -260,8 +260,14 @@
     flex-wrap: wrap;
   }
 
+  .storeTitle {
+    position: absolute;
+    top: 10%;
+    margin-bottom: 80px;
+  }
+
   .storeCard {
-    margin: 0 20px 40px;
+    margin: 40px 45px 40px;
   }
 
   /* ----------------------------------ARROW---------------------------------------------------------*/
@@ -276,18 +282,11 @@
 
 @media screen and (min-width: 1024px) {
   .storeCard {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    position: relative;
-    width: 60vw;
-    height: 40vw;
-    max-width: 380px;
-    max-height: 250px;
-    margin: 0;
-    color: white;
-    perspective: 1000px;
-    transform-origin: center;
+    margin: 40px 70px 40px;
+  }
+
+  .btnStore button {
+    height: 58px;
   }
 
   .uniqueCard {

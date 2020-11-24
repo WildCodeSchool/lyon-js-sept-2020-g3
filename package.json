@@ -18,6 +18,7 @@
     "react-icons": "^3.11.0",
     "react-modal-bootstrap": "^1.1.1",
     "react-native-typewriter": "^0.7.0",
+    "react-responsive-carousel": "^3.2.10",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.4",
     "react-scroll-to-bottom": "^4.0.0"
