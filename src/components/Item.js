@@ -26,7 +26,3 @@ const Item = (props) => {
 };
 
 export default Item;
-
-/* const goodAnswer = () => {
-  
-}; */
