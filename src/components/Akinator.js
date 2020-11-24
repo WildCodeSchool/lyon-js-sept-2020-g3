@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Akinator.scss';
-import Background from './Background';
 import axios from 'axios';
+import Background from './Background';
 
 function Akinator() {
   const [question, setQuestion] = useState('');
