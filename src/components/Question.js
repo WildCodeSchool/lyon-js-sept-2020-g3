@@ -40,7 +40,6 @@ function Question() {
     const url = `https://acobot-brainshop-ai-v1.p.rapidapi.com/get?bid=153798&key=SXUv8ChYDG1AboDK&uid=User&msg=${encodedURIMessage}`;
 
     if (question === '') {
-      console.log('coucou');
       setQuestion('...');
       setResponse('What is your question ?');
     } else {
