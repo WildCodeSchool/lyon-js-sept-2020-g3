@@ -33,7 +33,7 @@ class Navbar extends React.Component {
         <div className="menu">
           <ul>
             <Link to="/">Home</Link>
-            <Link to="/question">Ask Me Something</Link>
+            <Link to="/question">Question Me</Link>
             <Link to="/akinator">Challenge Me</Link>
             <Link to="/store">Store</Link>
             <Link to="/settings">Settings</Link>
