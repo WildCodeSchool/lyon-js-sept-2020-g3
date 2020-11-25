@@ -19,6 +19,7 @@ function Akinator() {
   const [getAnswer, setGetAnswer] = useState([]);
   const [allQuestion, setAllQuestion] = useState([]);
   const [userClick, setUserClick] = useState(false);
+  const [guessProgress, setGuessProgress] = useState([]);
 
   const nextQuestion = (answerIndex) => {
     axios
@@ -27,6 +28,7 @@ function Akinator() {
       )
       .then((response) => response.data)
       .then((response) => {
+        setGuessProgress([...guessProgress, response.progress]);
         setGetAnswer(response);
       });
   };
@@ -35,7 +37,6 @@ function Akinator() {
     if (getAnswer.guessCount <= 2) {
       for (let i = 0; i < getAnswer.guessCount; i += 1) {
         /* eslint-disable */
-        console.log(getAnswer);
         setGuessCount((guessCount) => [
           /* eslint-enable */
           ...guessCount,
@@ -85,6 +86,7 @@ function Akinator() {
     setCounter(0);
     setIsPlayed(!isPlayed);
     setIsLoading(true);
+    setGuessProgress(0);
   };
 
   const thinking = () => {
@@ -104,9 +106,11 @@ function Akinator() {
       setQuestion(allQuestion[allQuestion.length - 1]);
       /* eslint-disable */
       const deleteLastQuestion = allQuestion.pop();
+      const deleteGuessProgress = guessProgress.pop();
       /* eslint-enable */
     } else {
       setQuestion('Is your character real ?');
+      setGuessProgress('0');
     }
   };
 
@@ -235,6 +239,22 @@ function Akinator() {
           <div className="akinatorBody">
             <Background />
             <div className="previousQuestionButton">
+              <div className="progressBarContainer">
+                <div
+                  className="progressBar"
+                  style={{
+                    width: `${guessProgress[guessProgress.length - 1]}%`,
+                  }}
+                ></div>
+              </div>
+              <div className="progressBarContainerDesktop">
+                <div
+                  className="progressBarDesktop"
+                  style={{
+                    height: `${guessProgress[guessProgress.length - 1]}%`,
+                  }}
+                ></div>
+              </div>
               <button
                 className="previousButton"
                 type="button"
