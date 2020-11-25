@@ -11,19 +11,8 @@ import wink from '../Images/ReactionArchiGIF/archibot-clin-doeil.gif';
 import dingo from '../Images/ReactionArchiGIF/archibot-dingo.gif';
 import mouth from '../Images/ReactionArchiGIF/archibot-grosse-bouche.gif';
 import nocomprendo from '../Images/ReactionArchiGIF/archibot-incompris.gif';
-import angry from '../Images/ReactionArchiGIF/archibot-mecontent.gif';
-import sad from '../Images/ReactionArchiGIF/archibot-sad.gif';
 
-const archibotReactionsGif = [
-  love,
-  classic,
-  wink,
-  dingo,
-  mouth,
-  nocomprendo,
-  angry,
-  sad,
-];
+const archibotReactionsGif = [love, classic, wink, dingo, mouth, nocomprendo];
 
 function Question() {
   const [question, setQuestion] = useState('');
