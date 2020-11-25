@@ -13,25 +13,28 @@ import ItemDetails from './components/ItemDetails';
 import './App.css';
 
 import Navbar from './components/Navbar';
+import { SoundEffectContextProvider } from './components/SoundEffectContext';
 
 function App() {
   return (
-    <Router>
-      <div className="app">
-        <Navbar />
+    <SoundEffectContextProvider>
+      <Router>
+        <div className="app">
+          <Navbar />
 
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/store" component={Store} />
-          <Route path="/store/:id" component={ItemDetails} />
-          <Route path="/settings" component={Settings} />
-          <Route path="/contact" component={Contact} />
-          <Route path="/connexion" component={Connexion} />
-          <Route path="/question" component={Question} />
-          <Route path="/akinator" component={Akinator} />
-        </Switch>
-      </div>
-    </Router>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/store" component={Store} />
+            <Route path="/store/:id" component={ItemDetails} />
+            <Route path="/settings" component={Settings} />
+            <Route path="/contact" component={Contact} />
+            <Route path="/connexion" component={Connexion} />
+            <Route path="/question" component={Question} />
+            <Route path="/akinator" component={Akinator} />
+          </Switch>
+        </div>
+      </Router>
+    </SoundEffectContextProvider>
   );
 }
 
