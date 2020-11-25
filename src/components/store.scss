@@ -12,6 +12,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 91vh;
+  width: 100vw;
   z-index: 0;
   background: linear-gradient(
     $primary-color,
@@ -26,7 +28,7 @@
   color: white;
   font-size: 50px;
   text-align: center;
-  background-color: $primary-color;
+  background-color: transparent;
   padding-top: 25px;
   position: relative;
   z-index: 0;
@@ -75,6 +77,42 @@
   &:focus {
     outline: 0;
   }
+}
+
+.rec.rec-slider {
+}
+
+//Fleches carousel
+
+.rec.rec-arrow {
+  background-color: white;
+  color: black;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &:hover,
+  :active,
+  :focus,
+  :visited {
+    background-color: black !important;
+  }
+}
+
+.rec.rec-arrow:disabled {
+  visibility: hidden;
+}
+
+//Points carousel
+
+.rec.rec-dot {
+  border: solid 1px white;
+  box-shadow: 0 0 1px 0 white;
+}
+
+.rec.rec-dot_active {
+  border: none;
+  box-shadow: 0 0 1px 3px rgba(103, 58, 183, 1);
 }
 
 /* ------------------------------UNIQUE STORE PART-------------------------------------------------*/
@@ -218,34 +256,6 @@
   background-position: center;
 }
 
-/* ----------------------------------ARROW---------------------------------------------------------*/
-
-.arrow {
-  border: solid white;
-  border-width: 0 3px 3px 0;
-  display: inline-block;
-  padding: 3px;
-  position: absolute;
-  z-index: 0;
-  top: 50%;
-  width: 30px;
-  height: 30px;
-}
-
-.right {
-  transform: rotate(-45deg);
-  z-index: 0;
-  -webkit-transform: rotate(-45deg);
-  right: 4%;
-}
-
-.left {
-  transform: rotate(135deg);
-  z-index: 0;
-  -webkit-transform: rotate(135deg);
-  left: 4%;
-}
-
 .mode-open {
   text-align: center;
   z-index: 0;
@@ -269,20 +279,20 @@
   .storeCard {
     margin: 40px 45px 40px;
   }
-
-  /* ----------------------------------ARROW---------------------------------------------------------*/
-  .right {
-    right: 12%;
-  }
-
-  .left {
-    left: 12%;
-  }
 }
 
 @media screen and (min-width: 1024px) {
+  .storePart {
+    height: 92.2vh;
+  }
   .storeCard {
-    margin: 40px 70px 40px;
+    width: 300px;
+    height: 400px;
+    margin: 40px 0px 40px;
+  }
+
+  .btnStore {
+    margin-top: 20px;
   }
 
   .btnStore button {
@@ -292,13 +302,25 @@
   .uniqueCard {
     width: 400px;
     height: 420px;
-  }
-  /* ----------------------------------ARROW---------------------------------------------------------*/
-  .right {
-    right: 15%;
+    img {
+      margin-top: 20px;
+    }
+    h2 {
+      margin-top: 20px;
+    }
+    p {
+      margin-top: 20px;
+    }
   }
 
-  .left {
-    left: 15%;
+  .uniqueStoreButton {
+    padding-top: 5px;
+    height: 100px;
+    margin-bottom: 10px;
+    button {
+      width: 100px;
+      font-size: 20px;
+      margin: 0;
+    }
   }
 }

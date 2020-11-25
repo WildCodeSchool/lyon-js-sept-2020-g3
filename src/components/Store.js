@@ -1,4 +1,5 @@
 import React from 'react';
+import Carousel from 'react-elastic-carousel';
 import './store.scss';
 import Item from './Item';
 import yoda from '../pictures/yoda.png';
@@ -52,9 +53,11 @@ const Store = () => {
     <div className="storePart">
       <Background />
       <h1 className="storeTitle">Store</h1>
-      {items.map((item) => (
-        <Item key={item.id} data={item} />
-      ))}
+      <Carousel>
+        {items.map((item) => (
+          <Item key={item.id} data={item} />
+        ))}
+      </Carousel>
     </div>
   );
 };

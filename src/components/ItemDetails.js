@@ -26,15 +26,6 @@ const ItemDetails = (props) => {
     <div>
       <div className={isModalOpen ? 'uniqueStoreModalOpen' : 'uniqueStore'}>
         <Background />
-        {result.id === 1 ? (
-          <Link to={`/store/${items.length}`}>
-            <div className="arrow left" />
-          </Link>
-        ) : (
-          <Link to={`/store/${result.id - 1}`}>
-            <div className="arrow left" />
-          </Link>
-        )}
         <h1 className="uniqueStoreTitle">Store</h1>
         <div className="uniqueCard">
           <img
@@ -60,15 +51,6 @@ const ItemDetails = (props) => {
               <button type="button">Store</button>
             </Link>
           </div>
-          {result.id === items.length ? (
-            <Link to="/store/1">
-              <div className="arrow right" />
-            </Link>
-          ) : (
-            <Link to={`/store/${result.id + 1}`}>
-              <div className="arrow right" />
-            </Link>
-          )}
         </div>
       </div>
 
