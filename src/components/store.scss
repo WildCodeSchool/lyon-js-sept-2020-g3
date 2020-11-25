@@ -32,7 +32,6 @@
 
 .storeCard {
   background: white;
-  color: $secondary-color;
   width: 250px;
   height: 350px;
   display: flex;
@@ -56,19 +55,18 @@
 .btnStore {
   width: 100px;
   font-size: 20px;
-  background-color: $secondary-color;
   color: white;
   text-align: center;
   padding: 20px 0px;
-  border: solid 1px $secondary-color;
+  border: solid 1px;
   border-radius: 20px;
+  background-color: #bb5759;
   cursor: pointer;
   &:active {
-    box-shadow: 0 5px #666;
-    transform: translateY(4px);
+    box-shadow: 0 4px #666;
   }
   &:focus {
-    outline: none;
+    outline: 0;
   }
 }
 
@@ -96,7 +94,7 @@
 
 .uniqueCard {
   background: white;
-  color: $secondary-color;
+  color: black;
   width: 300px;
   height: 420px;
   display: flex;
@@ -109,21 +107,28 @@
 }
 
 .uniqueStoreText {
-  padding: 10px;
+  padding: 0 10px 0;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
+  h2 {
+    margin-bottom: 5px;
+  }
 }
 
 .uniqueStoreDescription {
   height: 50px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .uniqueStorePrice {
   font-weight: bolder;
+  margin-bottom: 10px;
   font-size: 20px;
-  margin-top: 5px;
   height: 10px;
 }
 
@@ -139,11 +144,11 @@
 .uniqueStoreButton button {
   width: 100px;
   font-size: 20px;
-  background-color: $secondary-color;
+  background-color: #bb5759;
   color: white;
   text-align: center;
   padding: 20px 0px;
-  border: solid 1px $secondary-color;
+  border: solid 1px;
   border-radius: 20px;
   cursor: pointer;
   &:active {

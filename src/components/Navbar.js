@@ -51,7 +51,9 @@ class Navbar extends React.Component {
           customCrossIcon={<img src={cross} alt="cross icon" />}
           disableAutoFocus
         >
-          <img className="purpleLogo" src={purpleLogo} alt="logo burger" />
+          <Link to="/" onClick={this.closeMenu}>
+            <img className="purpleLogo" src={purpleLogo} alt="logo burger" />
+          </Link>
           <Link to="/" onClick={this.closeMenu}>
             Home
           </Link>

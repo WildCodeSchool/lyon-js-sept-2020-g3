@@ -43,6 +43,8 @@ const ItemDetails = (props) => {
           <div className="uniqueStoreText">
             <h2>{result.name}</h2>
             <p className="uniqueStoreDescription">{result.description}</p>
+          </div>
+          <div>
             <p className="uniqueStorePrice">{result.price}</p>
           </div>
           <div className="uniqueStoreButton">
