@@ -1,13 +1,15 @@
-/* eslint-disable */
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { items } from './Store';
 import Modal from './Modal';
+import Background from './Background';
 import './Modal.scss';
 
 const ItemDetails = (props) => {
+  /* eslint-disable */
   const data = props.match.params;
   const { id } = data;
+  /* eslint-enable */
   const result = items.find((item) => item.id === parseInt(id, 10));
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -23,15 +25,8 @@ const ItemDetails = (props) => {
   return (
     <div>
       <div className={isModalOpen ? 'uniqueStoreModalOpen' : 'uniqueStore'}>
-        {result.id === 1 ? (
-          <Link to={`/store/${items.length}`}>
-            <div className="arrow left" />
-          </Link>
-        ) : (
-          <Link to={`/store/${result.id - 1}`}>
-            <div className="arrow left" />
-          </Link>
-        )}
+        <Background />
+        <h1 className="uniqueStoreTitle">Store</h1>
         <div className="uniqueCard">
           <img
             className="storeImg"
@@ -56,15 +51,6 @@ const ItemDetails = (props) => {
               <button type="button">Store</button>
             </Link>
           </div>
-          {result.id === items.length ? (
-            <Link to="/store/1">
-              <div className="arrow right" />
-            </Link>
-          ) : (
-            <Link to={`/store/${result.id + 1}`}>
-              <div className="arrow right" />
-            </Link>
-          )}
         </div>
       </div>
 
@@ -74,7 +60,8 @@ const ItemDetails = (props) => {
         </div>
         <div className="modalBody">
           <h3>
-            This item will be available very soon <br />
+            This item will be available very soon
+            <br />
             don't miss it !
           </h3>
         </div>
@@ -89,4 +76,3 @@ const ItemDetails = (props) => {
 };
 
 export default ItemDetails;
-/* eslint-enable */
