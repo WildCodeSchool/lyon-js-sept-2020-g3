@@ -66,9 +66,9 @@ function QuestionDrunk() {
     const responseArray = string.split(' ');
     let wordTmp = '';
     for (let i = 1; i <= responseArray.length; i += 1) {
-      if (i % 3 === 0 && responseArray.length - i >= 2) {
+      if (i % 3 === 0 && responseArray.length - i >= 3) {
         wordTmp = responseArray[i];
-        responseArray[i] = responseArray[i + 1];
+        responseArray[i] = `... ${responseArray[i + 1]}`;
         responseArray[i + 1] = wordTmp;
       }
     }
