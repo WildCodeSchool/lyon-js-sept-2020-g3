@@ -1,0 +1,58 @@
+@import 'variablesCSS';
+@import url('https://fonts.googleapis.com/css2?family=Turret+Road:wght@500;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.beer {
+  width: 40px;
+  height: 35px;
+}
+
+.robotMode {
+  width: 100%;
+}
+
+.drunkUp,
+.drunkDown {
+  border-radius: 20px;
+  min-width: 40px;
+  height: 40px;
+  background-color: #e16c69;
+  cursor: pointer;
+  &:active {
+    background-color: #bb5759;
+    box-shadow: 0 4px #666;
+  }
+  &:focus {
+    outline: 0;
+  }
+}
+
+.drunkSettings {
+  width: 220px;
+  height: 0px;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  position: relative;
+  left: 20px;
+  .drunkLevel {
+    width: 300px;
+  }
+}
+
+// Taille mobile ____________________________________________________________________________________________________________
+@media screen and (max-width: 1024px) {
+}
+// Taille tablette
+@media screen and (min-width: 600px) and (max-width: 1024px) {
+}
+
+// Taille desktop ____________________________________________________________________________________________________________
+@media screen and (min-width: 1024px) {
+}

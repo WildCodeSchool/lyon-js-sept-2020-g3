@@ -5,7 +5,7 @@ import { SoundEffectContext } from './SoundEffectContext';
 import Background from './Background';
 
 const Home = () => {
-  const { buttonSound, ButtonClick, audio } = useContext(SoundEffectContext);
+  const { playButtonSound } = useContext(SoundEffectContext);
 
   return (
     <div className="homeBody">
@@ -15,14 +15,10 @@ const Home = () => {
       </div>
       <div className="imageContainer" />
       <div className="homebuttons">
-        <button
-          type="button"
-          className="question"
-          onClick={buttonSound && audio.play(ButtonClick)}
-        >
+        <button type="button" className="question" onClick={playButtonSound}>
           <Link to="/question">Question me</Link>
         </button>
-        <button type="button" className="play">
+        <button type="button" className="play" onClick={playButtonSound}>
           <Link to="/akinator">Challenge me</Link>
         </button>
       </div>

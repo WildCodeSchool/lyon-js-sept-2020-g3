@@ -11,11 +11,6 @@ const Settings = () => {
     backgroundAudioSound,
   } = useContext(SoundEffectContext);
 
-  // const setSoundAndButton = () => {
-  //   useButton();
-  //   useBackgroundSound();
-  // };
-
   return (
     <div className="settingsBody">
       <Background />
@@ -25,20 +20,20 @@ const Settings = () => {
       <div className="backgroundSettings">
         <div className="containerButton">
           <button
-            className={buttonSound ? 'buttonOn' : 'buttonOff'}
+            className={buttonSound ? 'buttonOff' : 'buttonOn'}
             type="button"
             onClick={useButton}
           >
-            {buttonSound ? 'No ' : ''}
-            EFFECT
+            {!buttonSound ? 'No ' : ''}
+            Effects
           </button>
           <button
-            className={backgroundAudioSound ? 'buttonOn' : 'buttonOff'}
+            className={backgroundAudioSound ? 'buttonOff' : 'buttonOn'}
             type="button"
             onClick={useBackgroundSound}
           >
-            {backgroundAudioSound ? 'No ' : ''}
-            SOUND
+            {!backgroundAudioSound ? 'No ' : ''}
+            Backgroung Music
           </button>
         </div>
       </div>

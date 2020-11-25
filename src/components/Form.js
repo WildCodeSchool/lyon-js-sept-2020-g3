@@ -3,11 +3,14 @@ import React, { useContext } from 'react';
 import { GoldenBook } from './Contact';
 /* eslint-enable */
 import './Contact.scss';
+import { SoundEffectContext } from './SoundEffectContext';
 
 const Form = () => {
   const { addComment, setValue, value, rating, addRate } = useContext(
     GoldenBook
   );
+  const { playButtonSound } = useContext(SoundEffectContext);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     addComment(value);
@@ -26,6 +29,7 @@ const Form = () => {
         className="submitButton"
         type="submit"
         onSubmit={(e) => setValue(e.target.value)}
+        onClick={playButtonSound}
       >
         Submit
       </button>

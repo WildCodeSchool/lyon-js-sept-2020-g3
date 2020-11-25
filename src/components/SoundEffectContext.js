@@ -1,29 +1,40 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import BackgroundSound from './audio/BackgroundSound.mp3';
 import ButtonClick from './audio/ButtonClick.mp3';
 
 export const SoundEffectContext = React.createContext();
 export function SoundEffectContextProvider({ children }) {
   const [audio] = useState(new Audio(ButtonClick));
-  const [buttonSound, setButtonSound] = useState(true);
+  const [buttonSound, setButtonSound] = useState(false);
   const [backgroundAudio] = useState(new Audio(BackgroundSound));
-  const [backgroundAudioSound, setBackgroundAudioSound] = useState(true);
+  const [backgroundAudioSound, setBackgroundAudioSound] = useState(false);
 
-  const useButton = () => {
-    setButtonSound(!buttonSound);
+  useEffect(() => {
     if (buttonSound) {
       audio.play(ButtonClick);
     } else {
       audio.pause();
     }
+  }, [buttonSound]);
+  const useButton = () => {
+    setButtonSound(!buttonSound);
   };
 
-  const useBackgroundSound = () => {
-    setBackgroundAudioSound(!backgroundAudioSound);
+  useEffect(() => {
     if (backgroundAudioSound) {
+      backgroundAudio.volume = 0.1;
       backgroundAudio.play(BackgroundSound);
     } else {
       backgroundAudio.pause();
+    }
+  }, [backgroundAudioSound]);
+  const useBackgroundSound = () => {
+    setBackgroundAudioSound(!backgroundAudioSound);
+  };
+
+  const playButtonSound = () => {
+    if (buttonSound) {
+      audio.play(ButtonClick);
     }
   };
 
@@ -40,6 +51,7 @@ export function SoundEffectContextProvider({ children }) {
         useBackgroundSound,
         ButtonClick,
         BackgroundSound,
+        playButtonSound,
       }}
     >
       {children}

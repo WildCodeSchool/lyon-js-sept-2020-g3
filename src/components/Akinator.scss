@@ -6,7 +6,7 @@
   padding: 0;
   box-sizing: border-box;
 }
-/* -----------------------------------------LOADER AKINATOR--------------------------------------- */
+
 /* ----------------------------------------GENERAL AKINATOR--------------------------------------- */
 
 .akinatorBody {
@@ -231,6 +231,33 @@
   &:focus {
     outline: none;
   }
+}
+
+/* -------------------------------------PROGRESS BAR AKINATOR--------------------------------------- */
+
+.progressBarContainer {
+  width: 76%;
+  height: 15px;
+  position: absolute;
+  background-color: white;
+  border-radius: 40px;
+  top: 3%;
+  left: 12%;
+}
+
+.progressBar {
+  height: 15px;
+  position: absolute;
+  border-radius: 40px;
+  background-color: #bb5759;
+}
+
+.progressBarContainerDesktop {
+  display: none;
+}
+
+.progressBarDesktop {
+  display: none;
 }
 
 /* ---------------------------------------ANSWERS AKINATOR--------------------------------------- */
@@ -487,6 +514,36 @@
       width: 15px;
     }
   }
+
+  /* -------------------------------------PROGRESS BAR AKINATOR------------------------------------- */
+
+  .progressBarContainer {
+    display: none;
+  }
+
+  .progressBar {
+    display: none;
+  }
+
+  .progressBarContainerDesktop {
+    display: flex;
+    flex-direction: column-reverse;
+    width: 20px;
+    height: 58%;
+    position: absolute;
+    background-color: white;
+    border-radius: 40px;
+    bottom: 8%;
+    left: 15%;
+  }
+
+  .progressBarDesktop {
+    display: block;
+    width: 20px;
+    position: absolute;
+    border-radius: 40px;
+    background-color: #bb5759;
+  }
 }
 
 /* -----------------------------RESPONSIVE----------------------------------- */
@@ -503,6 +560,13 @@
     width: 170px;
     height: 80px;
     margin: 0px 40px 40px;
+  }
+
+  /* -------------------------------------PROGRESS BAR AKINATOR------------------------------------- */
+
+  .progressBarContainerDesktop {
+    bottom: 8%;
+    left: 15%;
   }
 
   /* ---------------------------------------ANSWERS AKINATOR--------------------------------------- */
