@@ -96,6 +96,7 @@
 .submitButton {
   width: 90%;
   margin: 0;
+  border-radius: 40px;
   font-family: 'Poppins', sans-serif;
   color: white;
   background-color: #e16c69;
@@ -174,7 +175,7 @@
     width: 85vw;
     height: 60vh;
     background-image: url('../Images/screen@4x.png');
-    background-size: 300px;
+    background-size: 275px;
     background-repeat: no-repeat;
     background-position: center;
     margin: 2%;
@@ -189,7 +190,7 @@
     font-size: 1rem;
     width: 90vw;
     height: 22vh;
-    top: 11vh;
+    top: 7vh;
     padding-left: 22%;
     padding-right: 25%;
     text-align: center;
@@ -224,10 +225,10 @@
     width: 85vw;
     height: 60vh;
     background-image: url('../Images/screen@4x.png');
-    background-size: 300px;
+    background-size: 275px;
     background-repeat: no-repeat;
     background-position: center;
-    margin: 2%;
+    margin: 0;
     margin-bottom: 0;
   }
   .goldenScreen {
@@ -239,7 +240,7 @@
     font-size: 1rem;
     width: 90vw;
     height: 22vh;
-    top: 10vh;
+    top: 7vh;
     padding-left: 22%;
     padding-right: 25%;
     text-align: center;
@@ -274,10 +275,10 @@
     width: 85vw;
     height: 60vh;
     background-image: url('../Images/screen@4x.png');
-    background-size: 350px;
+    background-size: 275px;
     background-repeat: no-repeat;
     background-position: center;
-    margin: 2%;
+    margin: 0;
     margin-bottom: 0;
   }
   .goldenScreen {
@@ -289,9 +290,9 @@
     font-size: 1rem;
     width: 90vw;
     height: 22vh;
-    top: 9vh;
+    top: 7vh;
     padding-left: 22%;
-    padding-right: 25%;
+    padding-right: 27%;
     text-align: center;
   }
 
@@ -324,11 +325,11 @@
     width: 90vw;
     height: 65vh;
     background-image: url('../Images/screen@4x.png');
-    background-size: 325px;
+    background-size: 305px;
     background-repeat: no-repeat;
     background-position: center;
     margin-top: 10px;
-    margin-right: 6vw;
+    margin-right: 4vw;
     margin-bottom: 0;
   }
   .goldenScreen {
@@ -338,11 +339,12 @@
     overflow: scroll;
     position: relative;
     font-size: 1rem;
-    width: 90vw;
-    height: 23vh;
-    top: 6.5vh;
-    padding-left: 24%;
-    padding-right: 25%;
+    width: 60vw;
+    height: 22vh;
+    top: 6vh;
+    // padding-left: 23%;
+    // padding-right: 25%;
+    margin-right: 0;
     text-align: center;
   }
 
