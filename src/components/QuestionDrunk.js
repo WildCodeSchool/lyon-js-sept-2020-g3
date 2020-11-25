@@ -7,12 +7,11 @@ import Background from './Background';
 import conversation from '../Images/conversation.png';
 import love from '../Images/ReactionArchiGIF/archibot-amoureux.gif';
 import dingo from '../Images/ReactionArchiGIF/archibot-dingo.gif';
-import nocomprendo from '../Images/ReactionArchiGIF/archibot-incompris.gif';
-import angry from '../Images/ReactionArchiGIF/archibot-mecontent.gif';
-import sad from '../Images/ReactionArchiGIF/archibot-sad.gif';
 import beer from '../Images/beer.png';
+import wink from '../Images/ReactionArchiGIF/archibot-clin-doeil.gif';
+import mouth from '../Images/ReactionArchiGIF/archibot-grosse-bouche.gif';
 
-const archibotReactionsGif = [love, dingo, nocomprendo, angry, sad];
+const archibotReactionsGif = [love, dingo, wink, mouth];
 
 function QuestionDrunk() {
   const [question, setQuestion] = useState('');
@@ -168,9 +167,23 @@ function QuestionDrunk() {
     randomImageGif();
   }, [response]);
 
+  // Scroll la conversation jusqu'en bas quand le tableau qui rassemble tous les messages du bot est mis à jour
   useEffect(() => {
     scrollToBottom();
-  }, [messageArray]);
+  }, [messageArray, chat1]);
+
+  useEffect(() => {
+    if (drunkLevel === 1) {
+      setResponse('Yeaah one beer !');
+      setQuestion('*You gave one beer to the bot*');
+    } else if (drunkLevel === 2) {
+      setResponse('Yeaah *hic* two beer !');
+      setQuestion('*You gave two beer to the bot*');
+    } else {
+      setResponse('Yeaah *hic* three *hic* beer !');
+      setQuestion('*You gave three beer to the bot*');
+    }
+  }, [drunkLevel]);
 
   return (
     <div>
