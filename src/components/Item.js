@@ -6,6 +6,7 @@ const Item = (props) => {
 
   return (
     <div>
+      {/* <Background /> */}
       <div className="storeCard">
         <img
           className="storeImg"
@@ -26,7 +27,3 @@ const Item = (props) => {
 };
 
 export default Item;
-
-/* const goodAnswer = () => {
-  
-}; */

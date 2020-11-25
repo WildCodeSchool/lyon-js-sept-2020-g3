@@ -12,6 +12,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 92vh;
+  max-height: 92vh;
+  overflow: hidden;
+  width: 100vw;
+  z-index: 0;
   background: linear-gradient(
     $primary-color,
     $secondary-color,
@@ -25,15 +30,16 @@
   color: white;
   font-size: 50px;
   text-align: center;
-  background-color: $primary-color;
-  padding-top: 25px;
+  background-color: transparent;
+  padding-top: 0px;
   position: relative;
+  z-index: 0;
 }
 
 .storeCard {
   background: white;
-  width: 250px;
-  height: 350px;
+  width: 200px;
+  height: 320px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -43,21 +49,29 @@
   padding: 5px;
   margin-top: 50px;
   margin-bottom: 50px;
+  z-index: 0;
   h2 {
+    font-size: 20px;
     margin: 20px 0 20px;
+    z-index: 0;
   }
   img {
+    height: 120px;
     margin: 35px 0 10px;
     border-radius: 5px;
+    z-index: 0;
   }
 }
 
 .btnStore {
-  width: 100px;
+  width: 110px;
+  height: 50px;
   font-size: 20px;
   color: white;
   text-align: center;
-  padding: 20px 0px;
+  position: relative;
+  margin-top: 10px;
+  z-index: 0;
   border: solid 1px;
   border-radius: 20px;
   background-color: #bb5759;
@@ -70,6 +84,41 @@
   }
 }
 
+//Fleches carousel
+
+.rec.rec-arrow {
+  background-color: white;
+  color: black;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &:hover,
+  :active,
+  :focus,
+  :focus-within,
+  :focus-visible,
+  :visited {
+    background-color: black !important;
+  }
+}
+
+.rec.rec-arrow:disabled {
+  visibility: hidden;
+}
+
+//Points carousel
+
+.rec.rec-dot {
+  border: solid 1px white;
+  box-shadow: 0 0 1px 0 white;
+}
+
+.rec.rec-dot_active {
+  border: none;
+  box-shadow: 0 0 1px 3px rgba(103, 58, 183, 1);
+}
+
 /* ------------------------------UNIQUE STORE PART-------------------------------------------------*/
 
 .uniqueStore {
@@ -77,7 +126,9 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 93vh;
+  overflow: hidden;
+  z-index: 0;
+  height: 92vh;
   background: linear-gradient(
     $primary-color,
     $secondary-color,
@@ -92,23 +143,33 @@
   background-position: center;
 }
 
+.uniqueStoreTitle {
+  color: white;
+  font-size: 50px;
+  z-index: 0;
+  margin-bottom: 40px;
+}
+
 .uniqueCard {
   background: white;
   color: black;
   width: 300px;
   height: 420px;
   display: flex;
+  z-index: 0;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
   text-align: center;
   border: solid 1px black;
   border-radius: 20px;
+  margin-bottom: 50px;
 }
 
 .uniqueStoreText {
   padding: 0 10px 0;
   display: flex;
+  z-index: 0;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
@@ -119,8 +180,11 @@
 
 .uniqueStoreDescription {
   height: 50px;
+  margin-left: 10px;
+  margin-right: 10px;
   text-align: center;
   display: flex;
+  z-index: 0;
   justify-content: center;
   align-items: center;
 }
@@ -129,6 +193,7 @@
   font-weight: bolder;
   margin-bottom: 10px;
   font-size: 20px;
+  z-index: 0;
   height: 10px;
 }
 
@@ -137,17 +202,21 @@
   flex-direction: row;
   justify-content: space-around;
   width: 98%;
+  margin-bottom: 10px;
   border-radius: 20px;
+  z-index: 0;
   cursor: pointer;
 }
 
 .uniqueStoreButton button {
   width: 100px;
+  height: 70px;
   font-size: 20px;
   background-color: #bb5759;
   color: white;
   text-align: center;
   padding: 20px 0px;
+  z-index: 0;
   border: solid 1px;
   border-radius: 20px;
   cursor: pointer;
@@ -164,6 +233,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  z-index: 0;
   background: linear-gradient(
     $primary-color,
     $secondary-color,
@@ -179,6 +249,7 @@
   justify-content: center;
   align-items: center;
   height: 93vh;
+  z-index: 0;
   opacity: 0.7;
   background: linear-gradient(
     $primary-color,
@@ -194,33 +265,9 @@
   background-position: center;
 }
 
-/* ----------------------------------ARROW---------------------------------------------------------*/
-
-.arrow {
-  border: solid white;
-  border-width: 0 3px 3px 0;
-  display: inline-block;
-  padding: 3px;
-  position: absolute;
-  top: 50%;
-  width: 30px;
-  height: 30px;
-}
-
-.right {
-  transform: rotate(-45deg);
-  -webkit-transform: rotate(-45deg);
-  right: 4%;
-}
-
-.left {
-  transform: rotate(135deg);
-  -webkit-transform: rotate(135deg);
-  left: 4%;
-}
-
 .mode-open {
   text-align: center;
+  z-index: 0;
 }
 
 @media screen and (min-width: 768px) {
@@ -233,45 +280,78 @@
   }
 
   .storeCard {
-    margin: 0 20px 40px;
+    width: 250px;
+    height: 350px;
+    h2 {
+      font-size: 30px;
+      margin: 15px 0;
+    }
+    img {
+      height: 160px;
+    }
   }
 
-  /* ----------------------------------ARROW---------------------------------------------------------*/
-  .right {
-    right: 12%;
+  .btnStore {
+    margin-bottom: 20px;
+    height: 80px;
   }
 
-  .left {
-    left: 12%;
+  .storeTitle {
+    position: absolute;
+    top: 10%;
+    margin-bottom: 80px;
+  }
+
+  .storeCard {
+    margin: 40px 45px 40px;
   }
 }
 
 @media screen and (min-width: 1024px) {
+  .storePart {
+    height: 92.2vh;
+  }
   .storeCard {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    position: relative;
-    width: 60vw;
-    height: 40vw;
-    max-width: 380px;
-    max-height: 250px;
-    margin: 0;
-    color: white;
-    perspective: 1000px;
-    transform-origin: center;
+    width: 300px;
+    height: 400px;
+    margin: 40px 0px 40px;
+  }
+
+  .btnStore {
+    margin-top: 20px;
+  }
+
+  .btnStore button {
+    height: 58px;
+  }
+
+  .uniqueStore {
+    height: 92.2vh;
   }
 
   .uniqueCard {
     width: 400px;
     height: 420px;
-  }
-  /* ----------------------------------ARROW---------------------------------------------------------*/
-  .right {
-    right: 15%;
+    img {
+      margin-top: 20px;
+    }
+    h2 {
+      margin-top: 20px;
+    }
+    p {
+      margin-top: 20px;
+    }
   }
 
-  .left {
-    left: 15%;
+  .uniqueStoreButton {
+    padding-top: 5px;
+    height: 100px;
+    margin-bottom: 10px;
+    button {
+      width: 100px;
+      height: 70px;
+      font-size: 20px;
+      margin: 0;
+    }
   }
 }
