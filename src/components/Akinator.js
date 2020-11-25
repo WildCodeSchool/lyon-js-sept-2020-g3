@@ -245,7 +245,7 @@ function Akinator() {
                   style={{
                     width: `${guessProgress[guessProgress.length - 1]}%`,
                   }}
-                ></div>
+                />
               </div>
               <div className="progressBarContainerDesktop">
                 <div
@@ -253,7 +253,7 @@ function Akinator() {
                   style={{
                     height: `${guessProgress[guessProgress.length - 1]}%`,
                   }}
-                ></div>
+                />
               </div>
               <button
                 className="previousButton"
