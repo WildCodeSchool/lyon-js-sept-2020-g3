@@ -23,7 +23,7 @@ export const items = [
     name: 'Drunk Bot',
     description: '"H-h-h-heeeeey! Wheeeere dya think yeeeeer goin ?”',
     src: drunkBot,
-    price: '1,99€',
+    price: 'FREE',
   },
   {
     id: 3,
