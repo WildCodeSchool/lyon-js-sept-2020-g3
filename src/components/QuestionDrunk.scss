@@ -8,95 +8,52 @@
   box-sizing: border-box;
 }
 
-// Taille mobile ____________________________________________________________________________________________________________
-@media screen and (max-width: 1024px) {
-  .beer {
-    width: 40px;
-  }
+.beer {
+  width: 40px;
+  height: 35px;
+}
 
-  .robotMode {
-    width: 100%;
-  }
+.robotMode {
+  width: 100%;
+}
 
-  .drunkUp,
-  .drunkDown {
-    width: 50px;
-    height: 50px;
-    img {
-      width: 20px;
-      height: 20px;
-    }
+.drunkUp,
+.drunkDown {
+  border-radius: 20px;
+  min-width: 40px;
+  height: 40px;
+  background-color: #e16c69;
+  cursor: pointer;
+  &:active {
+    background-color: #bb5759;
+    box-shadow: 0 4px #666;
   }
-
-  .drunkSettings {
-    width: 300px;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    .drunkLevel {
-      width: 300px;
-    }
+  &:focus {
+    outline: 0;
   }
 }
 
+.drunkSettings {
+  width: 220px;
+  height: 0px;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  position: relative;
+  top: -18px;
+  left: 13px;
+  .drunkLevel {
+    width: 300px;
+  }
+}
+
+// Taille mobile ____________________________________________________________________________________________________________
+@media screen and (max-width: 1024px) {
+}
 // Taille tablette
 @media screen and (min-width: 600px) and (max-width: 1024px) {
-  .beer {
-    width: 40px;
-  }
-
-  .robotMode {
-    width: 100%;
-  }
-
-  .drunkUp,
-  .drunkDown {
-    width: 50px;
-    height: 50px;
-    img {
-      width: 20px;
-      height: 20px;
-    }
-  }
-
-  .drunkSettings {
-    width: 300px;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    .drunkLevel {
-      width: 300px;
-    }
-  }
 }
 
 // Taille desktop ____________________________________________________________________________________________________________
 @media screen and (min-width: 1024px) {
-  .beer {
-    width: 40px;
-  }
-
-  .robotMode {
-    width: 100%;
-  }
-
-  .drunkUp,
-  .drunkDown {
-    width: 50px;
-    height: 50px;
-    img {
-      width: 20px;
-      height: 20px;
-    }
-  }
-
-  .drunkSettings {
-    width: 300px;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    .drunkLevel {
-      width: 300px;
-    }
-  }
 }

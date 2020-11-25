@@ -57,11 +57,7 @@ function QuestionDrunk() {
     const voyels = ['a', 'e', 'i', 'o', 'u'];
     const responseArray = string.split('');
     for (let i = 1; i <= responseArray.length; i += 1) {
-      if (
-        i % 3 === 0 &&
-        voyels.includes(responseArray[i]) === true &&
-        responseArray.length - i >= 2
-      ) {
+      if (i % 3 === 0 && voyels.includes(responseArray[i]) === true) {
         responseArray[i] = voyels[Math.floor(Math.random() * voyels.length)];
       }
     }
@@ -232,7 +228,6 @@ function QuestionDrunk() {
               onClick={drunkLevelDown}
             >
               -
-              <img src={beer} alt="beer icon" />
             </button>
             <div className="drunkLevel">
               {drunkLevel === 1 && (
@@ -256,7 +251,6 @@ function QuestionDrunk() {
             </div>
             <button className="drunkUp" type="button" onClick={drunkLevelUp}>
               +
-              <img src={beer} alt="beer icon" />
             </button>
           </div>
 
