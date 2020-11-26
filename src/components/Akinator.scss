@@ -373,21 +373,23 @@
 }
 
 .previousButton {
+  border: none;
   justify-content: center;
   display: flex;
   align-items: center;
   width: 60px;
   height: 40px;
-  font-size: 25px;
+  font-size: 35px;
   z-index: 0;
   color: white;
   font-weight: bolder;
   background-color: #bb5759;
   position: absolute;
+  padding-bottom: 5px;
   cursor: pointer;
   right: 3%;
   top: 61%;
-  padding-top: 5px;
+
   border-radius: 40px;
   &:hover {
     display: inline-block;

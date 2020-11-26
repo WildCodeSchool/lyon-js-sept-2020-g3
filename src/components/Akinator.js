@@ -87,7 +87,8 @@ function Akinator() {
     setCounter(0);
     setIsPlayed(!isPlayed);
     setIsLoading(true);
-    setGuessProgress(0);
+    setGuessProgress([5]);
+    setUserClick(false);
   };
 
   const thinking = () => {
