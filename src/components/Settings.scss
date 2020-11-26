@@ -47,7 +47,8 @@
   padding-top: 98px;
   border-radius: 30px;
 }
-button {
+
+.buttonOn {
   margin-top: 20px;
   margin-bottom: 20px;
   width: 60%;
@@ -62,10 +63,22 @@ button {
   &:focus {
     outline: 0;
   }
-}
-.buttonOn {
   background-color: red;
 }
 .buttonOff {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 60%;
+  height: 50px;
+  border-radius: 20px;
+  z-index: 0;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  border: none;
+  box-shadow: 1px 5px 5px $primary-color;
+  &:focus {
+    outline: 0;
+  }
   background-color: green;
 }
