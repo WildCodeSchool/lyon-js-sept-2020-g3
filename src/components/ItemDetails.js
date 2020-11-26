@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { items } from './Store';
 import Modal from './Modal';
 import Background from './Background';
+import cross from '../Images/cross.png';
 import './Modal.scss';
 
 const ItemDetails = (props) => {
@@ -44,9 +45,15 @@ const ItemDetails = (props) => {
           </div>
           <div className="uniqueStoreButton">
             {' '}
-            <button type="button" onClick={openModal}>
-              Buy
-            </button>
+            {result.id === 2 ? (
+              <button type="button" onClick={openModal}>
+                Free
+              </button>
+            ) : (
+              <button type="button" onClick={openModal}>
+                Buy
+              </button>
+            )}
             <Link to="/store">
               <button type="button">Store</button>
             </Link>
@@ -54,23 +61,51 @@ const ItemDetails = (props) => {
         </div>
       </div>
 
-      <Modal showModal={isModalOpen} hideModal={closeModal}>
-        <div className="modalHeader">
-          <h2>Item Not Available</h2>
-        </div>
-        <div className="modalBody">
-          <h3>
-            This item will be available very soon
-            <br />
-            don't miss it !
-          </h3>
-        </div>
-        <div className="modalFooter">
-          <button type="button" className="modalButton" onClick={closeModal}>
-            Close
-          </button>
-        </div>
-      </Modal>
+      {result.id === 2 ? (
+        <Modal showModal={isModalOpen} hideModal={closeModal}>
+          <div className="modalHeaderDrunk">
+            <img src={cross} alt="cross" className="crossModal" />
+            <h2>Item FREE</h2>
+          </div>
+          <div className="modalBody">
+            <h3>
+              Drunk Bot' is free and full of surprises
+              <br />
+              try it now !
+            </h3>
+          </div>
+          <div className="modalFooter">
+            <Link to="/questionDrunk">
+              {' '}
+              <button
+                type="button"
+                className="modalButton"
+                onClick={closeModal}
+              >
+                Play
+              </button>
+            </Link>
+          </div>
+        </Modal>
+      ) : (
+        <Modal showModal={isModalOpen} hideModal={closeModal}>
+          <div className="modalHeader">
+            <h2>Item Not Available</h2>
+          </div>
+          <div className="modalBody">
+            <h3>
+              This item will be available very soon
+              <br />
+              don't miss it !
+            </h3>
+          </div>
+          <div className="modalFooter">
+            <button type="button" className="modalButton" onClick={closeModal}>
+              Close
+            </button>
+          </div>
+        </Modal>
+      )}
     </div>
   );
 };

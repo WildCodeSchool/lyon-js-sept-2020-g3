@@ -6,7 +6,6 @@ const Item = (props) => {
 
   return (
     <div>
-      {/* <Background /> */}
       <div className="storeCard">
         <img
           className="storeImg"
