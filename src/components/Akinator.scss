@@ -75,6 +75,43 @@
     left: -20px;
   }
 }
+
+.imageContainerQuestion {
+  background-image: url('../Images/ReactionArchiGIF/archibot-bouche-classique.gif');
+  background-size: 90%;
+  background-repeat: no-repeat;
+  background-position: top;
+  z-index: 0;
+  width: 300px;
+  height: 200px;
+  margin-bottom: 40px;
+  img {
+    height: auto;
+    width: 400px;
+    position: relative;
+    top: -240px;
+    left: -20px;
+  }
+}
+
+.imageContainerBeat {
+  background-image: url('../Images/ReactionArchiGIF/archibot-mecontent.gif');
+  background-size: 90%;
+  background-repeat: no-repeat;
+  background-position: top;
+  z-index: 0;
+  width: 300px;
+  height: 200px;
+  margin-bottom: 40px;
+  img {
+    height: auto;
+    width: 400px;
+    position: relative;
+    top: -240px;
+    left: -20px;
+  }
+}
+
 .akinatorButton {
   width: 100%;
   margin-bottom: 50px;
@@ -241,7 +278,7 @@
   position: absolute;
   background-color: white;
   border-radius: 40px;
-  top: 3%;
+  top: 5%;
   left: 12%;
 }
 
@@ -290,7 +327,7 @@
 
 .akinatorAnswerButton {
   width: 100%;
-  margin-bottom: 50px;
+  margin-bottom: 70px;
   align-items: center;
   z-index: 0;
   justify-content: center;
@@ -412,7 +449,7 @@
 }
 
 .imageContainerThinking {
-  background-image: url('../Images/robot.gif');
+  background-image: url('../Images/ReactionArchiGIF/archibot-dingo.gif');
   background-size: 90%;
   background-repeat: no-repeat;
   background-position: top;
@@ -485,8 +522,9 @@
   /* ---------------------------------------GENERAL AKINATOR--------------------------------------- */
 
   .previousButton {
-    top: 70%;
-    right: 10%;
+    position: absolute;
+    top: 78%;
+    right: 9%;
     width: 80px;
     height: 50px;
   }
@@ -495,7 +533,12 @@
     width: 60%;
   }
   .akinatorBtn {
-    margin: 0px 40px;
+    margin: 0px 40px 50px;
+  }
+
+  .progressBarContainer {
+    width: 60%;
+    left: 20%;
   }
 
   @keyframes load {
@@ -515,112 +558,83 @@
     }
   }
 
-  /* -------------------------------------PROGRESS BAR AKINATOR------------------------------------- */
+  /* -----------------------------RESPONSIVE----------------------------------- */
+  /* ------------------------------------1024px------------------------------------------ */
+  /* ---------------------------------------------------------------------------------------------- */
 
-  .progressBarContainer {
-    display: none;
-  }
+  @media screen and (min-width: 1024px) {
+    /* ---------------------------------------GENERAL AKINATOR--------------------------------------- */
 
-  .progressBar {
-    display: none;
-  }
-
-  .progressBarContainerDesktop {
-    display: flex;
-    flex-direction: column-reverse;
-    width: 20px;
-    height: 58%;
-    position: absolute;
-    background-color: white;
-    border-radius: 40px;
-    bottom: 8%;
-    left: 15%;
-  }
-
-  .progressBarDesktop {
-    display: block;
-    width: 20px;
-    position: absolute;
-    border-radius: 40px;
-    background-color: #bb5759;
-  }
-}
-
-/* -----------------------------RESPONSIVE----------------------------------- */
-/* ------------------------------------1024px------------------------------------------ */
-/* ---------------------------------------------------------------------------------------------- */
-
-@media screen and (min-width: 1024px) {
-  /* ---------------------------------------GENERAL AKINATOR--------------------------------------- */
-
-  .akinatorBubble {
-    width: 50%;
-  }
-  .akinatorBtn {
-    width: 170px;
-    height: 80px;
-    margin: 0px 40px 40px;
-  }
-
-  /* -------------------------------------PROGRESS BAR AKINATOR------------------------------------- */
-
-  .progressBarContainerDesktop {
-    bottom: 8%;
-    left: 15%;
-  }
-
-  /* ---------------------------------------ANSWERS AKINATOR--------------------------------------- */
-
-  .previousButton {
-    top: 78%;
-    right: 25%;
-  }
-
-  .akinatorAnswerImg {
-    margin: 20px 0 0;
-    border-radius: 5px;
-    width: 280px;
-    height: 300px;
-  }
-
-  /* -------------------------------------QUESTION AKINATOR--------------------------------------- */
-
-  .akinatorQuestionButton {
-    width: 450px;
-    height: 170px;
-    margin-bottom: 30px;
-
-    button:nth-child(-n + 2) {
-      width: 145px;
-      margin: 0 15px 20px;
+    .akinatorBubble {
+      width: 50%;
+      height: 150px;
     }
-    button:nth-child(4) {
-      width: 135px;
+    .akinatorBtn {
+      width: 170px;
+      height: 80px;
+      margin: 0px 40px 40px;
     }
-    button {
-      width: 120px;
-      margin: 0 10px 20px;
-    }
-  }
-  @keyframes load {
-    0% {
-      left: 38%;
-      height: 30px;
-      width: 15px;
-    }
-    50% {
-      height: 8px;
-      width: 40px;
-    }
-    100% {
-      left: 59%;
-      height: 30px;
-      width: 15px;
-    }
-  }
-  /* -------------------------------------THINKING AKINATOR--------------------------------------- */
 
-  .thinkingBubble {
-    width: 30%;
+    /* -------------------------------------PROGRESS BAR AKINATOR------------------------------------- */
+    .progressBarContainer {
+      top: 89%;
+      left: 25%;
+      width: 50%;
+    }
+
+    /* ---------------------------------------ANSWERS AKINATOR--------------------------------------- */
+
+    .previousButton {
+      top: 70%;
+      right: 25%;
+    }
+
+    .akinatorAnswerImg {
+      margin: 20px 0 0;
+      border-radius: 5px;
+      width: 280px;
+      height: 300px;
+    }
+
+    /* -------------------------------------QUESTION AKINATOR--------------------------------------- */
+
+    .akinatorQuestionButton {
+      width: 450px;
+      height: 170px;
+      margin-bottom: 100px;
+
+      button:nth-child(-n + 2) {
+        width: 145px;
+        margin: 0 15px 20px;
+      }
+      button:nth-child(4) {
+        width: 135px;
+      }
+      button {
+        width: 120px;
+        margin: 0 10px 20px;
+      }
+    }
+    @keyframes load {
+      0% {
+        left: 38%;
+        height: 30px;
+        width: 15px;
+      }
+      50% {
+        height: 8px;
+        width: 40px;
+      }
+      100% {
+        left: 59%;
+        height: 30px;
+        width: 15px;
+      }
+    }
+    /* -------------------------------------THINKING AKINATOR--------------------------------------- */
+
+    .thinkingBubble {
+      width: 30%;
+    }
   }
 }
