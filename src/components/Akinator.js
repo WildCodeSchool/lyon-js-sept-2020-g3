@@ -122,9 +122,11 @@ function Akinator() {
           <div key={guessCount[counter].name} className="akinatorBody">
             <Background />
             <div className="answerBubble">
-              <p>{`I'm sure at ${Math.floor(
-                guessCount[counter].proba * 100
-              )}% that your character is ... ${guessCount[counter].name} ?`}</p>
+              <p>
+                {`I'm sure at ${Math.floor(
+                  guessCount[counter].proba * 100
+                )}% that your character is ... ${guessCount[counter].name} ?`}
+              </p>
             </div>
             <img
               src={guessCount[counter].image}
