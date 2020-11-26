@@ -1,11 +1,13 @@
 import React from 'react';
+import Carousel from 'react-elastic-carousel';
 import './store.scss';
 import Item from './Item';
 import yoda from '../pictures/yoda.png';
-import drunkBot from '../pictures/drunkBot.jpg';
+import drunkBot from '../pictures/drunk_robot.png';
 import pierre from '../pictures/pierre.png';
 import matthieu from '../pictures/matthieu.png';
 import thomas from '../pictures/thomas.png';
+import Background from './Background';
 
 export const items = [
   {
@@ -21,7 +23,7 @@ export const items = [
     name: 'Drunk Bot',
     description: '"H-h-h-heeeeey! Wheeeere dya think yeeeeer goin ?”',
     src: drunkBot,
-    price: '1,99€',
+    price: 'FREE',
   },
   {
     id: 3,
@@ -49,10 +51,13 @@ export const items = [
 const Store = () => {
   return (
     <div className="storePart">
+      <Background />
       <h1 className="storeTitle">Store</h1>
-      {items.map((item) => (
-        <Item key={item.id} data={item} />
-      ))}
+      <Carousel>
+        {items.map((item) => (
+          <Item key={item.id} data={item} />
+        ))}
+      </Carousel>
     </div>
   );
 };

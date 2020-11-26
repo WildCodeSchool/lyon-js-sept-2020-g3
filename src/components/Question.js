@@ -1,7 +1,19 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
+import { Link } from 'react-router-dom';
 
 import './Question.scss';
-import Chat from '@material-ui/icons/Chat';
+import Background from './Background';
+import { SoundEffectContext } from './SoundEffectContext';
+
+import conversation from '../Images/conversation.png';
+import love from '../Images/ReactionArchiGIF/archibot-amoureux.gif';
+import classic from '../Images/ReactionArchiGIF/archibot-bouche-classique.gif';
+import wink from '../Images/ReactionArchiGIF/archibot-clin-doeil.gif';
+import dingo from '../Images/ReactionArchiGIF/archibot-dingo.gif';
+import mouth from '../Images/ReactionArchiGIF/archibot-grosse-bouche.gif';
+import nocomprendo from '../Images/ReactionArchiGIF/archibot-incompris.gif';
+
+const archibotReactionsGif = [love, classic, wink, dingo, mouth, nocomprendo];
 
 function Question() {
   const [question, setQuestion] = useState('');
@@ -9,6 +21,9 @@ function Question() {
   const [messageArray, setMessageArray] = useState([]);
   const [chat1, setChat1] = useState('on');
   const [chat2, setChat2] = useState('off');
+  const [randomImage, setRandomImage] = useState(0);
+
+  const { playButtonSound } = useContext(SoundEffectContext);
 
   // useRef utilisé pour atteindre le bas de la conversation dans le mode de chat avec tous les messages
   const conversationBottom = useRef(null);
@@ -38,22 +53,28 @@ function Question() {
     const encodedURIMessage = encodeURIComponent(question);
     const url = `https://acobot-brainshop-ai-v1.p.rapidapi.com/get?bid=153798&key=SXUv8ChYDG1AboDK&uid=User&msg=${encodedURIMessage}`;
 
-    fetch(url, {
-      method: 'GET',
-      headers: {
-        'x-rapidapi-host': 'acobot-brainshop-ai-v1.p.rapidapi.com',
-        'x-rapidapi-key': '9d66c11fc3msh0ddb29e8617b481p17897bjsn28a020b0c4bf',
-      },
-    })
-      .then((res) => {
-        return res.json();
+    if (question === '') {
+      setQuestion('...');
+      setResponse('What is your question ?');
+    } else {
+      fetch(url, {
+        method: 'GET',
+        headers: {
+          'x-rapidapi-host': 'acobot-brainshop-ai-v1.p.rapidapi.com',
+          'x-rapidapi-key':
+            '9d66c11fc3msh0ddb29e8617b481p17897bjsn28a020b0c4bf',
+        },
       })
-      .then((res) => {
-        updateResponse(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+        .then((res) => {
+          return res.json();
+        })
+        .then((res) => {
+          updateResponse(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   };
   // Lance la fonction submitToAPI() sur pression de la touche entrée
   const submitQuestionWithEnter = (e) => {
@@ -65,11 +86,17 @@ function Question() {
     setChat1(chat1 === 'on' ? 'off' : 'on');
     setChat2(chat2 === 'on' ? 'off' : 'on');
   };
+  const randomImageGif = () => {
+    setRandomImage(Math.floor(Math.random() * archibotReactionsGif.length));
+  };
+
   // Met à jour le tableau de stockage des Q/A et clear l'input de question quand le state response change
   useEffect(() => {
     updateMessageArray();
     resetQuestion();
+    randomImageGif();
   }, [response]);
+
   useEffect(() => {
     scrollToBottom();
   }, [messageArray]);
@@ -77,16 +104,23 @@ function Question() {
   return (
     <div>
       <div className="questionBody">
+        <Background />
+
         <div
-          className={chat1 === 'on' ? 'chat1ContainerOn' : 'chatContainerOff'}
+          className={chat1 === 'on' ? 'chat1ContainerOn' : 'chat1ContainerOff'}
         >
           <div className="questionBubble">
-            <span className="tip">{response}</span>
+            <span>{response}</span>
           </div>
-          <div className="imageContainer" />
+          <div
+            className="imageContainer"
+            style={{
+              backgroundImage: `url(${archibotReactionsGif[randomImage]})`,
+            }}
+          />
         </div>
         <div
-          className={chat2 === 'on' ? 'chat2ContainerOn' : 'chatContainerOff'}
+          className={chat2 === 'on' ? 'chat2ContainerOn' : 'chat2ContainerOff'}
         >
           {messageArray.map((element, index) => {
             return (
@@ -98,9 +132,9 @@ function Question() {
               >
                 {index !== 0 &&
                   (index % 2 === 0 ? (
-                    <div className="humanMessage">{`${element}`}</div>
+                    <div className="humanMessage">{element}</div>
                   ) : (
-                    <div className="botMessage">{`${element}`}</div>
+                    <div className="botMessage">{element}</div>
                   ))}
               </div>
             );
@@ -114,8 +148,21 @@ function Question() {
             submitQuestionWithEnter(e);
           }}
         >
-          <button type="button" className="chatIcon" onClick={switchChatMode}>
-            <Chat />
+          <button type="button" className="robotMode" onClick={playButtonSound}>
+            <Link to="/QuestionDrunk">Drunk mode</Link>
+          </button>
+          <button
+            type="button"
+            className="chatIconButton"
+            onClick={() => {
+              switchChatMode();
+              playButtonSound();
+            }}
+          >
+            <div
+              className="chatIcon"
+              style={{ backgroundImage: `url(${conversation})` }}
+            />
           </button>
 
           <div className="questionArea">
@@ -128,9 +175,11 @@ function Question() {
             <button
               className="questionButton"
               type="button"
-              onClick={submitToAPI}
+              onClick={() => {
+                submitToAPI();
+                playButtonSound();
+              }}
             >
-              {' '}
               ASK ME!
             </button>
           </div>

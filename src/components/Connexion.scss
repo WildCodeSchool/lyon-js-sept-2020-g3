@@ -1,0 +1,39 @@
+@import 'variablesCSS';
+@import url('https://fonts.googleapis.com/css2?family=Turret+Road:wght@500;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
+.connexionTitle {
+  color: white;
+  font-size: 50px;
+  text-align: center;
+  padding-top: 25px;
+  z-index: 0;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.connexionBody {
+  display: flex;
+  flex-direction: column;
+  height: 93.8vh;
+  z-index: 0;
+  width: 100vw;
+  background: linear-gradient(
+    $primary-color,
+    $secondary-color,
+    $third-color,
+    $secondary-color,
+    $primary-color
+  );
+  position: relative;
+  min-width: 100%;
+  min-height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+@media screen and (min-width: 768px) {
+}
+
+@media screen and (min-width: 1024px) {
+}

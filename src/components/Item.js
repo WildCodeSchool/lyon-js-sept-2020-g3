@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { SoundEffectContext } from './SoundEffectContext';
 
 const Item = (props) => {
   const { data } = props;
+  const { playButtonSound } = useContext(SoundEffectContext);
 
   return (
     <div>
@@ -16,7 +18,7 @@ const Item = (props) => {
         />
         <h2>{data.name}</h2>
         <Link to={`/store/${data.id}`}>
-          <button type="button" className="btnStore">
+          <button type="button" className="btnStore" onClick={playButtonSound}>
             {data.price}
           </button>
         </Link>
@@ -26,7 +28,3 @@ const Item = (props) => {
 };
 
 export default Item;
-
-/* const goodAnswer = () => {
-  
-}; */
