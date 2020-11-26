@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { slide as Menu } from 'react-burger-menu';
 
 import './Navbar.scss';
@@ -32,13 +32,27 @@ class Navbar extends React.Component {
         </h1>
         <div className="menu">
           <ul>
-            <Link to="/">Home</Link>
-            <Link to="/question">Question Me</Link>
-            <Link to="/akinator">Challenge Me</Link>
-            <Link to="/store">Store</Link>
-            <Link to="/settings">Settings</Link>
-            <Link to="/contact">Contact</Link>
-            <Link to="/connexion">Connexion</Link>
+            <NavLink exact to="/">
+              Home
+            </NavLink>
+            <NavLink exact to="/question">
+              Question Me
+            </NavLink>
+            <NavLink exact to="/akinator">
+              Challenge Me
+            </NavLink>
+            <NavLink exact to="/store">
+              Store
+            </NavLink>
+            <NavLink exact to="/settings">
+              Settings
+            </NavLink>
+            <NavLink exact to="/contact">
+              Contact
+            </NavLink>
+            <NavLink exact to="/connexion">
+              Connexion
+            </NavLink>
           </ul>
         </div>
         <Menu

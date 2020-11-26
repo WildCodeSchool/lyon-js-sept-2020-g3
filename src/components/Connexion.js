@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import './Connexion.scss';
 import Modal from './Modal';
 import './Modal.scss';
 import workInProgress from '../Images/workInProgress.png';
+import { SoundEffectContext } from './SoundEffectContext';
 import Background from './Background';
 
 const Connexion = () => {
   const isModalOpen = true;
+  const { playButtonSound } = useContext(SoundEffectContext);
 
   return (
     <div className="connexionBody">
@@ -32,7 +34,11 @@ const Connexion = () => {
         <div className="modalFooterConnexion">
           <Link to="/">
             {' '}
-            <button type="button" className="modalButton">
+            <button
+              type="button"
+              className="modalButton"
+              onClick={playButtonSound}
+            >
               Home
             </button>
           </Link>

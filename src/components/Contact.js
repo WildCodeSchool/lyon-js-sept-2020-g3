@@ -38,7 +38,7 @@ const Contact = () => {
   return (
     <div className="contactBody">
       <Background />
-      <div className="title">
+      <div className="contactTitle">
         <h3>Rate & Write me a comment to make me improve my friend !</h3>
       </div>
       <div className="screen">

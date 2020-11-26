@@ -149,19 +149,26 @@
       justify-content: space-around;
       margin-top: 5px;
       width: 100%;
-    }
-    a {
-      width: 12%;
-      text-decoration: none;
-      color: white;
-      &:hover {
-        background: white;
-        color: $primary-color;
+
+      a.active {
+        background: #e16c69;
+        color: white;
         padding: 5px 0;
         border-radius: 10px;
-        &:active {
-          background: #e16c69;
-          color: white;
+      }
+      a {
+        width: 12%;
+        text-decoration: none;
+        color: white;
+        &:hover {
+          background: white;
+          color: $primary-color;
+          padding: 5px 0;
+          border-radius: 10px;
+          &:active {
+            background: #e16c69;
+            color: white;
+          }
         }
       }
     }

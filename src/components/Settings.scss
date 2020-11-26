@@ -23,12 +23,49 @@
   );
 }
 
-.title {
-  background-color: white;
-  width: 90vw;
-  margin: 2%;
-  padding: 5px;
-  font-size: 15px;
+.settingsTitle {
+  color: white;
+  font-size: 30px;
   text-align: center;
+  padding-top: 15px;
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.containerButton {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.backgroundSettings {
+  margin-top: 60px;
+  background-color: white;
+  height: 60%;
+  width: 80%;
+  padding: 20px;
+  padding-top: 98px;
+  border-radius: 30px;
+}
+button {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 60%;
+  height: 50px;
   border-radius: 20px;
+  z-index: 0;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  border: none;
+  box-shadow: 1px 5px 5px $primary-color;
+  &:focus {
+    outline: 0;
+  }
+}
+.buttonOn {
+  background-color: red;
+}
+.buttonOff {
+  background-color: green;
 }
