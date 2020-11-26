@@ -102,9 +102,7 @@ function Question() {
     <div>
       <div className="questionBody">
         <Background />
-        <button type="button" className="robotMode">
-          <Link to="/QuestionDrunk">Drunk mode</Link>
-        </button>
+
         <div
           className={chat1 === 'on' ? 'chat1ContainerOn' : 'chat1ContainerOff'}
         >
@@ -147,6 +145,9 @@ function Question() {
             submitQuestionWithEnter(e);
           }}
         >
+          <button type="button" className="robotMode">
+            <Link to="/QuestionDrunk">Drunk mode</Link>
+          </button>
           <button
             type="button"
             className="chatIconButton"

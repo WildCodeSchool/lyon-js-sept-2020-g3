@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import './QuestionDrunk.scss';
 import Background from './Background';
@@ -21,6 +21,7 @@ function QuestionDrunk() {
   const [chat2, setChat2] = useState('off');
   const [randomImage, setRandomImage] = useState(0);
   const [drunkLevel, setDrunkLevel] = useState(1);
+  const history = useHistory();
 
   // useRef utilisé pour atteindre le bas de la conversation dans le mode de chat avec tous les messages
   const conversationBottom = useRef(null);
@@ -49,6 +50,8 @@ function QuestionDrunk() {
   const drunkLevelDown = () => {
     if (drunkLevel > 1) {
       setDrunkLevel(drunkLevel - 1);
+    } else {
+      history.push('/question');
     }
   };
 
@@ -189,9 +192,6 @@ function QuestionDrunk() {
     <div>
       <div className="questionBody">
         <Background />
-        <button type="button" className="robotMode">
-          <Link to="/Question">Normal mode</Link>
-        </button>
         <div
           className={chat1 === 'on' ? 'chat1ContainerOn' : 'chat1ContainerOff'}
         >
