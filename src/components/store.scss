@@ -8,11 +8,13 @@
 /* ---------------------------------------STORE PART-----------------------------------------------*/
 
 .storePart {
+  overflow: hidden;
+  padding: 0 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 92vh;
+  height: 91.5vh;
   max-height: 92vh;
   overflow: hidden;
   width: 100vw;
@@ -274,6 +276,8 @@
   /* ---------------------------------------STORE PART-----------------------------------------------*/
 
   .storePart {
+    overflow: hidden;
+    padding: 0 45px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -293,7 +297,7 @@
 
   .btnStore {
     margin-bottom: 20px;
-    height: 80px;
+    height: 55px;
   }
 
   .storeTitle {
@@ -309,7 +313,9 @@
 
 @media screen and (min-width: 1024px) {
   .storePart {
-    height: 92.2vh;
+    overflow: hidden;
+    padding: 0 45px;
+    height: 91.5vh;
   }
   .storeCard {
     width: 300px;
