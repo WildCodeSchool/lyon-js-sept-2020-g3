@@ -75,6 +75,43 @@
     left: -20px;
   }
 }
+
+.imageContainerQuestion {
+  background-image: url('../Images/ReactionArchiGIF/archibot-bouche-classique.gif');
+  background-size: 90%;
+  background-repeat: no-repeat;
+  background-position: top;
+  z-index: 0;
+  width: 300px;
+  height: 200px;
+  margin-bottom: 40px;
+  img {
+    height: auto;
+    width: 400px;
+    position: relative;
+    top: -240px;
+    left: -20px;
+  }
+}
+
+.imageContainerBeat {
+  background-image: url('../Images/ReactionArchiGIF/archibot-mecontent.gif');
+  background-size: 90%;
+  background-repeat: no-repeat;
+  background-position: top;
+  z-index: 0;
+  width: 300px;
+  height: 200px;
+  margin-bottom: 40px;
+  img {
+    height: auto;
+    width: 400px;
+    position: relative;
+    top: -240px;
+    left: -20px;
+  }
+}
+
 .akinatorButton {
   width: 100%;
   margin-bottom: 50px;
@@ -290,7 +327,7 @@
 
 .akinatorAnswerButton {
   width: 100%;
-  margin-bottom: 50px;
+  margin-bottom: 70px;
   align-items: center;
   z-index: 0;
   justify-content: center;
@@ -412,7 +449,7 @@
 }
 
 .imageContainerThinking {
-  background-image: url('../Images/robot.gif');
+  background-image: url('../Images/ReactionArchiGIF/archibot-dingo.gif');
   background-size: 90%;
   background-repeat: no-repeat;
   background-position: top;
@@ -486,8 +523,8 @@
 
   .previousButton {
     position: absolute;
-    top: 70%;
-    right: 7%;
+    top: 78%;
+    right: 9%;
     width: 80px;
     height: 50px;
   }

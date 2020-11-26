@@ -19,7 +19,7 @@ function Akinator() {
   const [getAnswer, setGetAnswer] = useState([]);
   const [allQuestion, setAllQuestion] = useState([]);
   const [userClick, setUserClick] = useState(false);
-  const [guessProgress, setGuessProgress] = useState([]);
+  const [guessProgress, setGuessProgress] = useState([5]);
 
   const nextQuestion = (answerIndex) => {
     axios
@@ -43,6 +43,7 @@ function Akinator() {
           {
             name: getAnswer.answers[i].name,
             image: getAnswer.answers[i].absolute_picture_path,
+            proba: getAnswer.answers[i].proba,
           },
         ]);
       }
@@ -121,7 +122,9 @@ function Akinator() {
           <div key={guessCount[counter].name} className="akinatorBody">
             <Background />
             <div className="answerBubble">
-              <p>{`Your character is ... ${guessCount[counter].name} ?`}</p>
+              <p>{`I'm sure at ${Math.floor(
+                guessCount[counter].proba * 100
+              )}% that your character is ... ${guessCount[counter].name} ?`}</p>
             </div>
             <img
               src={guessCount[counter].image}
@@ -157,7 +160,7 @@ function Akinator() {
                 Next time is going to be different ...
               </p>
             </div>
-            <div className="imageContainer" />
+            <div className="imageContainerBeat" />
             <div className="akinatorButton">
               {' '}
               <Link to="/">
@@ -247,14 +250,6 @@ function Akinator() {
                   }}
                 />
               </div>
-              <div className="progressBarContainerDesktop">
-                <div
-                  className="progressBarDesktop"
-                  style={{
-                    height: `${guessProgress[guessProgress.length - 1]}%`,
-                  }}
-                />
-              </div>
               <button
                 className="previousButton"
                 type="button"
@@ -266,7 +261,7 @@ function Akinator() {
             <div className="akinatorBubble">
               <p>{question}</p>
             </div>
-            <div className="imageContainer" />
+            <div className="imageContainerQuestion" />
             <div className="akinatorQuestionButton">
               {answers.map((answer, index) => {
                 return (
