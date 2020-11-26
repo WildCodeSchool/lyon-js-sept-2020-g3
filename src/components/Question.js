@@ -1,8 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 import './Question.scss';
 import Background from './Background';
+import { SoundEffectContext } from './SoundEffectContext';
 
 import conversation from '../Images/conversation.png';
 import love from '../Images/ReactionArchiGIF/archibot-amoureux.gif';
@@ -21,6 +22,8 @@ function Question() {
   const [chat1, setChat1] = useState('on');
   const [chat2, setChat2] = useState('off');
   const [randomImage, setRandomImage] = useState(0);
+
+  const { playButtonSound } = useContext(SoundEffectContext);
 
   // useRef utilisé pour atteindre le bas de la conversation dans le mode de chat avec tous les messages
   const conversationBottom = useRef(null);
@@ -145,13 +148,16 @@ function Question() {
             submitQuestionWithEnter(e);
           }}
         >
-          <button type="button" className="robotMode">
+          <button type="button" className="robotMode" onClick={playButtonSound}>
             <Link to="/QuestionDrunk">Drunk mode</Link>
           </button>
           <button
             type="button"
             className="chatIconButton"
-            onClick={switchChatMode}
+            onClick={() => {
+              switchChatMode();
+              playButtonSound();
+            }}
           >
             <div
               className="chatIcon"
@@ -169,7 +175,10 @@ function Question() {
             <button
               className="questionButton"
               type="button"
-              onClick={submitToAPI}
+              onClick={() => {
+                submitToAPI();
+                playButtonSound();
+              }}
             >
               ASK ME!
             </button>

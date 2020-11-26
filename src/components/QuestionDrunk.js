@@ -1,8 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import './QuestionDrunk.scss';
 import Background from './Background';
+import { SoundEffectContext } from './SoundEffectContext';
 
 import conversation from '../Images/conversation.png';
 import love from '../Images/ReactionArchiGIF/archibot-amoureux.gif';
@@ -22,6 +23,8 @@ function QuestionDrunk() {
   const [randomImage, setRandomImage] = useState(0);
   const [drunkLevel, setDrunkLevel] = useState(1);
   const history = useHistory();
+
+  const { playButtonSound } = useContext(SoundEffectContext);
 
   // useRef utilisé pour atteindre le bas de la conversation dans le mode de chat avec tous les messages
   const conversationBottom = useRef(null);
@@ -238,7 +241,10 @@ function QuestionDrunk() {
             <button
               className="drunkDown"
               type="button"
-              onClick={drunkLevelDown}
+              onClick={() => {
+                drunkLevelDown();
+                playButtonSound();
+              }}
             >
               -
             </button>
@@ -262,7 +268,14 @@ function QuestionDrunk() {
                 </div>
               )}
             </div>
-            <button className="drunkUp" type="button" onClick={drunkLevelUp}>
+            <button
+              className="drunkUp"
+              type="button"
+              onClick={() => {
+                drunkLevelUp();
+                playButtonSound();
+              }}
+            >
               +
             </button>
           </div>
@@ -270,7 +283,10 @@ function QuestionDrunk() {
           <button
             type="button"
             className="chatIconButton"
-            onClick={switchChatMode}
+            onClick={() => {
+              switchChatMode();
+              playButtonSound();
+            }}
           >
             <div
               className="chatIcon"
@@ -288,7 +304,10 @@ function QuestionDrunk() {
             <button
               className="questionButton"
               type="button"
-              onClick={submitToAPI}
+              onClick={() => {
+                submitToAPI();
+                playButtonSound();
+              }}
             >
               ASK ME!
             </button>

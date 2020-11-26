@@ -14,8 +14,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 91.5vh;
-  max-height: 92vh;
+  height: 92.5vh;
+  max-height: 93vh;
   overflow: hidden;
   width: 100vw;
   z-index: 0;
@@ -130,7 +130,7 @@
   align-items: center;
   overflow: hidden;
   z-index: 0;
-  height: 92vh;
+  height: 92.5vh;
   background: linear-gradient(
     $primary-color,
     $secondary-color,
@@ -315,7 +315,9 @@
   .storePart {
     overflow: hidden;
     padding: 0 45px;
-    height: 91.5vh;
+  }
+  .storeTitle {
+    margin-top: 35px;
   }
   .storeCard {
     width: 300px;
@@ -332,7 +334,7 @@
   }
 
   .uniqueStore {
-    height: 92.2vh;
+    height: 93vh;
   }
 
   .uniqueCard {
