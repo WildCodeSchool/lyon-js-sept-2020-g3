@@ -180,11 +180,11 @@ function QuestionDrunk() {
       setResponse('Yeaah one beer !');
       setQuestion('*You gave one beer to the bot*');
     } else if (drunkLevel === 2) {
-      setResponse('Yeaah *hic* two beer !');
-      setQuestion('*You gave two beer to the bot*');
+      setResponse('Yeaah *hic* two beers !');
+      setQuestion('*You gave two beers to the bot*');
     } else {
-      setResponse('Yeaah *hic* three *hic* beer !');
-      setQuestion('*You gave three beer to the bot*');
+      setResponse('Yeaah *hic* three *hic* beers !');
+      setQuestion('*You gave three beers to the bot*');
     }
   }, [drunkLevel]);
 

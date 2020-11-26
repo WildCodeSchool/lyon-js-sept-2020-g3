@@ -3,7 +3,7 @@ import Carousel from 'react-elastic-carousel';
 import './store.scss';
 import Item from './Item';
 import yoda from '../pictures/yoda.png';
-import drunkBot from '../pictures/drunkBot.jpg';
+import drunkBot from '../pictures/drunk_robot.png';
 import pierre from '../pictures/pierre.png';
 import matthieu from '../pictures/matthieu.png';
 import thomas from '../pictures/thomas.png';
