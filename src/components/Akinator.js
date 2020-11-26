@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import './Akinator.scss';
 import axios from 'axios';
+import { SoundEffectContext } from './SoundEffectContext';
 import Background from './Background';
 
 function Akinator() {
@@ -20,6 +21,8 @@ function Akinator() {
   const [allQuestion, setAllQuestion] = useState([]);
   const [userClick, setUserClick] = useState(false);
   const [guessProgress, setGuessProgress] = useState([5]);
+
+  const { playButtonSound } = useContext(SoundEffectContext);
 
   const nextQuestion = (answerIndex) => {
     axios
@@ -140,14 +143,20 @@ function Akinator() {
               <button
                 type="button"
                 className="akinatorBtn"
-                onClick={() => setClicked(true)}
+                onClick={() => {
+                  setClicked(true);
+                  playButtonSound();
+                }}
               >
                 Yes
               </button>
               <button
                 type="button"
                 className="akinatorBtn"
-                onClick={() => thinking()}
+                onClick={() => {
+                  thinking();
+                  playButtonSound();
+                }}
               >
                 No
               </button>
@@ -167,14 +176,21 @@ function Akinator() {
             <div className="akinatorButton">
               {' '}
               <Link to="/">
-                <button type="button" className="akinatorBtn">
+                <button
+                  type="button"
+                  className="akinatorBtn"
+                  onClick={playButtonSound}
+                >
                   Home
                 </button>
               </Link>
               <button
                 type="button"
                 className="akinatorBtn"
-                onClick={() => playAgain()}
+                onClick={() => {
+                  playAgain();
+                  playButtonSound();
+                }}
               >
                 Play Again
               </button>
@@ -219,14 +235,21 @@ function Akinator() {
             <div className="akinatorButton">
               {' '}
               <Link to="/">
-                <button type="button" className="akinatorBtn">
+                <button
+                  type="button"
+                  className="akinatorBtn"
+                  onClick={playButtonSound}
+                >
                   Home
                 </button>
               </Link>
               <button
                 type="button"
                 className="akinatorBtn"
-                onClick={() => playAgain()}
+                onClick={() => {
+                  playAgain();
+                  playButtonSound();
+                }}
               >
                 Play Again
               </button>
@@ -256,7 +279,10 @@ function Akinator() {
               <button
                 className="previousButton"
                 type="button"
-                onClick={() => previousQuestion()}
+                onClick={() => {
+                  previousQuestion();
+                  playButtonSound();
+                }}
               >
                 ↺
               </button>
@@ -279,6 +305,7 @@ function Akinator() {
                       nextQuestion(index);
                       setAllQuestion([...allQuestion, question]);
                       setUserClick(true);
+                      playButtonSound();
                     }}
                   >
                     {answer}
@@ -313,12 +340,19 @@ function Akinator() {
               <button
                 type="button"
                 className="akinatorBtn"
-                onClick={() => setnewEnter(!newEnter)}
+                onClick={() => {
+                  setnewEnter(!newEnter);
+                  playButtonSound();
+                }}
               >
                 Ready
               </button>
               <Link to="/">
-                <button type="button" className="akinatorBtn">
+                <button
+                  type="button"
+                  className="akinatorBtn"
+                  onClick={playButtonSound}
+                >
                   Mmmm ... not yet
                 </button>
               </Link>
