@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import './Home.scss';
+import { SoundEffectContext } from './SoundEffectContext';
 import Background from './Background';
 
 const Home = () => {
+  const { playButtonSound } = useContext(SoundEffectContext);
+
   return (
     <div className="homeBody">
       <Background />
@@ -12,10 +15,10 @@ const Home = () => {
       </div>
       <div className="imageContainer" />
       <div className="homebuttons">
-        <button type="button" className="question">
+        <button type="button" className="question" onClick={playButtonSound}>
           <Link to="/question">Question me</Link>
         </button>
-        <button type="button" className="play">
+        <button type="button" className="play" onClick={playButtonSound}>
           <Link to="/akinator">Challenge me</Link>
         </button>
       </div>
